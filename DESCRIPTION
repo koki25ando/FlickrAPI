@@ -1,0 +1,14 @@
+Package: FlickrAPI
+Title: 
+Version: 0.0.0.9000
+Authors@R: person("Koki", "Ando", email = "koki.25.ando@gmail.com", role = c("aut", "cre"))
+Description: 
+Depends: R (>= 3.3.2)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: dplyr,
+  magrittr
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
