@@ -6,3 +6,5 @@ An R package that provides an interface to the [Flickr API](https://www.flickr.c
 devtools::install_github("koki25ando/FlickrAPI")
 library(FlickrAPI)
 ```
+
+# Quick Introduction to FlickrAPI
