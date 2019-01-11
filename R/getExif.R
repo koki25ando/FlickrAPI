@@ -1,3 +1,10 @@
+# Function for getting Exif data of given photo
+#' 
+#' @import RCurl
+#' @import jsonlite
+#'
+#' @export
+
 
 
 getExif <- function(api_key, photo_id){
@@ -7,5 +14,3 @@ getExif <- function(api_key, photo_id){
   data <- jsonlite::fromJSON(raw_data)
   as.data.frame(data)
 }
-
-

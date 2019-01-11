@@ -1,5 +1,4 @@
-
-api_key = '7f3677333506e37a7b320d65146bc44b'
+# Function for getting photos of given Flickr user
 
 
 getPhotos <- function(api_key, user_id){
