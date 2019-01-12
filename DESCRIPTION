@@ -13,3 +13,4 @@ Imports: dplyr,
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 6.1.0

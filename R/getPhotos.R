@@ -29,7 +29,7 @@
 #'   getPhotos(api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user_id="141696738@N08")
 #' }
 #' 
-#' @export 
+#' @export
 
 
 getPhotos <- function(api_key, user_id){
@@ -39,5 +39,3 @@ getPhotos <- function(api_key, user_id){
   data <- jsonlite::fromJSON(raw_data)
   as.data.frame(data$photos$photo)
 }
-
-getPhotos(api_key=api_key, user_id="141696738@N08")

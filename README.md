@@ -3,8 +3,8 @@ An R package that provides an interface to the [Flickr API](https://www.flickr.c
 
 ## Package Contents
 + getPhotos(api_key, user_id)
-+ getPhotoLocation(api_key, photo_id)
 + getExif(api_key, photo_id)
++ getPhotoInfo(api_key, photo_id, output)
 
 ## Installation
 ```{r}
