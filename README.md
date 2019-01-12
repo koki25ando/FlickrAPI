@@ -11,3 +11,6 @@ library(FlickrAPI)
 + getPhotos(api_key, user_id)
 + getExif(api_key, photo_id)
 + getPhotoInfo(api_key, photo_id, output)
+
+### See Also
+[Flickr API](https://www.flickr.com/services/api/)
