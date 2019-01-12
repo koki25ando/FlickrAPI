@@ -14,7 +14,7 @@
 #' 
 #' @return This function returns data of specific photo's information.
 #' 
-#' @example
+#' @examples
 #' \dontrun{
 #'   getPhotoInfo(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id="30484882493", 
 #'                output="location")

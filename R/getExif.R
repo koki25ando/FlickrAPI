@@ -12,9 +12,9 @@
 #' 
 #' @return This function returns a dataframe of Exif information of given photograph
 #' 
-#' @example
+#' @examples
 #' \dontrun{
-#'   getExif(api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, photo_id="45961963324")
+#'   getExif(api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id="45961963324")
 #' }
 #'
 #' @export

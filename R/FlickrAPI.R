@@ -7,6 +7,5 @@
 #' @author Koki Ando \email{koki.25.ando@gmail.com}
 #' @docType package
 #' @seealso \url{https://www.flickr.com/services/api/}
-#' @importFrom dplyr %>%
 #' @name FlickrAPI
 "_PACKAGE"
