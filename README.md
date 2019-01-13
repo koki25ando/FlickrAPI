@@ -11,6 +11,7 @@ library(FlickrAPI)
 + getPhotos(api_key, user_id)
 + getPhotoInfo(api_key, photo_id, output)
 + getExif(api_key, photo_id)
++ getHotTags(api_key, period, count)
 
 ### See Also
 [Flickr API](https://www.flickr.com/services/api/)
