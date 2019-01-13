@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 This vignette provides a quick tour of the R package "FlickrAPI".
+This package is maintained by [Koki Ando](https://github.com/koki25ando).
 
 # Installation
 
