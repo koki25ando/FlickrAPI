@@ -1,5 +1,5 @@
 # FlickrAPI
-An R package that provides an interface to the [Flickr API](https://www.flickr.com/services/api/) and allows R users to download publicly available photo's data posted on Flickr.
+Provides an interface to the [Flickr API](https://www.flickr.com/services/api/) and allows R users to download publicly available photo's data posted on Flickr.
 
 ## Installation
 ```{r}

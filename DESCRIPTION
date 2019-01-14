@@ -1,8 +1,8 @@
 Package: FlickrAPI
-Title: Access to Flickr API via R
+Title: Access to Flickr API
 Version: 0.1.0.0
 Authors@R: person("Koki", "Ando", email = "koki.25.ando@gmail.com", role = c("aut", "cre"))
-Description: An R package that provides an interface to the [Flickr API](https://www.flickr.com/services/api/)
+Description: Provides an interface to the Flickr API <https://www.flickr.com/services/api/>
       and allows R users to download data on Flickr.
 Depends: R (>= 3.1)
 License: GPL-2 | file LICENSE
