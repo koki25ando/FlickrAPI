@@ -3,7 +3,8 @@ Provides an interface to the [Flickr API](https://www.flickr.com/services/api/) 
 
 ## Installation
 ```{r}
-devtools::install_github("koki25ando/FlickrAPI")
+install.packages("FlickrAPI")
+# devtools::install_github("koki25ando/FlickrAPI")
 library(FlickrAPI)
 ```
 
@@ -14,4 +15,6 @@ library(FlickrAPI)
 + getHotTags(api_key, period, count)
 
 ### See Also
-[Flickr API](https://www.flickr.com/services/api/)
++ [FlickrAPI Description on CRAN](https://cran.r-project.org/web/packages/FlickrAPI/index.html)
++ [PDF of FlickrAPI](https://cran.r-project.org/web/packages/FlickrAPI/FlickrAPI.pdf)
++ [Flickr API](https://www.flickr.com/services/api/)
