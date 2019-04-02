@@ -1,4 +1,5 @@
-# FlickrAPI
+# FlickrAPI <img src="man/figures/logo.png" width="160px" align="right" />
+
 [![CRAN
 status](https://www.r-pkg.org/badges/version/FlickrAPI)](https://cran.r-project.org/package=FlickrAPI)
 [![Rdoc](http://www.rdocumentation.org/badges/version/FlickrAPI)](http://www.rdocumentation.org/packages/FlickrAPI)
