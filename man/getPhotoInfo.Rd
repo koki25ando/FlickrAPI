@@ -4,8 +4,7 @@
 \alias{getPhotoInfo}
 \title{Download Flickr Photo Data}
 \usage{
-getPhotoInfo(api_key, photo_id, output = c("Location", "Date", "URL",
-  "Tags"))
+getPhotoInfo(api_key, photo_id, output = c("Location", "Date", "URL", "Tags"))
 }
 \arguments{
 \item{api_key}{Your API application key}
@@ -22,10 +21,14 @@ R access to photo information of photos posted on flickr via flickr API interfac
 }
 \examples{
 \dontrun{
-  getPhotoInfo(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id="30484882493", 
+  getPhotoInfo(api_key = "XXXXXXXXXX",
+               photo_id="30484882493",
                output="location")
 }
 
+}
+\seealso{
+\url{https://www.flickr.com/services/api/flickr.photos.getInfo.html}
 }
 \author{
 Koki Ando <koki.25.ando@gmail.com>
