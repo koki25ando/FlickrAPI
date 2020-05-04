@@ -1,4 +1,4 @@
-# FlickrAPI 0.1.0.01 (2020-05-4)
+# FlickrAPI 0.1.0.01 (2020-05-04)
 Minor update. Fixed reported bugs, updated exsiting features.
 
 ## FlickrAPI 0.1.0.0 (2019-01-13)
