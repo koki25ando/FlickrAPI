@@ -42,16 +42,16 @@ getPhotoInfo <- function(api_key, photo_id,
 
   if (stringr::str_to_lower(output) == "location") {
     output_data = as.data.frame(data$photo$location)
-    janitor::clean_names(output_data)
+    clean_names(output_data)
   } else if (stringr::str_to_lower(output) == "date") {
     output_data = as.data.frame(data$photo$dates)
-    janitor::clean_names(output_data)
+    clean_names(output_data)
   } else if (stringr::str_to_lower(output) == "url") {
     output_data = as.data.frame(data$photo$urls$url)
-    janitor::clean_names(output_data)
+    clean_names(output_data)
   } else if (stringr::str_to_lower(output) == "tags") {
     output_data = as.data.frame(data$photo$tags$tag)
-    janitor::clean_names(output_data)
+    clean_names(output_data)
   } else {
     warnings("\nERROR with output argument.
 You have to choose from following options: Location, Date, URL or Tags")
