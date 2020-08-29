@@ -97,3 +97,18 @@ getExif(api_key="********************************", photo_id="29827995436") %>%
 ```
 
 
+## Search for photos
+
+```{r eval = FALSE}
+getPhotoSearch(api_key="********************************", tags = c("cats","dogs")) %>% 
+  head(10)
+
+    id         owner     secret server farm                                          title ispublic isfriend isfamily
+1 50226474321 146168910@N06 4680e55a0f  65535   66                     Milo is just like a pearl!        1        0        0
+2 49945925796 146168910@N06 c9e0c5ea2a  65535   66                                           Milo        1        0        0
+3 49909926987  35667267@N00 e6374515a1  65535   66       living in a time of pandemic (stay home)        1        0        0
+4 49841364907 138939439@N06 f409240f0a  65535   66                      Buon primo maggio A tutti        1        0        0
+5 49638807393 146168910@N06 d311f1c705  65535   66                             Love me ..I amTed!        1        0        0
+6 49588958307 186681302@N03 22ecd01134  65535   66 ...I'll sing it one last time for you......♪♪♪        1        0        0
+```
+

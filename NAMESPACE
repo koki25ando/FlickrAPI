@@ -3,6 +3,7 @@
 export(getExif)
 export(getHotTags)
 export(getPhotoInfo)
+export(getPhotoSearch)
 export(getPhotos)
 import(RCurl)
 import(janitor)
