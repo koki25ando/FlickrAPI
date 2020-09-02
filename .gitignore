@@ -1,4 +1,26 @@
+# ignore everything
+*
+# white dir
+!*/
+!.giignore
+
+!*_git.*
+
+# DS script files
+!*.R
+!*.Rmd
+!*.Rd
+!*.Rproj
+!*.py
+!*.ipynb
 .Rproj.user
-.Rhistory
-.RData
-inst/doc
+
+# other files
+!*.md
+!*.html
+!DESCRIPTION
+!NAMESPACE
+!LICENSE
+
+# Image files
+!*.png
