@@ -9,7 +9,7 @@ getPhotos(api_key, user_id)
 \arguments{
 \item{api_key}{Your API application key}
 
-\item{user_id}{The NSID of the user who's phoyos to return. A value of me return the calling user's photos}
+\item{user_id}{The NSID of the user who's photos to return. A value of me return the calling user's photos}
 }
 \value{
 This function return \code{data.frame} including columns:
@@ -26,7 +26,7 @@ This function return \code{data.frame} including columns:
 }
 }
 \description{
-Returns photos from the given user's photostream. Only phots visible to the calling user will be returned.
+Returns photos from the given user's photostream. Only photos visible to the calling user will be returned.
 }
 \examples{
 \dontrun{
