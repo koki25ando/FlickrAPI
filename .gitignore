@@ -24,6 +24,6 @@
 
 # Image files
 !*.png
-docs
+!/docs/*
 .Rhistory
 .RData
