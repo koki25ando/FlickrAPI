@@ -71,7 +71,7 @@ getPhotoSearch <- function(api_key,
     if (sum(vapply(extras, function(x) {
       x %in% extra_fields
     }, logical(1))) < length(extras)) {
-      print(paste0("One or more of the extra fields provided is not valid or is not supported. Supported extra fields are: ", paste0(extra_fields, collapse = ", ")))
+      stop(paste0("One or more of the extra fields provided is not valid or is not supported. Supported extra fields are: ", paste0(extra_fields, collapse = ", ")))
     }
 
     url = paste0(url, "&extras=", paste0(extras, collapse = ","))
