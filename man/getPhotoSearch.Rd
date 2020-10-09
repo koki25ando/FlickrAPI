@@ -8,7 +8,7 @@ getPhotoSearch(
   api_key,
   user_id = NULL,
   tags = NULL,
-  licence_id,
+  licence_id = NULL,
   sort = "date-posted-asc",
   bbox = NULL,
   extras,
