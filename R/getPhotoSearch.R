@@ -1,13 +1,13 @@
 #' Search for photos on Flickr by user id, tags, license, or bounding box
 #'
-#' R access to flickr search api
+#' R access to Flickr search api
 #'
 #' @param api_key Required. Your API application key
 #' @param user_id The NSID of the user who's photo to search. If this parameter isn't passed then everybody's public photos will be searched.
 #' @param tags List of tags you wish to search for e.g. c("cats, "dogs)
 #' @param license_id The license id for photos (for possible values see the Flickr API method flickr.photos.licenses.getInfo).
 #' @param sort Order to sort returned photos. The possible values are: "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc", "interestingness-desc", "interestingness-asc", and "relevance"
-#' @param bbox A object of class bbox or a comma-delimited string of 4 values defining the Bounding Box of the area that will be searched. The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.
+#' @param bbox A object of class bbox or a numeric vector with values for xmin, ymin, xmax and ymax representing the bottom-left corner of the box and the top-right corner.
 #' @param extras A vector of extra information to fetch for each returned record. Currently supported fields are: c("description", "license", "date_upload", "date_taken", "owner_name", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "url_sq", "url_t", "url_s", "url_q", "url_m", "url_n", "url_z", "url_c", "url_l", "url_o")
 #' @param per_page Number specifying how many results per page to return. Default 100 results per page. Maximum of 250 if bbox provided or 500 otherwise.
 #' @param page Number specifying which search results page to return. Default is page 1 of results returned.
@@ -33,7 +33,7 @@
 #' # Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan
 #' getPhotoSearch(api_key = "XXXXXXXXXX",
 #'                tags = "panda",
-#'                bbox = "139.7682226529,35.712627977,139.7724605432,35.7181464141",
+#'                bbox = c(139.7682226529, 35.712627977, 139.7724605432, 35.7181464141),
 #'                extras = c("geo", "owner_name", "tags"))
 #' }
 #'
@@ -69,10 +69,11 @@ getPhotoSearch <- function(api_key,
 
   url = paste0(url, "&sort=", sort)
 
-  if (class(bbox) == "bbox") {
-    bbox <- paste0(bbox[1], ",", bbox[2], ",", bbox[3], ",", bbox[4])
+  if (class(bbox) != "bbox" && length(bbox) != 4) {
+    stop("The bbox provided is not valid. The bbox must be an object of class 'bbox' or a numeric vector with xmin, ymin, xmax and ymax values.")
   }
 
+  bbox = paste0(bbox[1], ",", bbox[2], ",", bbox[3], ",", bbox[4])
   url = paste0(url, "&bbox=", bbox)
 
   if (!missing(extras)) {
@@ -95,7 +96,7 @@ getPhotoSearch <- function(api_key,
     "&format=json&nojsoncallback=1"
   )
 
-  raw_data <- RCurl::getURL(url, ssl.verifypeer = FALSE)
+  raw_data <- RCurl::getURL(url, ssl.verifypeer = FALSE, .mapUnicode = FALSE)
 
   data <- jsonlite::fromJSON(raw_data)
 
