@@ -64,5 +64,4 @@ getPhotoSearch(api_key = "XXXXXXXXXX",
                extras = c("geo", "owner_name", "tags"))
 }
 
-
 }
