@@ -5,7 +5,7 @@
 #' @param api_key Required. Your API application key
 #' @param user_id The NSID of the user who's photo to search. If this parameter isn't passed then everybody's public photos will be searched.
 #' @param tags List of tags you wish to search for e.g. c("cats, "dogs)
-#' @param license_id The license id for photos (for possible values see the Flickr API method flickr.photos.licenses.getInfo).
+#' @param licence_id The license id for photos (for possible values see the Flickr API method flickr.photos.licenses.getInfo).
 #' @param sort Order to sort returned photos. The possible values are: "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc", "interestingness-desc", "interestingness-asc", and "relevance"
 #' @param bbox A object of class bbox or a numeric vector with values for xmin, ymin, xmax and ymax representing the bottom-left corner of the box and the top-right corner.
 #' @param extras A vector of extra information to fetch for each returned record. Currently supported fields are: c("description", "license", "date_upload", "date_taken", "owner_name", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "url_sq", "url_t", "url_s", "url_q", "url_m", "url_n", "url_z", "url_c", "url_l", "url_o")
@@ -29,7 +29,7 @@
 #'                user_id = "grand_canyon_nps",
 #'                extras = c("date_taken", "url_sq"))
 #' }
-#' #' \dontrun{
+#' \dontrun{
 #' # Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan
 #' getPhotoSearch(api_key = "XXXXXXXXXX",
 #'                tags = "panda",
