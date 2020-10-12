@@ -12,7 +12,8 @@ Imports: magrittr,
     RCurl,
     jsonlite,
     stringr,
-    janitor
+    janitor,
+    glue
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
