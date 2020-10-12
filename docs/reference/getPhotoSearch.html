@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Search for photos on Flickr by tags — getPhotoSearch • FlickrAPI</title>
+<title>Search for photos on Flickr by user id, tags, license, or bounding box — getPhotoSearch • FlickrAPI</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Search for photos on Flickr by tags — getPhotoSearch" />
-<meta property="og:description" content="R access to flickr tag search api" />
+<meta property="og:title" content="Search for photos on Flickr by user id, tags, license, or bounding box — getPhotoSearch" />
+<meta property="og:description" content="R access to Flickr search api" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -126,48 +126,74 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Search for photos on Flickr by tags</h1>
+    <h1>Search for photos on Flickr by user id, tags, license, or bounding box</h1>
     
     <div class="hidden name"><code>getPhotoSearch.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>R access to flickr tag search api</p>
+    <p>R access to Flickr search api</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getPhotoSearch</span>(<span class='kw'>api_key</span>, <span class='kw'>tags</span>, page = <span class='fl'>1</span>, per_page = <span class='fl'>500</span>)</pre>
+    <pre class="usage"><span class='fu'>getPhotoSearch</span>(
+  <span class='kw'>api_key</span>,
+  user_id = <span class='kw'>NULL</span>,
+  tags = <span class='kw'>NULL</span>,
+  licence_id = <span class='kw'>NULL</span>,
+  sort = <span class='st'>"date-posted-asc"</span>,
+  bbox = <span class='kw'>NULL</span>,
+  <span class='kw'>extras</span>,
+  per_page = <span class='fl'>100</span>,
+  page = <span class='fl'>1</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>api_key</th>
-      <td><p>Your API application key</p></td>
+      <td><p>Required. Your API application key</p></td>
+    </tr>
+    <tr>
+      <th>user_id</th>
+      <td><p>The NSID of the user who's photo to search. If this parameter isn't passed then everybody's public photos will be searched.</p></td>
     </tr>
     <tr>
       <th>tags</th>
       <td><p>List of tags you wish to search for e.g. c("cats, "dogs)</p></td>
     </tr>
     <tr>
+      <th>sort</th>
+      <td><p>Order to sort returned photos. The possible values are: "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc", "interestingness-desc", "interestingness-asc", and "relevance"</p></td>
+    </tr>
+    <tr>
+      <th>bbox</th>
+      <td><p>A object of class bbox or a numeric vector with values for xmin, ymin, xmax and ymax representing the bottom-left corner of the box and the top-right corner.</p></td>
+    </tr>
+    <tr>
+      <th>extras</th>
+      <td><p>A vector of extra information to fetch for each returned record. Currently supported fields are: c("description", "license", "date_upload", "date_taken", "owner_name", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "url_sq", "url_t", "url_s", "url_q", "url_m", "url_n", "url_z", "url_c", "url_l", "url_o")</p></td>
+    </tr>
+    <tr>
+      <th>per_page</th>
+      <td><p>Number specifying how many results per page to return. Default 100 results per page. Maximum of 250 if bbox provided or 500 otherwise.</p></td>
+    </tr>
+    <tr>
       <th>page</th>
       <td><p>Number specifying which search results page to return. Default is page 1 of results returned.</p></td>
     </tr>
     <tr>
-      <th>per_page</th>
-      <td><p>Number specifying how many results per page to return. Default 500 results per page.</p></td>
+      <th>license_id</th>
+      <td><p>The license id for photos (for possible values see the Flickr API method flickr.photos.licenses.getInfo).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>This function returns data of specific photos matching search tags.</p>
+    <p>This function returns data of specific photos matching search parameters.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-  <span class='fu'>getPhotoSearch</span>(api_key = <span class='st'>"XXXXXXXXXX"</span>,
-               tags= <span class='st'>"cats"</span>)
-}
-</div></pre>
+    <pre class="examples"></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
