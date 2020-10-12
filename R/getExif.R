@@ -1,17 +1,17 @@
 #' Returns a data of EXIF data for a given photo.
 #'
-#' Return a data of EXIS data for a given photo. The calling user must have permission to view the photo.
-#' 
+#' Return a data of Exif data for a given photo. The calling user must have permission to view the photo.
+#'
 #' @param api_key Your API application key
 #' @param photo_id The id of the photo to fetch information for
-#' 
+#'
 #' @author Koki Ando <koki.25.ando@gmail.com>
 #'
 #' @import RCurl
 #' @import jsonlite
-#' 
+#'
 #' @return This function returns a dataframe of Exif information of given photograph
-#' 
+#'
 #' @examples
 #' \dontrun{
 #'   getExif(api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id="45961963324")
