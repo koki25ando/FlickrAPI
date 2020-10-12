@@ -12,7 +12,6 @@
 #' @param per_page Number specifying how many results per page to return. Default 100 results per page. Maximum of 250 if bbox provided or 500 otherwise.
 #' @param page Number specifying which search results page to return. Default is page 1 of results returned.
 #' @return This function returns data of specific photos matching search parameters.
-#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -37,7 +36,7 @@
 #'                extras = c("geo", "owner_name", "tags"))
 #' }
 #'
-#'
+#' @export
 
 getPhotoSearch <- function(api_key,
                            user_id = NULL,
