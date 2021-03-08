@@ -4,7 +4,7 @@
 #'
 #' @param api_key Required. Your API application key
 #' @param user_id The NSID of the user who's photo to search. If this parameter isn't passed then everybody's public photos will be searched.
-#' @param tags List of tags you wish to search for e.g. c("cats, "dogs)
+#' @param tags A vector of tags you wish to search for.
 #' @param license_id The license id for photos (for possible values see the Flickr API method flickr.photos.licenses.getInfo).
 #' @param sort Order to sort returned photos. The possible values are: "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc", "interestingness-desc", "interestingness-asc", and "relevance"
 #' @param bbox A object of class bbox or a numeric vector with values for xmin, ymin, xmax and ymax representing the bottom-left corner of the box and the top-right corner.
@@ -16,11 +16,11 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Search for photos tagged "cats"
+#' # Search for photos tagged "cats" and "dogs"
 #' # Return images in descending order of date taken
 #'   getPhotoSearch(api_key = "XXXXXXXXXX",
 #'                sort = "date-taken-desc",
-#'                tags = "cats")
+#'                tags = c("cats", "dogs"))
 #' }
 #' \dontrun{
 #' # Search for photos uploaded to the NPS Grand Canyon user account.
@@ -69,12 +69,14 @@ getPhotoSearch <- function(api_key,
 
   url = paste0(url, "&sort=", sort)
 
-  if (class(bbox) != "bbox" && length(bbox) != 4) {
-    stop("The bbox provided is not valid. The bbox must be an object of class 'bbox' or a numeric vector with xmin, ymin, xmax and ymax values.")
-  }
+  if (!is.null(bbox)) {
+    if (class(bbox) != "bbox" && length(bbox) != 4) {
+      stop("The bbox provided is not valid. The bbox must be an object of class 'bbox' or a numeric vector with xmin, ymin, xmax and ymax values.")
+    }
 
-  bbox = paste0(bbox[1], ",", bbox[2], ",", bbox[3], ",", bbox[4])
-  url = paste0(url, "&bbox=", bbox)
+    bbox = paste0(bbox[1], ",", bbox[2], ",", bbox[3], ",", bbox[4])
+    url = paste0(url, "&bbox=", bbox)
+  }
 
   if (!missing(extras)) {
     extra_fields = c("description", "license", "date_upload", "date_taken", "owner_name", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "url_sq", "url_t", "url_s", "url_q", "url_m", "url_n", "url_z", "url_c", "url_l", "url_o")
