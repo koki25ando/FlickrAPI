@@ -1,10 +1,10 @@
-#' Set Flickr API key in environment variables
+#' Set and get a Flickr API key to/from environment variables.
 #'
 #' @param api_key Flickr API key
-#' @param overwrite If `TRUE`, overwrite existing token; Default: FALSE
-#' @param install If `TRUE`, install token for use in future sessions; Default: FALSE
+#' @param overwrite If `TRUE`, overwrite existing token; Default: `FALSE`
+#' @param install If `TRUE`, install token for use in future sessions; Default:
+#'   `FALSE`
 #' @rdname setFlickrAPIKey
-#' @aliases set_flickr_api_key
 #' @export
 #'
 #' @importFrom utils read.table write.table
@@ -53,13 +53,16 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE) {
   }
 }
 
+#' @export
+#' @rdname setFlickrAPIKey
+set_flickr_api_key = setFlickrAPIKey
+
+
 
 #' Get Flickr API key from environment variables
 #'
-#' @param api_key Flickr API Token
-#' @rdname getFlickrAPIKey
-#' @aliases get_flickr_api_key
-#' @noRd
+#' @rdname setFlickrAPIKey
+#' @export
 
 getFlickrAPIKey <- function(api_key = NULL) {
   if (is.null(api_key)) {
@@ -73,3 +76,8 @@ getFlickrAPIKey <- function(api_key = NULL) {
 
   return(api_key)
 }
+
+#' @export
+#' @rdname setFlickrAPIKey
+get_flickr_api_key = getFlickrAPIKey
+

@@ -1,8 +1,10 @@
-#' Download Flickr photo data
+#' Get available information for a Flickr photo.
 #'
 #' R access to photo information of photos posted on Flickr via Flickr API.
 #'
-#' @param api_key Flickr API key
+#' @param api_key Flickr API key. If api_key is `NULL`, the function uses
+#'   [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+#'   key.
 #' @param photo_id The id of the photo to get information for.
 #' @param output Output data type. Supported options include "all", "location",
 #'   "date", "url" or "tags". If output = "all", the function returns a list
@@ -20,7 +22,6 @@
 #'   output = "location"
 #' )
 #' }
-#' @aliases get_photo_info
 #' @export
 #' @importFrom RCurl getURL
 #' @importFrom jsonlite fromJSON
@@ -59,3 +60,8 @@ getPhotoInfo <- function(api_key = NULL,
 
   return(output_data)
 }
+
+#' @export
+#' @rdname getPhotoInfo
+get_photo_info = getPhotoInfo
+

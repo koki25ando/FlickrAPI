@@ -2,8 +2,9 @@
 #'
 #' R access to Flickr search API.
 #'
-#' @param api_key Flickr API application key. If api_key is `NULL`, the function
-#'   uses environment variable "FLICKR_API_KEY".
+#' @param api_key Flickr API key. If api_key is `NULL`, the function uses
+#'   [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+#'   key.
 #' @param user_id The NSID of the user who's photo to search. If this parameter
 #'   isn't passed then everybody's public photos will be searched.
 #' @param tags A vector of tags you wish to search for.
@@ -64,7 +65,6 @@
 #'   extras = c("geo", "owner_name", "tags")
 #' )
 #' }
-#' @aliases get_photo_search
 #' @export
 #' @importFrom RCurl getURL
 #' @importFrom jsonlite fromJSON
@@ -118,12 +118,12 @@ getPhotoSearch <- function(api_key = NULL,
   url <- paste0(url, "&sort=", sort)
 
   if (!is.null(bbox)) {
-    if (!("bbox" %in% class(bbox)) || ((length(bbox) != 4) && is.numeric(bbox))) {
+    if (("bbox" %in% class(bbox)) || ((length(bbox) == 4) && is.numeric(bbox))) {
+      bbox <- paste0(bbox, collapse = ",")
+      url <- paste0(url, "&bbox=", bbox)
+    } else {
       stop("The bbox provided is not valid. The bbox must be an object of class 'bbox' or a numeric vector with xmin, ymin, xmax and ymax values.")
     }
-
-    bbox <- paste0(bbox, collapse = ",")
-    url <- paste0(url, "&bbox=", bbox)
   }
 
   if (!missing(extras)) {
@@ -155,3 +155,9 @@ getPhotoSearch <- function(api_key = NULL,
 
   return(as.data.frame(data$photos$photo))
 }
+
+
+
+#' @export
+#' @rdname getPhotoSearch
+get_photo_search = getPhotoSearch

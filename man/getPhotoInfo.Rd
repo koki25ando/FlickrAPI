@@ -3,16 +3,24 @@
 \name{getPhotoInfo}
 \alias{getPhotoInfo}
 \alias{get_photo_info}
-\title{Download Flickr photo data}
+\title{Get available information for a Flickr photo.}
 \usage{
 getPhotoInfo(
   api_key = NULL,
   photo_id,
   output = c("location", "date", "url", "tags")
 )
+
+get_photo_info(
+  api_key = NULL,
+  photo_id,
+  output = c("location", "date", "url", "tags")
+)
 }
 \arguments{
-\item{api_key}{Flickr API key}
+\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
+[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+key.}
 
 \item{photo_id}{The id of the photo to get information for.}
 

@@ -3,12 +3,16 @@
 \name{getExif}
 \alias{getExif}
 \alias{get_exif}
-\title{Returns a data of EXIF data for a given photo.}
+\title{Get EXIF data for a Flickr photo.}
 \usage{
 getExif(api_key = NULL, photo_id)
+
+get_exif(api_key = NULL, photo_id)
 }
 \arguments{
-\item{api_key}{Your API application key}
+\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
+[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+key.}
 
 \item{photo_id}{The id of the photo to fetch information for}
 }

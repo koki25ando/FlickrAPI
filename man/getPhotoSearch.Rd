@@ -16,10 +16,23 @@ getPhotoSearch(
   per_page = 100,
   page = 1
 )
+
+get_photo_search(
+  api_key = NULL,
+  user_id = NULL,
+  tags = NULL,
+  licence_id = NULL,
+  sort = "date-posted-asc",
+  bbox = NULL,
+  extras,
+  per_page = 100,
+  page = 1
+)
 }
 \arguments{
-\item{api_key}{Flickr API application key. If api_key is `NULL`, the function
-uses environment variable "FLICKR_API_KEY".}
+\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
+[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+key.}
 
 \item{user_id}{The NSID of the user who's photo to search. If this parameter
 isn't passed then everybody's public photos will be searched.}

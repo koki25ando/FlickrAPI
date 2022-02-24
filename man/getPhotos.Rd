@@ -3,17 +3,22 @@
 \name{getPhotos}
 \alias{getPhotos}
 \alias{get_photos}
-\title{Photos from the given user's photostream}
+\title{Get photos from a Flickr user photo stream.}
 \usage{
 getPhotos(api_key = NULL, user_id)
+
+get_photos(api_key = NULL, user_id)
 }
 \arguments{
-\item{api_key}{Your API application key}
+\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
+[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+key.}
 
-\item{user_id}{The NSID of the user who's photos to return. A value of me return the calling user's photos}
+\item{user_id}{The NSID of the user who's photos to return. A value of "me"
+return the calling user's photos.}
 }
 \value{
-This function return \code{data.frame} including columns:
+This function returns a \code{data.frame} including columns:
 \itemize{
  \item id
  \item owner
@@ -27,7 +32,8 @@ This function return \code{data.frame} including columns:
 }
 }
 \description{
-Returns photos from the given user's photostream. Only photos visible to the calling user will be returned.
+Returns photos from the given user's photo stream. Only photos visible to the
+calling user will be returned.
 }
 \examples{
 \dontrun{

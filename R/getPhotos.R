@@ -1,11 +1,15 @@
-#' Photos from the given user's photostream
+#' Get photos from a Flickr user photo stream.
 #'
-#' Returns photos from the given user's photostream. Only photos visible to the calling user will be returned.
+#' Returns photos from the given user's photo stream. Only photos visible to the
+#' calling user will be returned.
 #'
-#' @param api_key Your API application key
-#' @param user_id The NSID of the user who's photos to return. A value of me return the calling user's photos
+#' @param api_key Flickr API key. If api_key is `NULL`, the function uses
+#'   [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+#'   key.
+#' @param user_id The NSID of the user who's photos to return. A value of "me"
+#'   return the calling user's photos.
 #'
-#' @return This function return \code{data.frame} including columns:
+#' @return This function returns a \code{data.frame} including columns:
 #' \itemize{
 #'  \item id
 #'  \item owner
@@ -22,7 +26,6 @@
 #' \dontrun{
 #' getPhotos(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user_id = "141696738@N08")
 #' }
-#' @aliases get_photos
 #' @export
 #' @importFrom RCurl getURL
 #' @importFrom jsonlite fromJSON
@@ -44,5 +47,11 @@ getPhotos <- function(api_key = NULL,
     )
   raw_data <- RCurl::getURL(url, ssl.verifypeer = FALSE)
   data <- jsonlite::fromJSON(raw_data)
-  as.data.frame(data$photos$photo)
+  return(as.data.frame(data$photos$photo))
 }
+
+
+#' @export
+#' @rdname getPhotos
+get_photos = getPhotos
+

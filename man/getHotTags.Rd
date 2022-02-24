@@ -2,22 +2,29 @@
 % Please edit documentation in R/getHotTags.R
 \name{getHotTags}
 \alias{getHotTags}
-\title{Returns a list of hot tags for the given period.}
+\alias{get_hot_tags}
+\title{Get a data frame of hot tags for a given time period.}
 \usage{
 getHotTags(api_key = NULL, period = c("day", "week"), count = 20)
+
+get_hot_tags(api_key = NULL, period = c("day", "week"), count = 20)
 }
 \arguments{
-\item{api_key}{Your API application key}
+\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
+[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+key.}
 
-\item{period}{The period for which to fetch hot tags. Valid values are day or week. Defaults to day}
+\item{period}{The period for which to fetch hot tags. Valid values are day or
+week. Defaults to day}
 
-\item{count}{The number of tags to return. Defaults to 20. Maximum allowed value is 200.}
+\item{count}{The number of tags to return. Defaults to 20. Maximum allowed
+value is 200.}
 }
 \value{
 This function a data frame of hot tags for the given period
 }
 \description{
-Returns a list of hot tags for the given period.
+Get a data frame of hot tags for a given time period.
 }
 \examples{
 \dontrun{

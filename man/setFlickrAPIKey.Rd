@@ -3,17 +3,28 @@
 \name{setFlickrAPIKey}
 \alias{setFlickrAPIKey}
 \alias{set_flickr_api_key}
-\title{Set Flickr API key in environment variables}
+\alias{getFlickrAPIKey}
+\alias{get_flickr_api_key}
+\title{Set and get a Flickr API key to/from environment variables.}
 \usage{
 setFlickrAPIKey(api_key, overwrite = FALSE, install = FALSE)
+
+set_flickr_api_key(api_key, overwrite = FALSE, install = FALSE)
+
+getFlickrAPIKey(api_key = NULL)
+
+get_flickr_api_key(api_key = NULL)
 }
 \arguments{
 \item{api_key}{Flickr API key}
 
-\item{overwrite}{If `TRUE`, overwrite existing token; Default: FALSE}
+\item{overwrite}{If `TRUE`, overwrite existing token; Default: `FALSE`}
 
-\item{install}{If `TRUE`, install token for use in future sessions; Default: FALSE}
+\item{install}{If `TRUE`, install token for use in future sessions; Default:
+`FALSE`}
 }
 \description{
-Set Flickr API key in environment variables
+Set and get a Flickr API key to/from environment variables.
+
+Get Flickr API key from environment variables
 }
