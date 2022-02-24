@@ -23,6 +23,8 @@ getPhotoSearch(
 
 \item{tags}{A vector of tags you wish to search for.}
 
+\item{licence_id}{The license id for photos (for possible values see the Flickr API method flickr.photos.licenses.getInfo).}
+
 \item{sort}{Order to sort returned photos. The possible values are: "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc", "interestingness-desc", "interestingness-asc", and "relevance"}
 
 \item{bbox}{A object of class bbox or a numeric vector with values for xmin, ymin, xmax and ymax representing the bottom-left corner of the box and the top-right corner.}
@@ -32,8 +34,6 @@ getPhotoSearch(
 \item{per_page}{Number specifying how many results per page to return. Default 100 results per page. Maximum of 250 if bbox provided or 500 otherwise.}
 
 \item{page}{Number specifying which search results page to return. Default is page 1 of results returned.}
-
-\item{license_id}{The license id for photos (for possible values see the Flickr API method flickr.photos.licenses.getInfo).}
 }
 \value{
 This function returns data of specific photos matching search parameters.
@@ -56,13 +56,12 @@ R access to Flickr search api
                user_id = "grand_canyon_nps",
                extras = c("date_taken", "url_sq"))
 }
-#' \dontrun{
+\dontrun{
 # Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan
 getPhotoSearch(api_key = "XXXXXXXXXX",
                tags = "panda",
                bbox = c(139.7682226529, 35.712627977, 139.7724605432, 35.7181464141),
                extras = c("geo", "owner_name", "tags"))
 }
-
 
 }

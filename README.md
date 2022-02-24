@@ -20,7 +20,7 @@ library(FlickrAPI)
 + getPhotoInfo(api_key, photo_id, output)
 + getExif(api_key, photo_id)
 + getHotTags(api_key, period, count)
-+ getPhotoSearch(api_key, user_id, tags, licence_id, bbox, extras, per_page, page)
++ getPhotoSearch(api_key, user_id, tags, licence_id, sort, bbox, extras, per_page, page)
 
 ### See Also
 + [FlickrAPI Description on CRAN](https://cran.r-project.org/web/packages/FlickrAPI/index.html)
