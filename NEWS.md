@@ -1,4 +1,7 @@
-# FlickrAPI 0.1.0.1 (2020-09-03)
+# FlickrAPI 0.1.0.2 (2020-10-12)
+New feature updates to getPhotoSearch() by [@elipousson](https://github.com/elipousson).
+
+## FlickrAPI 0.1.0.1 (2020-09-03)
 New feature added. getPhotoSearch() by [@fozy81](https://github.com/fozy81).
 
 ## FlickrAPI 0.1.0.01 (2020-05-04)

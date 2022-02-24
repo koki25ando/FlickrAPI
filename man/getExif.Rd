@@ -15,7 +15,7 @@ getExif(api_key, photo_id)
 This function returns a dataframe of Exif information of given photograph
 }
 \description{
-Return a data of EXIS data for a given photo. The calling user must have permission to view the photo.
+Return a data of Exif data for a given photo. The calling user must have permission to view the photo.
 }
 \examples{
 \dontrun{
