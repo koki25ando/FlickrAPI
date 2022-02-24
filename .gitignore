@@ -28,3 +28,4 @@
 .Rhistory
 .RData
 docs
+inst/doc

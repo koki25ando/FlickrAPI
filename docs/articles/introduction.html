@@ -4,20 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FlickrAPI • FlickrAPI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="FlickrAPI">
+<title>Introduction to using FlickrAPI • FlickrAPI</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="FlickrAPI">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to using FlickrAPI">
 <meta property="og:description" content="FlickrAPI">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -25,67 +25,57 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">FlickrAPI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.1</span>
-      </span>
-    </div>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">FlickrAPI</a>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../reference/index.html">Reference</a>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.1</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/introduction.html">FlickrAPI</a>
-    </li>
-  </ul>
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/introduction.html">Introduction to using FlickrAPI</a>
+  </div>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav"></ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>FlickrAPI</h1>
-                        <h4 data-toc-skip class="author">Koki Ando</h4>
+
+
+<div class="row">
+  <main id="main"><div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Introduction to using FlickrAPI</h1>
             
-            <h4 data-toc-skip class="date">2022-02-23</h4>
       
       
-      <div class="hidden name"><code>introduction.Rmd</code></div>
-
+      <div class="d-none name"><code>introduction.Rmd</code></div>
     </div>
 
     
@@ -95,109 +85,565 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"koki25ando/FlickrAPI"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">FlickrAPI</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
-<div class="section level3">
-<h3 id="getphotosapi_key-user_id">getPhotos(api_key, user_id)<a class="anchor" aria-label="anchor" href="#getphotosapi_key-user_id"></a>
-</h3>
+<code class="sourceCode R"><span class="co"># devtools::install_github("koki25ando/FlickrAPI")</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">FlickrAPI</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="setting-up-a-flickr-api-key">Setting up a Flickr API key<a class="anchor" aria-label="anchor" href="#setting-up-a-flickr-api-key"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/getPhotos.html">getPhotos</a></span><span class="op">(</span>api_key<span class="op">=</span><span class="st">"********************************"</span>, user_id<span class="op">=</span><span class="st">"141696738@N08"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>            id         owner     secret server farm                                      title ispublic isfriend isfamily</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">45961963324</span> <span class="dv">141696738</span><span class="sc">@</span>N08 54cf68f345   <span class="dv">4866</span>    <span class="dv">5</span>              ゲームの王国 by Satoshi Ogawa        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">32754049638</span> <span class="dv">141696738</span><span class="sc">@</span>N08 b3ec905568   <span class="dv">7908</span>    <span class="dv">8</span>                Château La Gontrie Moelleux        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">45655971285</span> <span class="dv">141696738</span><span class="sc">@</span>N08 3bec35f74d   <span class="dv">7811</span>    <span class="dv">8</span>                       Bourgogne Blanc <span class="dv">2015</span>        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  <span class="dv">44738981240</span> <span class="dv">141696738</span><span class="sc">@</span>N08 d427d73f71   <span class="dv">4803</span>    <span class="dv">5</span>                 Merchants by Reiner Knizia        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  <span class="dv">45828425184</span> <span class="dv">141696738</span><span class="sc">@</span>N08 ebdec86ca6   <span class="dv">4818</span>    <span class="dv">5</span>                              Opus One <span class="dv">2013</span>        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  <span class="dv">46543439611</span> <span class="dv">141696738</span><span class="sc">@</span>N08 e5f7f72cdf   <span class="dv">4908</span>    <span class="dv">5</span> Bowmore Craftsman<span class="st">'s Selection No.0734/3000        1        0        0</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">7  44721578900 141696738@N08 70fc01d557   7823    8                      Santenay Louis Latour        1        0        0</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">8  45813615034 141696738@N08 c251e8478f   7812    8       Lord of The Flies by William Golding        1        0        0</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">9  31560667067 141696738@N08 45d79e6c9c   7901    8                 Suntory Plum Wine Yamazaki        1        0        0</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">10 45586263655 141696738@N08 8980ca72dc   4844    5                            Bourgogne Rouge        1        0        0</span></span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Set the API key for a single session</span>
+<span class="fu"><a href="../reference/setFlickrAPIKey.html">setFlickrAPIKey</a></span><span class="op">(</span>api_key <span class="op">=</span> <span class="st">"YOUR_API_KEY_HERE"</span><span class="op">)</span>
+
+<span class="co"># Install the API key for future sessions</span>
+<span class="fu"><a href="../reference/setFlickrAPIKey.html">setFlickrAPIKey</a></span><span class="op">(</span>api_key <span class="op">=</span> <span class="st">"YOUR_API_KEY_HERE"</span>, install <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="co"># Overwrite an existing API key</span>
+<span class="fu"><a href="../reference/setFlickrAPIKey.html">setFlickrAPIKey</a></span><span class="op">(</span>api_key <span class="op">=</span> <span class="st">"YOUR_API_KEY_HERE"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="getphotoinfoapi_key-photo_id-output">getPhotoInfo(api_key, photo_id, output)<a class="anchor" aria-label="anchor" href="#getphotoinfoapi_key-photo_id-output"></a>
-</h3>
+<div class="section level2">
+<h2 id="searching-for-flickr-photos">Searching for Flickr photos<a class="anchor" aria-label="anchor" href="#searching-for-flickr-photos"></a>
+</h2>
+<p>There are two functions for searching Flickr photos:</p>
+<ul>
+<li><code><a href="../reference/getPhotos.html">getPhotos()</a></code></li>
+<li><code><a href="../reference/getPhotoSearch.html">getPhotoSearch()</a></code></li>
+</ul>
+<p><code><a href="../reference/getPhotos.html">getPhotos()</a></code> allows you to get public photos for any Flickr user or all photos from the account associated with the Flickr API key.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Search for photos uploaded by Koki Ando</span>
+<span class="fu"><a href="../reference/getPhotos.html">getPhotos</a></span><span class="op">(</span>user_id<span class="op">=</span><span class="st">"141696738@N08"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">id</th>
+<th align="left">owner</th>
+<th align="left">secret</th>
+<th align="left">server</th>
+<th align="right">farm</th>
+<th align="left">title</th>
+<th align="right">ispublic</th>
+<th align="right">isfriend</th>
+<th align="right">isfamily</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">50075871982</td>
+<td align="left"><a href="mailto:141696738@N08" class="email">141696738@N08</a></td>
+<td align="left">4907809554</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Iceberg</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">50075872142</td>
+<td align="left"><a href="mailto:141696738@N08" class="email">141696738@N08</a></td>
+<td align="left">e599416333</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Arcitc Expedition</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">50075872267</td>
+<td align="left"><a href="mailto:141696738@N08" class="email">141696738@N08</a></td>
+<td align="left">a6afd58871</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Arcitc Expedition</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">50075618941</td>
+<td align="left"><a href="mailto:141696738@N08" class="email">141696738@N08</a></td>
+<td align="left">fe377071d9</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Adventure</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">50075872387</td>
+<td align="left"><a href="mailto:141696738@N08" class="email">141696738@N08</a></td>
+<td align="left">96d3245eef</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Perfect Reflection</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><code><a href="../reference/getPhotoSearch.html">getPhotoSearch()</a></code> supports a broader range of search options including:</p>
+<ul>
+<li>User id</li>
+<li>Tags</li>
+<li>License</li>
+<li>Bounding box (for photos with locations)</li>
+</ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/getPhotoInfo.html">getPhotoInfo</a></span><span class="op">(</span>api_key<span class="op">=</span><span class="st">"********************************"</span>, photo_id<span class="op">=</span><span class="st">"45655971285"</span>, 
-             output <span class="op">=</span> <span class="st">"Location"</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>   latitude  longitude accuracy context locality._content  locality.place_id locality.woeid  region._content  region.place_id region.woeid country._content</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="fl">35.058650</span> <span class="fl">135.757094</span>       <span class="dv">16</span>       <span class="dv">0</span>         Kyoto<span class="sc">-</span>shi 9cw_d0JQV7obLp8N5A       <span class="dv">15015372</span> Kyoto Prefecture vAd3SUZTUb5ktGbw      <span class="dv">2345871</span>            Japan</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    country.place_id country.woeid           place_id    woeid</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> W3QedCZTUb5Ez.rF.Q      <span class="dv">23424856</span> 9cw_d0JQV7obLp8N5A <span class="dv">15015372</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="getexifapi_key-photo_id">getExif(api_key, photo_id)<a class="anchor" aria-label="anchor" href="#getexifapi_key-photo_id"></a>
-</h3>
+<code class="sourceCode R"><span class="fu"><a href="../reference/getPhotoSearch.html">getPhotoSearch</a></span><span class="op">(</span>tags <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cats"</span>,<span class="st">"dogs"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">id</th>
+<th align="left">owner</th>
+<th align="left">secret</th>
+<th align="left">server</th>
+<th align="right">farm</th>
+<th align="left">title</th>
+<th align="right">ispublic</th>
+<th align="right">isfriend</th>
+<th align="right">isfamily</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">916353866</td>
+<td align="left"><a href="mailto:62631588@N00" class="email">62631588@N00</a></td>
+<td align="left">7fe8eecc2c</td>
+<td align="left">1034</td>
+<td align="right">2</td>
+<td align="left">Jingle Bell ROCK! aka “Mikey”</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">472336118</td>
+<td align="left"><a href="mailto:7211785@N06" class="email">7211785@N06</a></td>
+<td align="left">d4eb3ec1b4</td>
+<td align="left">217</td>
+<td align="right">1</td>
+<td align="left">357</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">472413421</td>
+<td align="left"><a href="mailto:7211785@N06" class="email">7211785@N06</a></td>
+<td align="left">7346115bd7</td>
+<td align="left">182</td>
+<td align="right">1</td>
+<td align="left">270</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">472351917</td>
+<td align="left"><a href="mailto:7211785@N06" class="email">7211785@N06</a></td>
+<td align="left">0efb4711d3</td>
+<td align="left">215</td>
+<td align="right">1</td>
+<td align="left">364</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">472321461</td>
+<td align="left"><a href="mailto:7211785@N06" class="email">7211785@N06</a></td>
+<td align="left">cf11ea54ed</td>
+<td align="left">211</td>
+<td align="right">1</td>
+<td align="left">055</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Search for photos of cats and dogs in North Carolina</span>
+<span class="va">nc</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"shape/nc.shp"</span>, package <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Reading layer `nc' from data source </span>
+<span class="co">#&gt;   `/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/sf/shape/nc.shp' </span>
+<span class="co">#&gt;   using driver `ESRI Shapefile'</span>
+<span class="co">#&gt; Simple feature collection with 100 features and 14 fields</span>
+<span class="co">#&gt; Geometry type: MULTIPOLYGON</span>
+<span class="co">#&gt; Dimension:     XY</span>
+<span class="co">#&gt; Bounding box:  xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965</span>
+<span class="co">#&gt; Geodetic CRS:  NAD27</span>
+<span class="va">nc_bbox</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">nc</span><span class="op">)</span>
+
+<span class="fu"><a href="../reference/getPhotoSearch.html">getPhotoSearch</a></span><span class="op">(</span>tags <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cats"</span>,<span class="st">"dogs"</span><span class="op">)</span>, bbox <span class="op">=</span> <span class="va">nc_bbox</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">id</th>
+<th align="left">owner</th>
+<th align="left">secret</th>
+<th align="left">server</th>
+<th align="right">farm</th>
+<th align="left">title</th>
+<th align="right">ispublic</th>
+<th align="right">isfriend</th>
+<th align="right">isfamily</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">680291</td>
+<td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
+<td align="left">733cc6e503</td>
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="left">House Fire</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">987601</td>
+<td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
+<td align="left">31a95ca091</td>
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="left">luna &amp; bailey lying down</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">1005929</td>
+<td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
+<td align="left">792b0d264d</td>
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="left">dog with sunglasses</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">1059596</td>
+<td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
+<td align="left">e0907be17f</td>
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="left">dog and acorn stains</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">1066060</td>
+<td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
+<td align="left">0779856b59</td>
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="left">bailey in the kudzu 2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><code><a href="../reference/getPhotoSearch.html">getPhotoSearch()</a></code> returns 100 photos per page by default but this can be increased to 250 if using the bbox parameter searching by location or 500 otherwise. Additional pages can be accessed using the page parameter.</p>
+<p>The extras parameter can be used to return additional information about the photos including “description”, “date_upload”, “date_taken”, “owner_name”, and urls for all available image sizes.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/getExif.html">getExif</a></span><span class="op">(</span>api_key<span class="op">=</span><span class="st">"********************************"</span>, photo_id<span class="op">=</span><span class="st">"29827995436"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>      photo.id photo.secret photo.server photo.farm   photo.camera photo.exif.tagspace photo.exif.tagspaceid   photo.exif.tag         photo.exif.label</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                JFIF                     <span class="dv">0</span>      JFIFVersion              JFIFVersion</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                JFIF                     <span class="dv">0</span>   ResolutionUnit          Resolution Unit</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                JFIF                     <span class="dv">0</span>      XResolution             X<span class="sc">-</span>Resolution</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                JFIF                     <span class="dv">0</span>      YResolution             Y<span class="sc">-</span>Resolution</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                IFD0                     <span class="dv">0</span>             Make                     Make</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                IFD0                     <span class="dv">0</span>            Model                    Model</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                IFD0                     <span class="dv">0</span>   ResolutionUnit          Resolution Unit</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                IFD0                     <span class="dv">0</span>         Software                 Software</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                IFD0                     <span class="dv">0</span>       ModifyDate Date and <span class="fu">Time</span> (Modified)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="dv">29827995436</span>   499ae58d17         <span class="dv">8355</span>          <span class="dv">9</span> Sony ILCE<span class="dv">-5100</span>                IFD0                     <span class="dv">0</span> YCbCrPositioning        YCbCr Positioning</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>              _content _content stat</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>                 <span class="fl">1.01</span>     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   ok</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>               inches     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   ok</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>                  <span class="dv">350</span>  <span class="dv">350</span> dpi   ok</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>                  <span class="dv">350</span>  <span class="dv">350</span> dpi   ok</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>                 SONY     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   ok</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>            ILCE<span class="dv">-5100</span>     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   ok</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>               inches     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   ok</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>      ILCE<span class="dv">-5100</span> v1<span class="fl">.00</span>     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   ok</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  <span class="dv">2016</span><span class="sc">:</span><span class="dv">09</span><span class="sc">:</span><span class="dv">14</span> <span class="dv">19</span><span class="sc">:</span><span class="dv">04</span><span class="sc">:</span><span class="dv">36</span>     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   ok</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>            Co<span class="sc">-</span>sited     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   ok</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan</span>
+<span class="fu"><a href="../reference/getPhotoSearch.html">getPhotoSearch</a></span><span class="op">(</span>
+  tags <span class="op">=</span> <span class="st">"panda"</span>,
+  bbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">139.7682226529</span>, <span class="fl">35.712627977</span>, <span class="fl">139.7724605432</span>, <span class="fl">35.7181464141</span><span class="op">)</span>,
+  sort <span class="op">=</span> <span class="st">"interestingness-desc"</span>,
+  extras <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"geo"</span>, <span class="st">"tags"</span><span class="op">)</span>
+<span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">tags</span>, <span class="fu">tidyselect</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"geo"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="7%">
+<col width="69%">
+<col width="5%">
+<col width="6%">
+<col width="5%">
+<col width="5%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">title</th>
+<th align="left">tags</th>
+<th align="right">geo_is_public</th>
+<th align="right">geo_is_contact</th>
+<th align="right">geo_is_friend</th>
+<th align="right">geo_is_family</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ri Ri 2020-12-09</td>
+<td align="left">tokyo uenozoo 上野動物園 uenozoologicalgardens zoo 動物園 東京都 台東区 japan bear クマ 熊 giantpanda ジャイアントパンダ panda パンダ 熊猫 大熊猫 riri 比力 リーリー</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Ri Ri 2020-12-09</td>
+<td align="left">tokyo uenozoo 上野動物園 uenozoologicalgardens zoo 動物園 東京都 台東区 japan bear クマ 熊 giantpanda ジャイアントパンダ panda パンダ 熊猫 大熊猫 riri 比力 リーリー</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Ri Ri 2020-12-09</td>
+<td align="left">tokyo uenozoo 上野動物園 uenozoologicalgardens zoo 動物園 東京都 台東区 japan bear クマ 熊 giantpanda ジャイアントパンダ panda パンダ 熊猫 大熊猫 riri 比力 リーリー</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Ri Ri 2020-12-09</td>
+<td align="left">tokyo uenozoo 上野動物園 uenozoologicalgardens zoo 動物園 東京都 台東区 japan bear クマ 熊 giantpanda ジャイアントパンダ panda パンダ 熊猫 大熊猫 riri 比力 リーリー</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Ri Ri 2020-12-09</td>
+<td align="left">tokyo uenozoo 上野動物園 uenozoologicalgardens zoo 動物園 東京都 台東区 japan bear クマ 熊 giantpanda ジャイアントパンダ panda パンダ 熊猫 大熊猫 riri 比力 リーリー</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
+<h2 id="get-data-on-flickr-photos">Get data on Flickr photos<a class="anchor" aria-label="anchor" href="#get-data-on-flickr-photos"></a>
+</h2>
+<p>There are two functions for getting data about a specific Flickr photo:</p>
+<ul>
+<li><code><a href="../reference/getExif.html">getExif()</a></code></li>
+<li><code><a href="../reference/getPhotoInfo.html">getPhotoInfo()</a></code></li>
+</ul>
+<div class="section level3">
+<h3 id="get-flickr-data-for-a-photo">Get Flickr data for a photo<a class="anchor" aria-label="anchor" href="#get-flickr-data-for-a-photo"></a>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/getPhotoInfo.html">getPhotoInfo</a></span><span class="op">(</span>photo_id<span class="op">=</span><span class="st">"51899696261"</span>, 
+             output <span class="op">=</span> <span class="st">"url"</span><span class="op">)</span>
+<span class="co">#&gt;        type                                                 content</span>
+<span class="co">#&gt; 1 photopage https://www.flickr.com/photos/nasa2explore/51899696261/</span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="search-for-photos">Search for photos<a class="anchor" aria-label="anchor" href="#search-for-photos"></a>
+<h3 id="get-exif-metadata-for-a-photo">Get EXIF metadata for a photo<a class="anchor" aria-label="anchor" href="#get-exif-metadata-for-a-photo"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getPhotoSearch</span>(<span class="at">api_key=</span><span class="st">"********************************"</span>, <span class="at">tags =</span> <span class="fu">c</span>(<span class="st">"cats"</span>,<span class="st">"dogs"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    id         owner     secret server farm                                          title ispublic isfriend isfamily</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">50226474321</span> <span class="dv">146168910</span><span class="sc">@</span>N06 <span class="fl">4680e55</span>a0f  <span class="dv">65535</span>   <span class="dv">66</span>                     Milo is just like a pearl<span class="sc">!</span>        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">49945925796</span> <span class="dv">146168910</span><span class="sc">@</span>N06 c9e0c5ea2a  <span class="dv">65535</span>   <span class="dv">66</span>                                           Milo        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="dv">49909926987</span>  <span class="dv">35667267</span><span class="sc">@</span>N00 e6374515a1  <span class="dv">65535</span>   <span class="dv">66</span>       living <span class="cf">in</span> a time of <span class="fu">pandemic</span> (stay home)        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="dv">49841364907</span> <span class="dv">138939439</span><span class="sc">@</span>N06 f409240f0a  <span class="dv">65535</span>   <span class="dv">66</span>                      Buon primo maggio A tutti        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="dv">49638807393</span> <span class="dv">146168910</span><span class="sc">@</span>N06 d311f1c705  <span class="dv">65535</span>   <span class="dv">66</span>                             Love me ..I amTed<span class="sc">!</span>        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="dv">49588958307</span> <span class="dv">186681302</span><span class="sc">@</span>N03 22ecd01134  <span class="dv">65535</span>   <span class="dv">66</span> ...I<span class="st">'ll sing it one last time for you......♪♪♪        1        0        0</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/getExif.html">getExif</a></span><span class="op">(</span>photo_id<span class="op">=</span><span class="st">"51872765082"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="4%">
+<col width="5%">
+<col width="5%">
+<col width="4%">
+<col width="5%">
+<col width="8%">
+<col width="9%">
+<col width="6%">
+<col width="10%">
+<col width="30%">
+<col width="6%">
+<col width="2%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">photo.id</th>
+<th align="left">photo.secret</th>
+<th align="left">photo.server</th>
+<th align="right">photo.farm</th>
+<th align="left">photo.camera</th>
+<th align="left">photo.exif.tagspace</th>
+<th align="right">photo.exif.tagspaceid</th>
+<th align="left">photo.exif.tag</th>
+<th align="left">photo.exif.label</th>
+<th align="left">photo.exif.raw</th>
+<th align="left">photo.exif.clean</th>
+<th align="left">stat</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">Compression</td>
+<td align="left">Compression</td>
+<td align="left">JPEG (old-style)</td>
+<td align="left">NA</td>
+<td align="left">ok</td>
+</tr>
+<tr class="even">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">ImageDescription</td>
+<td align="left">Image Description</td>
+<td align="left">GMT038_22_42_For ESA_Matthias Maurer_1091_Concrete Hardeing and PAO Maurer</td>
+<td align="left">NA</td>
+<td align="left">ok</td>
+</tr>
+<tr class="odd">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">Make</td>
+<td align="left">Make</td>
+<td align="left">NIKON CORPORATION</td>
+<td align="left">NA</td>
+<td align="left">ok</td>
+</tr>
+<tr class="even">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">Model</td>
+<td align="left">Model</td>
+<td align="left">NIKON D5</td>
+<td align="left">NA</td>
+<td align="left">ok</td>
+</tr>
+<tr class="odd">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">Orientation</td>
+<td align="left">Orientation</td>
+<td align="left">Horizontal (normal)</td>
+<td align="left">NA</td>
+<td align="left">ok</td>
+</tr>
+<tr class="even">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">XResolution</td>
+<td align="left">X-Resolution</td>
+<td align="left">300</td>
+<td align="left">300 dpi</td>
+<td align="left">ok</td>
+</tr>
+<tr class="odd">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">YResolution</td>
+<td align="left">Y-Resolution</td>
+<td align="left">300</td>
+<td align="left">300 dpi</td>
+<td align="left">ok</td>
+</tr>
+<tr class="even">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">ResolutionUnit</td>
+<td align="left">Resolution Unit</td>
+<td align="left">inches</td>
+<td align="left">NA</td>
+<td align="left">ok</td>
+</tr>
+<tr class="odd">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">Software</td>
+<td align="left">Software</td>
+<td align="left">Adobe Photoshop 23.0 (Windows)</td>
+<td align="left">NA</td>
+<td align="left">ok</td>
+</tr>
+<tr class="even">
+<td align="left">51872765082</td>
+<td align="left">af7d115a97</td>
+<td align="left">65535</td>
+<td align="right">66</td>
+<td align="left">Nikon D5</td>
+<td align="left">IFD0</td>
+<td align="right">0</td>
+<td align="left">ModifyDate</td>
+<td align="left">Date and Time (Modified)</td>
+<td align="left">2022:02:08 13:40:12</td>
+<td align="left">NA</td>
+<td align="left">ok</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
+    <footer><div class="pkgdown-footer-left">
   <p></p>
 <p>Developed by Koki Ando.</p>
 </div>
 
-<div class="pkgdown">
+<div class="pkgdown-footer-right">
   <p></p>
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-
 
   
 

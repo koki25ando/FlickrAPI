@@ -1,114 +1,117 @@
 ---
-title: "FlickrAPI"
-author: "Koki Ando"
-date: "`r Sys.Date()`"
+title: "Introduction to using FlickrAPI"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{FlickrAPI}
+  %\VignetteIndexEntry{Introduction to using FlickrAPI}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-This vignette provides a quick tour of the R package "FlickrAPI".
-This package is maintained by [Koki Ando](https://github.com/koki25ando).
+This vignette provides a quick tour of the R package "FlickrAPI". This package is maintained by [Koki Ando](https://github.com/koki25ando).
 
 # Installation
 
-```{r eval = FALSE}
-devtools::install_github("koki25ando/FlickrAPI")
+```{r setup}
+# devtools::install_github("koki25ando/FlickrAPI")
 library(FlickrAPI)
-library(tidyverse)
 ```
 
-## getPhotos(api_key, user_id)
+# Setting up a Flickr API key
 
-```{r eval = FALSE}
-getPhotos(api_key="********************************", user_id="141696738@N08") %>% 
-  head(10)
+```{r, eval=FALSE}
+# Set the API key for a single session
+setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE")
+
+# Install the API key for future sessions
+setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE", install = TRUE)
+
+# Overwrite an existing API key
+setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE", overwrite = TRUE)
 ```
 
-```{r eval = FALSE}
-            id         owner     secret server farm                                      title ispublic isfriend isfamily
-1  45961963324 141696738@N08 54cf68f345   4866    5              ゲームの王国 by Satoshi Ogawa        1        0        0
-2  32754049638 141696738@N08 b3ec905568   7908    8                Château La Gontrie Moelleux        1        0        0
-3  45655971285 141696738@N08 3bec35f74d   7811    8                       Bourgogne Blanc 2015        1        0        0
-4  44738981240 141696738@N08 d427d73f71   4803    5                 Merchants by Reiner Knizia        1        0        0
-5  45828425184 141696738@N08 ebdec86ca6   4818    5                              Opus One 2013        1        0        0
-6  46543439611 141696738@N08 e5f7f72cdf   4908    5 Bowmore Craftsman's Selection No.0734/3000        1        0        0
-7  44721578900 141696738@N08 70fc01d557   7823    8                      Santenay Louis Latour        1        0        0
-8  45813615034 141696738@N08 c251e8478f   7812    8       Lord of The Flies by William Golding        1        0        0
-9  31560667067 141696738@N08 45d79e6c9c   7901    8                 Suntory Plum Wine Yamazaki        1        0        0
-10 45586263655 141696738@N08 8980ca72dc   4844    5                            Bourgogne Rouge        1        0        0
+# Searching for Flickr photos
+
+There are two functions for searching Flickr photos:
+
+- `getPhotos()`
+- `getPhotoSearch()`
+
+`getPhotos()` allows you to get public photos for any Flickr user or all photos from the account associated with the Flickr API key.
+
+```{r}
+# Search for photos uploaded by Koki Ando
+getPhotos(user_id="141696738@N08") %>% 
+  dplyr::slice_head(n = 5) %>% 
+  knitr::kable()
+```
+
+`getPhotoSearch()` supports a broader range of search options including:
+
+- User id
+- Tags
+- License
+- Bounding box (for photos with locations)
+
+```{r }
+getPhotoSearch(tags = c("cats","dogs")) %>% 
+  dplyr::slice_head(n = 5) %>%
+  knitr::kable()
+```
+
+```{r}
+# Search for photos of cats and dogs in North Carolina
+nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"))
+nc_bbox <- sf::st_bbox(nc)
+
+getPhotoSearch(tags = c("cats","dogs"), bbox = nc_bbox) %>% 
+  dplyr::slice_head(n = 5) %>%
+  knitr::kable()
+```
+
+`getPhotoSearch()` returns 100 photos per page by default but this can be increased to 250 if using the bbox parameter searching by location or 500 otherwise. Additional pages can be accessed using the page parameter.
+
+The extras parameter can be used to return additional information about the photos including "description", "date_upload", "date_taken", "owner_name", and urls for all available image sizes.
+
+```{r}
+# Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan
+getPhotoSearch(
+  tags = "panda",
+  bbox = c(139.7682226529, 35.712627977, 139.7724605432, 35.7181464141),
+  sort = "interestingness-desc",
+  extras = c("geo", "tags")
+) %>%
+  dplyr::select(title, tags, tidyselect::starts_with("geo")) %>%
+  dplyr::slice_head(n = 5) %>%
+  knitr::kable()
 ```
 
 
-## getPhotoInfo(api_key, photo_id, output)
+# Get data on Flickr photos
 
-```{r eval = FALSE}
-getPhotoInfo(api_key="********************************", photo_id="45655971285", 
-             output = "Location")
+There are two functions for getting data about a specific Flickr photo:
+
+- `getExif()`
+- `getPhotoInfo()`
+
+## Get Flickr data for a photo
+
+```{r}
+getPhotoInfo(photo_id="51899696261", 
+             output = "url")
 ```
 
-```{r eval = FALSE}
-   latitude  longitude accuracy context locality._content  locality.place_id locality.woeid  region._content  region.place_id region.woeid country._content
-1 35.058650 135.757094       16       0         Kyoto-shi 9cw_d0JQV7obLp8N5A       15015372 Kyoto Prefecture vAd3SUZTUb5ktGbw      2345871            Japan
-    country.place_id country.woeid           place_id    woeid
-1 W3QedCZTUb5Ez.rF.Q      23424856 9cw_d0JQV7obLp8N5A 15015372
-```
+## Get EXIF metadata for a photo
 
-
-## getExif(api_key, photo_id)
-
-```{r eval = FALSE}
-getExif(api_key="********************************", photo_id="29827995436") %>% 
-  head(10)
-```
-
-```{r eval = FALSE}
-      photo.id photo.secret photo.server photo.farm   photo.camera photo.exif.tagspace photo.exif.tagspaceid   photo.exif.tag         photo.exif.label
-1  29827995436   499ae58d17         8355          9 Sony ILCE-5100                JFIF                     0      JFIFVersion              JFIFVersion
-2  29827995436   499ae58d17         8355          9 Sony ILCE-5100                JFIF                     0   ResolutionUnit          Resolution Unit
-3  29827995436   499ae58d17         8355          9 Sony ILCE-5100                JFIF                     0      XResolution             X-Resolution
-4  29827995436   499ae58d17         8355          9 Sony ILCE-5100                JFIF                     0      YResolution             Y-Resolution
-5  29827995436   499ae58d17         8355          9 Sony ILCE-5100                IFD0                     0             Make                     Make
-6  29827995436   499ae58d17         8355          9 Sony ILCE-5100                IFD0                     0            Model                    Model
-7  29827995436   499ae58d17         8355          9 Sony ILCE-5100                IFD0                     0   ResolutionUnit          Resolution Unit
-8  29827995436   499ae58d17         8355          9 Sony ILCE-5100                IFD0                     0         Software                 Software
-9  29827995436   499ae58d17         8355          9 Sony ILCE-5100                IFD0                     0       ModifyDate Date and Time (Modified)
-10 29827995436   499ae58d17         8355          9 Sony ILCE-5100                IFD0                     0 YCbCrPositioning        YCbCr Positioning
-              _content _content stat
-1                 1.01     <NA>   ok
-2               inches     <NA>   ok
-3                  350  350 dpi   ok
-4                  350  350 dpi   ok
-5                 SONY     <NA>   ok
-6            ILCE-5100     <NA>   ok
-7               inches     <NA>   ok
-8      ILCE-5100 v1.00     <NA>   ok
-9  2016:09:14 19:04:36     <NA>   ok
-10            Co-sited     <NA>   ok
-```
-
-
-## Search for photos
-
-```{r eval = FALSE}
-getPhotoSearch(api_key="********************************", tags = c("cats","dogs")) %>% 
-  head(10)
-
-    id         owner     secret server farm                                          title ispublic isfriend isfamily
-1 50226474321 146168910@N06 4680e55a0f  65535   66                     Milo is just like a pearl!        1        0        0
-2 49945925796 146168910@N06 c9e0c5ea2a  65535   66                                           Milo        1        0        0
-3 49909926987  35667267@N00 e6374515a1  65535   66       living in a time of pandemic (stay home)        1        0        0
-4 49841364907 138939439@N06 f409240f0a  65535   66                      Buon primo maggio A tutti        1        0        0
-5 49638807393 146168910@N06 d311f1c705  65535   66                             Love me ..I amTed!        1        0        0
-6 49588958307 186681302@N03 22ecd01134  65535   66 ...I'll sing it one last time for you......♪♪♪        1        0        0
+```{r }
+getExif(photo_id="51872765082") %>% 
+  dplyr::slice_head(n = 10) %>%
+  knitr::kable()
 ```
 
