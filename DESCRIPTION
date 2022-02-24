@@ -8,13 +8,14 @@ Depends: R (>= 3.1)
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: magrittr,
+Imports: 
+    magrittr,
     RCurl,
     jsonlite,
-    stringr,
     janitor,
-    glue
+    glue,
+    utils
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1.9000
+RoxygenNote: 7.1.2

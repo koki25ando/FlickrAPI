@@ -2,9 +2,10 @@
 % Please edit documentation in R/getPhotos.R
 \name{getPhotos}
 \alias{getPhotos}
+\alias{get_photos}
 \title{Photos from the given user's photostream}
 \usage{
-getPhotos(api_key, user_id)
+getPhotos(api_key = NULL, user_id)
 }
 \arguments{
 \item{api_key}{Your API application key}
@@ -30,10 +31,6 @@ Returns photos from the given user's photostream. Only photos visible to the cal
 }
 \examples{
 \dontrun{
-  getPhotos(api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user_id="141696738@N08")
+getPhotos(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user_id = "141696738@N08")
 }
-
-}
-\author{
-Koki Ando <koki.25.ando@gmail.com>
 }

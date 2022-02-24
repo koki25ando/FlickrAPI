@@ -2,34 +2,39 @@
 % Please edit documentation in R/getPhotoInfo.R
 \name{getPhotoInfo}
 \alias{getPhotoInfo}
-\title{Download Flickr Photo Data}
+\alias{get_photo_info}
+\title{Download Flickr photo data}
 \usage{
-getPhotoInfo(api_key, photo_id, output = c("Location", "Date", "URL", "Tags"))
+getPhotoInfo(
+  api_key = NULL,
+  photo_id,
+  output = c("location", "date", "url", "tags")
+)
 }
 \arguments{
-\item{api_key}{Your API application key}
+\item{api_key}{Flickr API key}
 
-\item{photo_id}{The id of the photo to get information for}
+\item{photo_id}{The id of the photo to get information for.}
 
-\item{output}{Output data type. It depends on what you are interested in. You have to choose from Location, Date, URL or Tags.}
+\item{output}{Output data type. Supported options include "all", "location",
+"date", "url" or "tags". If output = "all", the function returns a list
+with all available data. Otherwise the function returns a data frame.}
 }
 \value{
 This function returns data of specific photo's information.
 }
 \description{
-R access to photo information of photos posted on flickr via flickr API interface
+R access to photo information of photos posted on Flickr via Flickr API.
 }
 \examples{
 \dontrun{
-  getPhotoInfo(api_key = "XXXXXXXXXX",
-               photo_id="30484882493",
-               output="location")
+getPhotoInfo(
+  api_key = "XXXXXXXXXX",
+  photo_id = "30484882493",
+  output = "location"
+)
 }
-
 }
 \seealso{
 \url{https://www.flickr.com/services/api/flickr.photos.getInfo.html}
-}
-\author{
-Koki Ando <koki.25.ando@gmail.com>
 }

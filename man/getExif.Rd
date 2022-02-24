@@ -2,9 +2,10 @@
 % Please edit documentation in R/getExif.R
 \name{getExif}
 \alias{getExif}
+\alias{get_exif}
 \title{Returns a data of EXIF data for a given photo.}
 \usage{
-getExif(api_key, photo_id)
+getExif(api_key = NULL, photo_id)
 }
 \arguments{
 \item{api_key}{Your API application key}
@@ -12,17 +13,16 @@ getExif(api_key, photo_id)
 \item{photo_id}{The id of the photo to fetch information for}
 }
 \value{
-This function returns a dataframe of Exif information of given photograph
+This function returns a data frame of EXIF information of given
+  photograph
 }
 \description{
-Return a data of Exif data for a given photo. The calling user must have permission to view the photo.
+Return a data of EXIF data for a given photo. The calling user must have
+permission to view the photo.
 }
 \examples{
 \dontrun{
-  getExif(api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id="45961963324")
+getExif(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id = "45961963324")
 }
 
-}
-\author{
-Koki Ando <koki.25.ando@gmail.com>
 }

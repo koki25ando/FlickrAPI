@@ -4,7 +4,7 @@
 \alias{getHotTags}
 \title{Returns a list of hot tags for the given period.}
 \usage{
-getHotTags(api_key, period = c("day", "week"), count = 20)
+getHotTags(api_key = NULL, period = c("day", "week"), count = 20)
 }
 \arguments{
 \item{api_key}{Your API application key}
@@ -21,14 +21,13 @@ Returns a list of hot tags for the given period.
 }
 \examples{
 \dontrun{
- getHotTags(api_key = "*********",
-            period = "day", count=20)
+getHotTags(
+  api_key = "*********",
+  period = "day", count = 20
+)
 }
 
 }
 \seealso{
 \url{https://www.flickr.com/services/api/flickr.tags.getHotList.html}
-}
-\author{
-Koki Ando
 }
