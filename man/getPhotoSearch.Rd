@@ -9,10 +9,11 @@ getPhotoSearch(
   api_key = NULL,
   user_id = NULL,
   tags = NULL,
-  licence_id = NULL,
+  license_id = NULL,
+  licence_id,
   sort = "date-posted-asc",
   bbox = NULL,
-  extras,
+  extras = NULL,
   per_page = 100,
   page = 1
 )
@@ -21,10 +22,11 @@ get_photo_search(
   api_key = NULL,
   user_id = NULL,
   tags = NULL,
-  licence_id = NULL,
+  license_id = NULL,
+  licence_id,
   sort = "date-posted-asc",
   bbox = NULL,
-  extras,
+  extras = NULL,
   per_page = 100,
   page = 1
 )
@@ -38,6 +40,16 @@ key.}
 isn't passed then everybody's public photos will be searched.}
 
 \item{tags}{A vector of tags you wish to search for.}
+
+\item{license_id, licence_id}{The license id for photos (for possible values see the
+Flickr API method flickr.photos.licenses.getInfo). license_id can be an
+integer from 0 to 10 or a corresponding license code including "c" (All
+Rights Reserved), "by-bc-sa" (Attribution-NonCommercial-ShareAlike),
+"by-nc" (Attribution-NonCommercial), "by-nc-nd"
+(Attribution-NonCommercial-NoDerivs), "by" (Attribution), "by-sa"
+(Attribution-ShareAlike), "by-nd" (Attribution-NoDerivs), "nkc" (No known
+copyright restrictions), "pd-us" (United States Government Work), "cc0"
+(Public Domain Dedication), or "pd" (Public Domain Mark).}
 
 \item{sort}{Order to sort returned photos. The possible values are:
 "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
@@ -60,23 +72,15 @@ otherwise.}
 
 \item{page}{Number specifying which search results page to return. Default is
 page 1 of results returned.}
-
-\item{license_id}{The license id for photos (for possible values see the
-Flickr API method flickr.photos.licenses.getInfo). license_id can be an
-integer from 0 to 10 or a corresponding license code including "c" (All
-Rights Reserved), "by-bc-sa" (Attribution-NonCommercial-ShareAlike),
-"by-nc" (Attribution-NonCommercial), "by-nc-nd"
-(Attribution-NonCommercial-NoDerivs), "by" (Attribution), "by-sa"
-(Attribution-ShareAlike), "by-nd" (Attribution-NoDerivs), "nkc" (No known
-copyright restrictions), "pd-us" (United States Government Work), "cc0"
-(Public Domain Dedication), or "pd" (Public Domain Mark).}
 }
 \value{
 This function returns data of specific photos matching search
   parameters.
 }
 \description{
-R access to Flickr search API.
+Use the Flickr Search API to return pages of photos sorted by date posted,
+date taken, interestingness, and relevance. Optional search parameters
+including spatial bounding box, user id, tags, and image license.
 }
 \examples{
 \dontrun{
