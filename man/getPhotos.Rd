@@ -5,9 +5,9 @@
 \alias{get_photos}
 \title{Get photos from a Flickr user photo stream.}
 \usage{
-getPhotos(api_key = NULL, user_id)
+getPhotos(api_key = NULL, user_id = NULL)
 
-get_photos(api_key = NULL, user_id)
+get_photos(api_key = NULL, user_id = NULL)
 }
 \arguments{
 \item{api_key}{Flickr API key. If api_key is `NULL`, the function uses

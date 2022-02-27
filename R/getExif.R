@@ -3,9 +3,7 @@
 #' Return a data of EXIF data for a given photo. The calling user must have
 #' permission to view the photo.
 #'
-#' @param api_key Flickr API key. If api_key is `NULL`, the function uses
-#'   [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
-#'   key.
+#' @inheritParams FlickAPIRequest
 #' @param photo_id The id of the photo to fetch information for
 #'
 #' @return This function returns a data frame of EXIF information of given
@@ -17,28 +15,18 @@
 #' }
 #'
 #' @export
-#' @importFrom RCurl getURL
-#' @importFrom jsonlite fromJSON
-#' @importFrom utils URLencode
-
 getExif <- function(api_key = NULL,
-                    photo_id) {
-  api_key <- getFlickrAPIKey(api_key)
-  url <-
-    utils::URLencode(
-      paste0(
-        "https://api.flickr.com/services/rest/",
-        "?method=flickr.photos.getExif",
-        "&api_key=", api_key,
-        "&photo_id=", photo_id,
-        "&format=json&nojsoncallback=1"
-      )
+                    photo_id = NULL) {
+  data <-
+    FlickAPIRequest(
+      method = "flickr.photos.getExif",
+      api_key = api_key,
+      photo_id = photo_id
     )
-  raw_data <- RCurl::getURL(url, ssl.verifypeer = FALSE)
-  data <- jsonlite::fromJSON(raw_data)
-  return(as.data.frame(data))
+
+  return(as.data.frame(data$photo$exif))
 }
 
 #' @export
 #' @rdname getExif
-get_exif = getExif
+get_exif <- getExif

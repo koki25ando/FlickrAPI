@@ -3,5 +3,8 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   introduction: introduction.html
-last_built: 2022-02-24T17:46Z
+last_built: 2022-02-27T03:40Z
+urls:
+  reference: https://koki25ando.github.io/FlickrAPI/reference
+  article: https://koki25ando.github.io/FlickrAPI/articles
 

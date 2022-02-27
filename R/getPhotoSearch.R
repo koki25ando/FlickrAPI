@@ -4,9 +4,7 @@
 #' date taken, interestingness, and relevance. Optional search parameters
 #' including spatial bounding box, user id, tags, and image license.
 #'
-#' @param api_key Flickr API key. If api_key is `NULL`, the function uses
-#'   [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
-#'   key.
+#' @inheritParams FlickAPIRequest
 #' @param user_id The NSID of the user who's photo to search. If this parameter
 #'   isn't passed then everybody's public photos will be searched.
 #' @param tags A vector of tags you wish to search for.
@@ -68,9 +66,6 @@
 #' )
 #' }
 #' @export
-#' @importFrom utils URLencode
-#' @importFrom RCurl getURL
-#' @importFrom jsonlite fromJSON
 
 getPhotoSearch <- function(api_key = NULL,
                            user_id = NULL,
@@ -82,17 +77,6 @@ getPhotoSearch <- function(api_key = NULL,
                            extras = NULL,
                            per_page = 100,
                            page = 1) {
-  api_key <- getFlickrAPIKey(api_key)
-
-  url <-
-    paste0(
-      "https://api.flickr.com/services/rest/",
-      "?method=flickr.photos.search",
-      "&api_key=", api_key,
-      "&user_id=", user_id,
-      "&tags=", paste(tags, collapse = ",")
-    )
-
   if (!missing(licence_id)) {
     license_id <- licence_id
   }
@@ -116,18 +100,14 @@ getPhotoSearch <- function(api_key = NULL,
       stop("The license id provided is not valid. The license id must be an integer from 0 to 10.")
     }
   }
-  url <- paste0(url, "&license=", license_id)
 
   if (!is.null(sort)) {
     sort <- match.arg(sort, c("date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc", "interestingness-desc", "interestingness-asc", "relevance"))
   }
 
-  url <- paste0(url, "&sort=", sort)
-
   if (!is.null(bbox)) {
     if (("bbox" %in% class(bbox)) || ((length(bbox) == 4) && is.numeric(bbox))) {
       bbox <- paste0(bbox, collapse = ",")
-      url <- paste0(url, "&bbox=", bbox)
     } else {
       stop("The bbox provided is not valid. The bbox must be an object of class 'bbox' or a numeric vector with xmin, ymin, xmax and ymax values.")
     }
@@ -138,23 +118,21 @@ getPhotoSearch <- function(api_key = NULL,
 
     # Check if all elements of extras are valid extra fields
     extras <- match.arg(extras, extra_fields, several.ok = TRUE)
-
-    url <- paste0(url, "&extras=", paste0(extras, collapse = ","))
   }
 
-  url <-
-    utils::URLencode(
-      paste0(
-        url,
-        "&per_page=", per_page,
-        "&page=", page,
-        "&format=json&nojsoncallback=1"
-      )
+  data <-
+    FlickAPIRequest(
+      method = "flickr.photos.search",
+      api_key = api_key,
+      user_id = user_id,
+      tags = paste(tags, collapse = ","),
+      per_page = per_page,
+      page = page,
+      bbox = bbox,
+      license = license_id,
+      sort = sort,
+      extras = paste0(extras, collapse = ",")
     )
-
-  raw_data <- RCurl::getURL(url, ssl.verifypeer = FALSE, .mapUnicode = FALSE)
-
-  data <- jsonlite::fromJSON(raw_data)
 
   return(as.data.frame(data$photos$photo))
 }

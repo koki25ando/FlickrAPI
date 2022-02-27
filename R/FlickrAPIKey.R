@@ -55,7 +55,7 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE) {
 
 #' @export
 #' @rdname setFlickrAPIKey
-set_flickr_api_key = setFlickrAPIKey
+set_flickr_api_key <- setFlickrAPIKey
 
 
 
@@ -79,5 +79,4 @@ getFlickrAPIKey <- function(api_key = NULL) {
 
 #' @export
 #' @rdname setFlickrAPIKey
-get_flickr_api_key = getFlickrAPIKey
-
+get_flickr_api_key <- getFlickrAPIKey

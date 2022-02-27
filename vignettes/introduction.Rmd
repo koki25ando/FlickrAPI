@@ -47,9 +47,9 @@ There are two functions for searching Flickr photos:
 
 ```{r}
 # Search for photos uploaded by Koki Ando
-getPhotos(user_id="141696738@N08") %>% 
-  dplyr::slice_head(n = 5) %>% 
-  knitr::kable()
+user_photos <- getPhotos(user_id="141696738@N08") 
+
+knitr::kable(user_photos[1:4,])
 ```
 
 `getPhotoSearch()` supports a broader range of search options including:
@@ -59,10 +59,10 @@ getPhotos(user_id="141696738@N08") %>%
 - License
 - Bounding box (for photos with locations)
 
-```{r }
-getPhotoSearch(tags = c("cats","dogs")) %>% 
-  dplyr::slice_head(n = 5) %>%
-  knitr::kable()
+```{r}
+photo_search <- getPhotoSearch(tags = c("cats","dogs"))
+
+knitr::kable(photo_search[1:4,])
 ```
 
 ```{r}
@@ -70,9 +70,9 @@ getPhotoSearch(tags = c("cats","dogs")) %>%
 nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"))
 nc_bbox <- sf::st_bbox(nc)
 
-getPhotoSearch(tags = c("cats","dogs"), bbox = nc_bbox) %>% 
-  dplyr::slice_head(n = 5) %>%
-  knitr::kable()
+bbox_search <- getPhotoSearch(tags = c("cats","dogs"), bbox = nc_bbox) 
+
+knitr::kable(bbox_search[1:4,])
 ```
 
 `getPhotoSearch()` returns 100 photos per page by default but this can be increased to 250 if using the bbox parameter searching by location or 500 otherwise. Additional pages can be accessed using the page parameter.
@@ -81,15 +81,13 @@ The extras parameter can be used to return additional information about the phot
 
 ```{r}
 # Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan
-getPhotoSearch(
+photo_search_extras <- getPhotoSearch(
   tags = "panda",
   bbox = c(139.7682226529, 35.712627977, 139.7724605432, 35.7181464141),
   sort = "interestingness-desc",
   extras = c("geo", "tags")
-) %>%
-  dplyr::select(title, tags, tidyselect::starts_with("geo")) %>%
-  dplyr::slice_head(n = 5) %>%
-  knitr::kable()
+)
+knitr::kable(photo_search_extras[1:4,])
 ```
 
 
@@ -103,15 +101,17 @@ There are two functions for getting data about a specific Flickr photo:
 ## Get Flickr data for a photo
 
 ```{r}
-getPhotoInfo(photo_id="51899696261", 
+photo_info <- getPhotoInfo(photo_id="51899696261", 
              output = "url")
+
+knitr::kable(photo_info)
 ```
 
 ## Get EXIF metadata for a photo
 
 ```{r }
-getExif(photo_id="51872765082") %>% 
-  dplyr::slice_head(n = 10) %>%
-  knitr::kable()
+photo_exif <- getExif(photo_id="51872765082")
+
+knitr::kable(photo_exif[1:4,])
 ```
 

@@ -2,9 +2,7 @@
 #'
 #' R access to photo information of photos posted on Flickr via Flickr API.
 #'
-#' @param api_key Flickr API key. If api_key is `NULL`, the function uses
-#'   [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
-#'   key.
+#' @inheritParams FlickAPIRequest
 #' @param photo_id The id of the photo to get information for.
 #' @param output Output data type. Supported options include "all", "location",
 #'   "date", "url" or "tags". If output = "all", the function returns a list
@@ -23,30 +21,17 @@
 #' )
 #' }
 #' @export
-#' @importFrom RCurl getURL
-#' @importFrom jsonlite fromJSON
-#' @importFrom utils URLencode
 #' @importFrom janitor clean_names
 
 getPhotoInfo <- function(api_key = NULL,
                          photo_id,
                          output = c("location", "date", "url", "tags")) {
-  api_key <- getFlickrAPIKey(api_key)
-
-  url <-
-    utils::URLencode(
-      paste0(
-        "https://api.flickr.com/services/rest/",
-        "?method=flickr.photos.getInfo",
-        "&api_key=", api_key,
-        "&photo_id=", photo_id,
-        "&format=json&nojsoncallback=1"
-      )
+  data <-
+    FlickAPIRequest(
+      method = "flickr.photos.getInfo",
+      api_key = api_key,
+      photo_id = photo_id
     )
-  data <- RCurl::getURL(url, ssl.verifypeer = FALSE) %>%
-    jsonlite::fromJSON()
-
-  output_data <- data.frame()
 
   output <- match.arg(tolower(output), c("all", "location", "date", "url", "tags"))
 
@@ -63,5 +48,4 @@ getPhotoInfo <- function(api_key = NULL,
 
 #' @export
 #' @rdname getPhotoInfo
-get_photo_info = getPhotoInfo
-
+get_photo_info <- getPhotoInfo

@@ -5,9 +5,9 @@
 \alias{get_exif}
 \title{Get EXIF data for a Flickr photo.}
 \usage{
-getExif(api_key = NULL, photo_id)
+getExif(api_key = NULL, photo_id = NULL)
 
-get_exif(api_key = NULL, photo_id)
+get_exif(api_key = NULL, photo_id = NULL)
 }
 \arguments{
 \item{api_key}{Flickr API key. If api_key is `NULL`, the function uses

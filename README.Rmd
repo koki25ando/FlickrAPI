@@ -1,0 +1,75 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# FlickrAPI
+
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/FlickrAPI)](https://CRAN.R-project.org/package=FlickrAPI)
+[![Rdoc](http://www.rdocumentation.org/badges/version/FlickrAPI)](http://www.rdocumentation.org/packages/FlickrAPI)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/FlickrAPI)](http://www.r-pkg.org/pkg/FlickrAPI)
+[![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)](http://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)
+<!-- badges: end -->
+
+The goal of FlickrAPI is to provide an interface to the [Flickr API](https://www.flickr.com/services/api/) and allow R users to download data on public photos uploaded to Flickr.
+
+## Installation
+
+```{r, eval=FALSE}
+install.packages("FlickrAPI")
+# remotes::install_github("koki25ando/FlickrAPI")
+```
+
+
+After installing, set up a Flickr API key and save it as a local environment variable using `setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE", install = TRUE)`. The Flickr API is available for non-commercial use by outside developers and is only available for commercial use under prior arrangements. Review [the Flickr API documentation](https://www.flickr.com/services/developer/), [API Overview](https://www.flickr.com/services/api/misc.overview.html), or [Flickr Developer Guide](https://www.flickr.com/services/developer/) for more information.
+
+## Example
+
+You can get photos from any individual user using the `getPhotos()` function.
+
+```{r get_photos}
+library(FlickrAPI)
+
+photos <- getPhotos(user_id = "grand_canyon_nps")
+knitr::kable(photos[1:4,])
+```
+
+For more information about any individual image, you can use `getPhotosInfo()` or the `getExif()` function.
+
+```{r}
+photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")
+knitr::kable(photo_info)
+```
+
+```{r}
+photo_exif <- getExif(photo_id = photos$id[10])
+knitr::kable(photo_exif[1:4,])
+```
+
+You can also search photos by tag and license.
+
+```{r}
+photo_search <- getPhotoSearch(
+  sort = "date-taken-desc",
+  tags = c("cats", "dogs"),
+  per_page = 50)
+
+knitr::kable(photo_search[1:4,])
+```
+
+
+### See also
+
+- [FlickrAPI on CRAN](https://cran.r-project.org/web/packages/FlickrAPI/index.html) ([PDF](https://cran.r-project.org/web/packages/FlickrAPI/FlickrAPI.pdf))
+- [Flickr API](https://www.flickr.com/services/api/)
