@@ -56,7 +56,7 @@ knitr::kable(photos[1:4,])
 | 51857225906 | <50693818@N08> | f95071f3cc | 65535  |   66 | Desert View Amphitheater Reconstruction 01/31/2022 |        1 |        0 |        0 |
 
 For more information about any individual image, you can use
-`getPhotosInfo()` or the `getExif()` function.
+`getPhotoInfo()` or the `getExif()` function.
 
 ``` r
 photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")

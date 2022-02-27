@@ -45,7 +45,7 @@ photos <- getPhotos(user_id = "grand_canyon_nps")
 knitr::kable(photos[1:4,])
 ```
 
-For more information about any individual image, you can use `getPhotosInfo()` or the `getExif()` function.
+For more information about any individual image, you can use `getPhotoInfo()` or the `getExif()` function.
 
 ```{r}
 photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")
