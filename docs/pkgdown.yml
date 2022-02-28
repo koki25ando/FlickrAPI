@@ -1,6 +1,10 @@
-pandoc: '2.10'
-pkgdown: 1.6.0
+pandoc: 2.11.4
+pkgdown: 2.0.2
 pkgdown_sha: ~
-articles: []
-last_built: 2020-10-12T12:04Z
+articles:
+  introduction: introduction.html
+last_built: 2022-02-27T03:51Z
+urls:
+  reference: https://koki25ando.github.io/FlickrAPI/reference
+  article: https://koki25ando.github.io/FlickrAPI/articles
 

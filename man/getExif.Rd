@@ -2,27 +2,31 @@
 % Please edit documentation in R/getExif.R
 \name{getExif}
 \alias{getExif}
-\title{Returns a data of EXIF data for a given photo.}
+\alias{get_exif}
+\title{Get EXIF data for a Flickr photo.}
 \usage{
-getExif(api_key, photo_id)
+getExif(api_key = NULL, photo_id = NULL)
+
+get_exif(api_key = NULL, photo_id = NULL)
 }
 \arguments{
-\item{api_key}{Your API application key}
+\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
+[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+key.}
 
 \item{photo_id}{The id of the photo to fetch information for}
 }
 \value{
-This function returns a dataframe of Exif information of given photograph
+This function returns a data frame of EXIF information of given
+  photograph
 }
 \description{
-Return a data of Exif data for a given photo. The calling user must have permission to view the photo.
+Return a data of EXIF data for a given photo. The calling user must have
+permission to view the photo.
 }
 \examples{
 \dontrun{
-  getExif(api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id="45961963324")
+getExif(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id = "45961963324")
 }
 
-}
-\author{
-Koki Ando <koki.25.ando@gmail.com>
 }

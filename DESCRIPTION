@@ -1,20 +1,23 @@
 Package: FlickrAPI
 Title: Access to Flickr API
 Version: 0.1.0.1
-Authors@R: person("Koki", "Ando", email = "koki.25.ando@gmail.com", role = c("aut", "cre"))
+Authors@R: c(
+    person("Koki", "Ando", email = "koki.25.ando@gmail.com", role = c("aut", "cre")),
+    person("Eli", "Pousson", role = c("aut", "ctb"))
+    )
 Description: Provides an interface to the Flickr API <https://www.flickr.com/services/api/>
       and allows R users to download data on Flickr.
 Depends: R (>= 3.1)
-License: GPL-2 | file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Imports: magrittr,
-    RCurl,
-    jsonlite,
-    stringr,
+Imports: 
+    httr2,
     janitor,
-    glue
+    magrittr,
+    glue,
+    utils
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1.9000
+RoxygenNote: 7.1.2
