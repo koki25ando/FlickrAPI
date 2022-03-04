@@ -7,11 +7,12 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/FlickrAPI)](https://CRAN.R-project.org/package=FlickrAPI)
-[![Rdoc](http://www.rdocumentation.org/badges/version/FlickrAPI)](http://www.rdocumentation.org/packages/FlickrAPI)
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/FlickrAPI)](http://www.r-pkg.org/pkg/FlickrAPI)
 [![total
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)](http://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 The goal of FlickrAPI is to provide an interface to the [Flickr
@@ -45,15 +46,12 @@ function.
 library(FlickrAPI)
 
 photos <- getPhotos(user_id = "grand_canyon_nps")
-knitr::kable(photos[1:4,])
+knitr::kable(photos[1,])
 ```
 
-| id          | owner          | secret     | server | farm | title                                              | ispublic | isfriend | isfamily |
-|:------------|:---------------|:-----------|:-------|-----:|:---------------------------------------------------|---------:|---------:|---------:|
-| 51869456865 | <50693818@N08> | 8c05fed584 | 65535  |   66 | Surprise Valley Search and Rescue-August 2021      |        1 |        0 |        0 |
-| 51869119754 | <50693818@N08> | d8c24b3191 | 65535  |   66 | Search Team in Surprise Valley                     |        1 |        0 |        0 |
-| 51868796456 | <50693818@N08> | 5ecb258d7b | 65535  |   66 | K9 Mazi in action                                  |        1 |        0 |        0 |
-| 51857225906 | <50693818@N08> | f95071f3cc | 65535  |   66 | Desert View Amphitheater Reconstruction 01/31/2022 |        1 |        0 |        0 |
+| id          | owner          | secret     | server | farm | title                                                 | ispublic | isfriend | isfamily |
+|:------------|:---------------|:-----------|:-------|-----:|:------------------------------------------------------|---------:|---------:|---------:|
+| 51912597556 | <50693818@N08> | b4bbe70c0f | 65535  |   66 | 03/01/22 Desert View Amphitheater Reconstruction 1097 |        1 |        0 |        0 |
 
 For more information about any individual image, you can use
 `getPhotoInfo()` or the `getExif()` function.
@@ -63,24 +61,26 @@ photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")
 knitr::kable(photo_info)
 ```
 
-| id                          | author         | authorname       | raw               | content         | machine\_tag |
-|:----------------------------|:---------------|:-----------------|:------------------|:----------------|-------------:|
-| 50601005-51869456865-282130 | <50693818@N08> | Grand Canyon NPS | search and rescue | searchandrescue |            0 |
-| 50601005-51869456865-5867   | <50693818@N08> | Grand Canyon NPS | aviation          | aviation        |            0 |
-| 50601005-51869456865-424687 | <50693818@N08> | Grand Canyon NPS | 368               | 368             |            0 |
-| 50601005-51869456865-12101  | <50693818@N08> | Grand Canyon NPS | helicopter        | helicopter      |            0 |
+| id                            | author         | authorname       | raw           | content       | machine_tag |
+|:------------------------------|:---------------|:-----------------|:--------------|:--------------|------------:|
+| 50601005-51912597556-83469    | <50693818@N08> | Grand Canyon NPS | Desert View   | desertview    |           0 |
+| 50601005-51912597556-26960    | <50693818@N08> | Grand Canyon NPS | Amphitheater  | amphitheater  |           0 |
+| 50601005-51912597556-2834     | <50693818@N08> | Grand Canyon NPS | construction  | construction  |           0 |
+| 50601005-51912597556-83424    | <50693818@N08> | Grand Canyon NPS | regrade       | regrade       |           0 |
+| 50601005-51912597556-226675   | <50693818@N08> | Grand Canyon NPS | accessibility | accessibility |           0 |
+| 50601005-51912597556-442      | <50693818@N08> | Grand Canyon NPS | tractor       | tractor       |           0 |
+| 50601005-51912597556-76221774 | <50693818@N08> | Grand Canyon NPS | Chevo Studios | chevostudios  |           0 |
+| 50601005-51912597556-69820    | <50693818@N08> | Grand Canyon NPS | employee      | employee      |           0 |
+| 50601005-51912597556-4069890  | <50693818@N08> | Grand Canyon NPS | trail crew    | trailcrew     |           0 |
 
 ``` r
 photo_exif <- getExif(photo_id = photos$id[10])
-knitr::kable(photo_exif[1:4,])
+knitr::kable(photo_exif[1,])
 ```
 
-| tagspace | tagspaceid | tag            | label           | raw  | clean |
-|:---------|-----------:|:---------------|:----------------|:-----|:------|
-| JFIF     |          0 | JFIFVersion    | JFIFVersion     | 1.02 | NA    |
-| JFIF     |          0 | ResolutionUnit | Resolution Unit | None | NA    |
-| JFIF     |          0 | XResolution    | X-Resolution    | 1    | NA    |
-| JFIF     |          0 | YResolution    | Y-Resolution    | 1    | NA    |
+| tagspace | tagspaceid | tag         | label       | raw  | clean |
+|:---------|-----------:|:------------|:------------|:-----|:------|
+| JFIF     |          0 | JFIFVersion | JFIFVersion | 1.02 | NA    |
 
 You can also search photos by tag and license.
 
@@ -90,15 +90,12 @@ photo_search <- getPhotoSearch(
   tags = c("cats", "dogs"),
   per_page = 50)
 
-knitr::kable(photo_search[1:4,])
+knitr::kable(photo_search[1,])
 ```
 
-| id          | owner           | secret     | server | farm | title                                                                                                                                                                                                                                                    | ispublic | isfriend | isfamily |
-|:------------|:----------------|:-----------|:-------|-----:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------:|---------:|---------:|
-| 51906415945 | <43199415@N08>  | 9866bfb3d1 | 65535  |   66 | Bon+Que+Luna                                                                                                                                                                                                                                             |        1 |        0 |        0 |
-| 51906818405 | <13773319@N00>  | 6eb4d2b5f1 | 65535  |   66 | Sunset walk                                                                                                                                                                                                                                              |        1 |        0 |        0 |
-| 51905165797 | <135136799@N08> | 22e2d1ceb8 | 65535  |   66 | 🔥🔥                                                                                                                                                                                                                                                       |        1 |        0 |        0 |
-| 51906730250 | <66619978@N04>  | 4ac4a74b75 | 65535  |   66 | “Beautiful Girl Creature Riding on Bird”, Created for International Women’s Day, this design was all hand drawn by me, created for use as fabric, wallpaper and home decor items. Original drawn with pencils, pens, pastel pencils and colored pencils. |        1 |        0 |        0 |
+| id          | owner          | secret     | server | farm | title                   | ispublic | isfriend | isfamily |
+|:------------|:---------------|:-----------|:-------|-----:|:------------------------|---------:|---------:|---------:|
+| 51917796544 | <91345612@N03> | bd2dfc7a82 | 65535  |   66 | The beauty of Bali dog. |        1 |        0 |        0 |
 
 ### See also
 

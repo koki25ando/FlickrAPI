@@ -17,9 +17,9 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/FlickrAPI)](https://CRAN.R-project.org/package=FlickrAPI)
-[![Rdoc](http://www.rdocumentation.org/badges/version/FlickrAPI)](http://www.rdocumentation.org/packages/FlickrAPI)
 [![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/FlickrAPI)](http://www.r-pkg.org/pkg/FlickrAPI)
 [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)](http://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 The goal of FlickrAPI is to provide an interface to the [Flickr API](https://www.flickr.com/services/api/) and allow R users to download data on public photos uploaded to Flickr.
@@ -42,7 +42,7 @@ You can get photos from any individual user using the `getPhotos()` function.
 library(FlickrAPI)
 
 photos <- getPhotos(user_id = "grand_canyon_nps")
-knitr::kable(photos[1:4,])
+knitr::kable(photos[1,])
 ```
 
 For more information about any individual image, you can use `getPhotoInfo()` or the `getExif()` function.
@@ -54,7 +54,7 @@ knitr::kable(photo_info)
 
 ```{r}
 photo_exif <- getExif(photo_id = photos$id[10])
-knitr::kable(photo_exif[1:4,])
+knitr::kable(photo_exif[1,])
 ```
 
 You can also search photos by tag and license.
@@ -65,7 +65,7 @@ photo_search <- getPhotoSearch(
   tags = c("cats", "dogs"),
   per_page = 50)
 
-knitr::kable(photo_search[1:4,])
+knitr::kable(photo_search[1,])
 ```
 
 

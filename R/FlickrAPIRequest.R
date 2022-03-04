@@ -7,6 +7,7 @@
 #' @param api_key Flickr API key. If api_key is `NULL`, the function uses
 #'   [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
 #'   key.
+#' @param ... Additional parameters passed to `httr2::req_url_query`
 #' @export
 FlickAPIRequest <-
   function(method = NULL,

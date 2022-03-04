@@ -12,6 +12,8 @@ FlickAPIRequest(method = NULL, api_key = NULL, ...)
 \item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
 [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
 key.}
+
+\item{...}{Additional parameters passed to `httr2::req_url_query`}
 }
 \description{
 Request data from the Flickr API using the provided method, API key, and any
