@@ -8,9 +8,9 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/FlickrAPI)](https://CRAN.R-project.org/package=FlickrAPI)
 [![CRAN RStudio mirror
-downloads](https://cranlogs.r-pkg.org/badges/FlickrAPI)](http://www.r-pkg.org/pkg/FlickrAPI)
+downloads](https://cranlogs.r-pkg.org/badges/FlickrAPI)](https://www.r-pkg.org/pkg/FlickrAPI)
 [![total
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)](http://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)](https://cranlogs.r-pkg.org/badges/grand-total/FlickrAPI)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
@@ -58,20 +58,16 @@ For more information about any individual image, you can use
 
 ``` r
 photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")
-knitr::kable(photo_info)
+knitr::kable(photo_info[c(1:5),])
 ```
 
-| id                            | author         | authorname       | raw           | content       | machine_tag |
-|:------------------------------|:---------------|:-----------------|:--------------|:--------------|------------:|
-| 50601005-51912597556-83469    | <50693818@N08> | Grand Canyon NPS | Desert View   | desertview    |           0 |
-| 50601005-51912597556-26960    | <50693818@N08> | Grand Canyon NPS | Amphitheater  | amphitheater  |           0 |
-| 50601005-51912597556-2834     | <50693818@N08> | Grand Canyon NPS | construction  | construction  |           0 |
-| 50601005-51912597556-83424    | <50693818@N08> | Grand Canyon NPS | regrade       | regrade       |           0 |
-| 50601005-51912597556-226675   | <50693818@N08> | Grand Canyon NPS | accessibility | accessibility |           0 |
-| 50601005-51912597556-442      | <50693818@N08> | Grand Canyon NPS | tractor       | tractor       |           0 |
-| 50601005-51912597556-76221774 | <50693818@N08> | Grand Canyon NPS | Chevo Studios | chevostudios  |           0 |
-| 50601005-51912597556-69820    | <50693818@N08> | Grand Canyon NPS | employee      | employee      |           0 |
-| 50601005-51912597556-4069890  | <50693818@N08> | Grand Canyon NPS | trail crew    | trailcrew     |           0 |
+| id                          | author         | authorname       | raw           | content       | machine_tag |
+|:----------------------------|:---------------|:-----------------|:--------------|:--------------|------------:|
+| 50601005-51912597556-83469  | <50693818@N08> | Grand Canyon NPS | Desert View   | desertview    |           0 |
+| 50601005-51912597556-26960  | <50693818@N08> | Grand Canyon NPS | Amphitheater  | amphitheater  |           0 |
+| 50601005-51912597556-2834   | <50693818@N08> | Grand Canyon NPS | construction  | construction  |           0 |
+| 50601005-51912597556-83424  | <50693818@N08> | Grand Canyon NPS | regrade       | regrade       |           0 |
+| 50601005-51912597556-226675 | <50693818@N08> | Grand Canyon NPS | accessibility | accessibility |           0 |
 
 ``` r
 photo_exif <- getExif(photo_id = photos$id[10])
