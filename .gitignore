@@ -2,8 +2,7 @@
 *
 # white dir
 !*/
-!.giignore
-
+!.gitignore
 !*_git.*
 
 # DS script files
