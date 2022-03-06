@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/introduction.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/articles/introduction.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/FlickAPIRequest.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/FlickAPIRequest.html</loc>
   </url>
   <url>
-    <loc>/reference/FlickrAPI-package.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/FlickrAPI-package.html</loc>
   </url>
   <url>
-    <loc>/reference/getExif.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/getExif.html</loc>
   </url>
   <url>
-    <loc>/reference/getHotTags.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/getHotTags.html</loc>
   </url>
   <url>
-    <loc>/reference/getPhotoInfo.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotoInfo.html</loc>
   </url>
   <url>
-    <loc>/reference/getPhotoSearch.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotoSearch.html</loc>
   </url>
   <url>
-    <loc>/reference/getPhotos.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotos.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/pipe.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>/reference/setFlickrAPIKey.html</loc>
+    <loc>https://koki25ando.github.io/FlickrAPI/reference/setFlickrAPIKey.html</loc>
   </url>
 </urlset>
