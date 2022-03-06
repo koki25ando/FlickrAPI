@@ -1,0 +1,18 @@
+url: "https://koki25ando.github.io/FlickrAPI/"
+template:
+  bootstrap: 5
+trailingslash_redirect: true
+home:
+  title: An R package for accessing the Flickr API.
+  description: Get photos and photo metadata from Flickr users.
+reference:
+- title: Get photos and photo metadata
+  contents:
+  - contains('Photo')
+  - contains('Exif')
+- title: Get tags
+  contents:
+  - contains('Tags')
+- title: Utility functions
+  contents:
+  - contains('API')
