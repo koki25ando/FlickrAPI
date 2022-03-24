@@ -186,6 +186,21 @@
 
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">photo_search</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="5%">
+<col width="6%">
+<col width="5%">
+<col width="3%">
+<col width="2%">
+<col width="16%">
+<col width="4%">
+<col width="4%">
+<col width="4%">
+<col width="31%">
+<col width="5%">
+<col width="5%">
+<col width="4%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">id</th>
 <th align="left">owner</th>
@@ -196,6 +211,10 @@
 <th align="right">ispublic</th>
 <th align="right">isfriend</th>
 <th align="right">isfamily</th>
+<th align="left">img_url</th>
+<th align="right">img_height</th>
+<th align="right">img_width</th>
+<th align="right">img_asp</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -208,6 +227,10 @@
 <td align="right">1</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/1034/916353866_7fe8eecc2c_s.jpg" class="external-link uri">https://live.staticflickr.com/1034/916353866_7fe8eecc2c_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="left">472336118</td>
@@ -219,6 +242,10 @@
 <td align="right">1</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/217/472336118_d4eb3ec1b4_s.jpg" class="external-link uri">https://live.staticflickr.com/217/472336118_d4eb3ec1b4_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="left">472413421</td>
@@ -230,17 +257,25 @@
 <td align="right">1</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/182/472413421_7346115bd7_s.jpg" class="external-link uri">https://live.staticflickr.com/182/472413421_7346115bd7_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">472351917</td>
+<td align="left">472351473</td>
 <td align="left"><a href="mailto:7211785@N06" class="email">7211785@N06</a></td>
-<td align="left">0efb4711d3</td>
-<td align="left">215</td>
+<td align="left">aff4e51b14</td>
+<td align="left">174</td>
 <td align="right">1</td>
-<td align="left">364</td>
+<td align="left">358</td>
 <td align="right">1</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/174/472351473_aff4e51b14_s.jpg" class="external-link uri">https://live.staticflickr.com/174/472351473_aff4e51b14_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 </tbody>
 </table>
@@ -260,7 +295,22 @@
 <span class="va">bbox_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getPhotoSearch.html">getPhotoSearch</a></span><span class="op">(</span>tags <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cats"</span>,<span class="st">"dogs"</span><span class="op">)</span>, bbox <span class="op">=</span> <span class="va">nc_bbox</span><span class="op">)</span> 
 
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">bbox_search</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
-<table class="table">
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="4%">
+<col width="6%">
+<col width="5%">
+<col width="3%">
+<col width="2%">
+<col width="16%">
+<col width="4%">
+<col width="4%">
+<col width="4%">
+<col width="30%">
+<col width="5%">
+<col width="5%">
+<col width="4%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">id</th>
 <th align="left">owner</th>
@@ -271,51 +321,71 @@
 <th align="right">ispublic</th>
 <th align="right">isfriend</th>
 <th align="right">isfamily</th>
+<th align="left">img_url</th>
+<th align="right">img_height</th>
+<th align="right">img_width</th>
+<th align="right">img_asp</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">786352</td>
+<td align="left">680291</td>
 <td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
-<td align="left">20ff2df2d2</td>
+<td align="left">733cc6e503</td>
 <td align="left">1</td>
 <td align="right">1</td>
-<td align="left">cat on brick wal</td>
+<td align="left">House Fire</td>
 <td align="right">1</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/1/680291_733cc6e503_s.jpg" class="external-link uri">https://live.staticflickr.com/1/680291_733cc6e503_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">987600</td>
+<td align="left">1059597</td>
 <td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
-<td align="left">cfb00ead3a</td>
+<td align="left">699f232d1b</td>
 <td align="left">1</td>
 <td align="right">1</td>
-<td align="left">Bailey does a dance for Luna.</td>
+<td align="left">neighbor cat on green steps</td>
 <td align="right">1</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/1/1059597_699f232d1b_s.jpg" class="external-link uri">https://live.staticflickr.com/1/1059597_699f232d1b_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">987601</td>
+<td align="left">1100484</td>
 <td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
-<td align="left">31a95ca091</td>
+<td align="left">2605ea839e</td>
 <td align="left">1</td>
 <td align="right">1</td>
-<td align="left">luna &amp; bailey lying down</td>
+<td align="left">kitty christopher window iron</td>
 <td align="right">1</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/1/1100484_2605ea839e_s.jpg" class="external-link uri">https://live.staticflickr.com/1/1100484_2605ea839e_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">1059596</td>
+<td align="left">1172886</td>
 <td align="left"><a href="mailto:54289096@N00" class="email">54289096@N00</a></td>
-<td align="left">e0907be17f</td>
+<td align="left">805d3214f0</td>
 <td align="left">1</td>
 <td align="right">1</td>
-<td align="left">dog and acorn stains</td>
+<td align="left">bailey rolling in stinky</td>
 <td align="right">1</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/1/1172886_805d3214f0_s.jpg" class="external-link uri">https://live.staticflickr.com/1/1172886_805d3214f0_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 </tbody>
 </table>
@@ -331,28 +401,32 @@
   extras <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"geo"</span>, <span class="st">"tags"</span><span class="op">)</span>
 <span class="op">)</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">photo_search_extras</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
-<col width="3%">
-<col width="3%">
+<col width="2%">
+<col width="2%">
 <col width="2%">
 <col width="1%">
 <col width="1%">
-<col width="4%">
-<col width="2%">
-<col width="2%">
-<col width="2%">
-<col width="44%">
-<col width="2%">
-<col width="2%">
-<col width="2%">
-<col width="2%">
-<col width="2%">
-<col width="2%">
 <col width="3%">
-<col width="4%">
+<col width="1%">
+<col width="1%">
+<col width="1%">
+<col width="35%">
+<col width="2%">
+<col width="2%">
+<col width="1%">
+<col width="1%">
+<col width="1%">
+<col width="1%">
 <col width="3%">
 <col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="14%">
+<col width="2%">
+<col width="2%">
+<col width="1%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">id</th>
@@ -375,6 +449,10 @@
 <th align="right">geo_is_contact</th>
 <th align="right">geo_is_friend</th>
 <th align="right">geo_is_family</th>
+<th align="left">img_url</th>
+<th align="right">img_height</th>
+<th align="right">img_width</th>
+<th align="right">img_asp</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -398,6 +476,10 @@
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/65535/51055427717_f7ef0f97e7_s.jpg" class="external-link uri">https://live.staticflickr.com/65535/51055427717_f7ef0f97e7_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="left">51054619898</td>
@@ -420,6 +502,10 @@
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/65535/51054619898_67ba302e58_s.jpg" class="external-link uri">https://live.staticflickr.com/65535/51054619898_67ba302e58_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="left">51055426837</td>
@@ -442,6 +528,10 @@
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/65535/51055426837_d4909db750_s.jpg" class="external-link uri">https://live.staticflickr.com/65535/51055426837_d4909db750_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="left">51054618878</td>
@@ -464,6 +554,10 @@
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
+<td align="left"><a href="https://live.staticflickr.com/65535/51054618878_f8de3862bb_s.jpg" class="external-link uri">https://live.staticflickr.com/65535/51054618878_f8de3862bb_s.jpg</a></td>
+<td align="right">75</td>
+<td align="right">75</td>
+<td align="right">1</td>
 </tr>
 </tbody>
 </table>

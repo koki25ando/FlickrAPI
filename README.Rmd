@@ -49,7 +49,7 @@ For more information about any individual image, you can use `getPhotoInfo()` or
 
 ```{r}
 photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")
-knitr::kable(photo_info[c(1:5),])
+knitr::kable(photo_info[c(1:2),])
 ```
 
 ```{r}

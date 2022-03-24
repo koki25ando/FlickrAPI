@@ -49,25 +49,22 @@ photos <- getPhotos(user_id = "grand_canyon_nps")
 knitr::kable(photos[1,])
 ```
 
-| id          | owner          | secret     | server | farm | title                                                 | ispublic | isfriend | isfamily |
-|:------------|:---------------|:-----------|:-------|-----:|:------------------------------------------------------|---------:|---------:|---------:|
-| 51912597556 | <50693818@N08> | b4bbe70c0f | 65535  |   66 | 03/01/22 Desert View Amphitheater Reconstruction 1097 |        1 |        0 |        0 |
+| id          | owner          | secret     | server | farm | title                                                  | ispublic | isfriend | isfamily |
+|:------------|:---------------|:-----------|:-------|-----:|:-------------------------------------------------------|---------:|---------:|---------:|
+| 51924677769 | <50693818@N08> | a48d45c811 | 65535  |   66 | 03/03/22 Desert View Amphitheater Reconstruction 40389 |        1 |        0 |        0 |
 
 For more information about any individual image, you can use
 `getPhotoInfo()` or the `getExif()` function.
 
 ``` r
 photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")
-knitr::kable(photo_info[c(1:5),])
+knitr::kable(photo_info[c(1:2),])
 ```
 
-| id                          | author         | authorname       | raw           | content       | machine_tag |
-|:----------------------------|:---------------|:-----------------|:--------------|:--------------|------------:|
-| 50601005-51912597556-83469  | <50693818@N08> | Grand Canyon NPS | Desert View   | desertview    |           0 |
-| 50601005-51912597556-26960  | <50693818@N08> | Grand Canyon NPS | Amphitheater  | amphitheater  |           0 |
-| 50601005-51912597556-2834   | <50693818@N08> | Grand Canyon NPS | construction  | construction  |           0 |
-| 50601005-51912597556-83424  | <50693818@N08> | Grand Canyon NPS | regrade       | regrade       |           0 |
-| 50601005-51912597556-226675 | <50693818@N08> | Grand Canyon NPS | accessibility | accessibility |           0 |
+| id                         | author         | authorname       | raw          | content      | machine\_tag |
+|:---------------------------|:---------------|:-----------------|:-------------|:-------------|-------------:|
+| 50601005-51924677769-83469 | <50693818@N08> | Grand Canyon NPS | Desert View  | desertview   |            0 |
+| 50601005-51924677769-26960 | <50693818@N08> | Grand Canyon NPS | Amphitheater | amphitheater |            0 |
 
 ``` r
 photo_exif <- getExif(photo_id = photos$id[10])
@@ -89,9 +86,9 @@ photo_search <- getPhotoSearch(
 knitr::kable(photo_search[1,])
 ```
 
-| id          | owner          | secret     | server | farm | title                   | ispublic | isfriend | isfamily |
-|:------------|:---------------|:-----------|:-------|-----:|:------------------------|---------:|---------:|---------:|
-| 51917796544 | <91345612@N03> | bd2dfc7a82 | 65535  |   66 | The beauty of Bali dog. |        1 |        0 |        0 |
+| id          | owner          | secret     | server | farm | title            | ispublic | isfriend | isfamily | img\_url                                                           | img\_height | img\_width | img\_asp |
+|:------------|:---------------|:-----------|:-------|-----:|:-----------------|---------:|---------:|---------:|:-------------------------------------------------------------------|------------:|-----------:|---------:|
+| 51958193894 | <50281068@N08> | ca8e35eb2b | 65535  |   66 | Cats Of Mei Ling |        1 |        0 |        0 | <https://live.staticflickr.com/65535/51958193894_ca8e35eb2b_s.jpg> |          75 |         75 |        1 |
 
 ### See also
 
