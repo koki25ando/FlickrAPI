@@ -5,17 +5,26 @@
 \alias{get_photos}
 \title{Get photos from a Flickr user photo stream.}
 \usage{
-getPhotos(api_key = NULL, user_id = NULL)
+getPhotos(user_id = NULL, extras = NULL, api_key = NULL, ...)
 
-get_photos(api_key = NULL, user_id = NULL)
+get_photos(user_id = NULL, extras = NULL, api_key = NULL, ...)
 }
 \arguments{
+\item{user_id}{The NSID of the user who's photos to return. A value of "me"
+return the calling user's photos.}
+
+\item{extras}{A vector of extra information to fetch for each returned
+record. Currently supported fields are: c("description", "license",
+"date_upload", "date_taken", "owner_name", "icon_server",
+"original_format", "last_update", "geo", "tags", "machine_tags", "o_dims",
+"views", "media", "path_alias", "url_sq", "url_t", "url_s", "url_q",
+"url_m", "url_n", "url_z", "url_c", "url_l", "url_o")}
+
 \item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
 [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
-\item{user_id}{The NSID of the user who's photos to return. A value of "me"
-return the calling user's photos.}
+\item{...}{Additional parameters passed to [getPhotoSearch]}
 }
 \value{
 This function returns a \code{data.frame} including columns:

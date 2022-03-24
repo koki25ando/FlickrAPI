@@ -3,9 +3,10 @@
 #' Returns photos from the given user's photo stream. Only photos visible to the
 #' calling user will be returned.
 #'
-#' @inheritParams FlickAPIRequest
 #' @param user_id The NSID of the user who's photos to return. A value of "me"
 #'   return the calling user's photos.
+#' @inheritParams getPhotoSearch
+#' @param ... Additional parameters passed to [getPhotoSearch]
 #'
 #' @return This function returns a \code{data.frame} including columns:
 #' \itemize{
@@ -26,16 +27,19 @@
 #' }
 #' @export
 
-getPhotos <- function(api_key = NULL,
-                      user_id = NULL) {
+getPhotos <- function(user_id = NULL,
+                      extras = NULL,
+                      api_key = NULL,
+                      ...) {
   data <-
-    FlickAPIRequest(
-      method = "flickr.photos.search",
+    getPhotoSearch(
+      user_id = user_id,
+      extras = extras,
       api_key = api_key,
-      user_id = user_id
+      ...
     )
 
-  return(as.data.frame(data$photos$photo))
+  return(data)
 }
 
 
