@@ -65,7 +65,7 @@ including spatial bounding box, user id, tags, and image license.</p>
   sort <span class="op">=</span> <span class="st">"date-posted"</span>,
   desc <span class="op">=</span> <span class="cn">FALSE</span>,
   bbox <span class="op">=</span> <span class="cn">NULL</span>,
-  img_size <span class="op">=</span> <span class="st">"s"</span>,
+  img_size <span class="op">=</span> <span class="cn">NULL</span>,
   extras <span class="op">=</span> <span class="cn">NULL</span>,
   per_page <span class="op">=</span> <span class="fl">100</span>,
   page <span class="op">=</span> <span class="fl">1</span>,
@@ -80,7 +80,7 @@ including spatial bounding box, user id, tags, and image license.</p>
   sort <span class="op">=</span> <span class="st">"date-posted"</span>,
   desc <span class="op">=</span> <span class="cn">FALSE</span>,
   bbox <span class="op">=</span> <span class="cn">NULL</span>,
-  img_size <span class="op">=</span> <span class="st">"s"</span>,
+  img_size <span class="op">=</span> <span class="cn">NULL</span>,
   extras <span class="op">=</span> <span class="cn">NULL</span>,
   per_page <span class="op">=</span> <span class="fl">100</span>,
   page <span class="op">=</span> <span class="fl">1</span>,
@@ -119,7 +119,8 @@ and the top-right corner.</p></dd>
 <dd><p>A character string with the abbreviation for one or more
 image sizes ("sq", "t", "s", "q", "m", "n", "z", "c", "l", or "o"). If a
 single img_size is provided the url, width, and height columns are renamed
-(e.g. img_url instead of url_sq) and an img_asp column is added to the results.</p></dd>
+(e.g. img_url instead of url_sq) and an img_asp column is added to the
+results; defaults to `NULL`.</p></dd>
 <dt>extras</dt>
 <dd><p>A vector of extra information to fetch for each returned
 record. Currently supported fields are: c("description", "license",

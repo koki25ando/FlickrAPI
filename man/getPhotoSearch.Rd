@@ -13,7 +13,7 @@ getPhotoSearch(
   sort = "date-posted",
   desc = FALSE,
   bbox = NULL,
-  img_size = "s",
+  img_size = NULL,
   extras = NULL,
   per_page = 100,
   page = 1,
@@ -28,7 +28,7 @@ get_photo_search(
   sort = "date-posted",
   desc = FALSE,
   bbox = NULL,
-  img_size = "s",
+  img_size = NULL,
   extras = NULL,
   per_page = 100,
   page = 1,
@@ -64,7 +64,8 @@ and the top-right corner.}
 \item{img_size}{A character string with the abbreviation for one or more
 image sizes ("sq", "t", "s", "q", "m", "n", "z", "c", "l", or "o"). If a
 single img_size is provided the url, width, and height columns are renamed
-(e.g. img_url instead of url_sq) and an img_asp column is added to the results.}
+(e.g. img_url instead of url_sq) and an img_asp column is added to the
+results; defaults to `NULL`.}
 
 \item{extras}{A vector of extra information to fetch for each returned
 record. Currently supported fields are: c("description", "license",
