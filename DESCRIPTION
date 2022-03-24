@@ -12,10 +12,11 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    glue,
     httr2,
     janitor,
     magrittr,
-    glue,
+    rlang,
     utils
 Suggests: 
     sf,

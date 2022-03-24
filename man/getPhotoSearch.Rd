@@ -10,12 +10,14 @@ getPhotoSearch(
   user_id = NULL,
   tags = NULL,
   license_id = NULL,
-  licence_id,
-  sort = "date-posted-asc",
+  sort = "date-posted",
+  desc = FALSE,
   bbox = NULL,
+  img_size = "s",
   extras = NULL,
   per_page = 100,
-  page = 1
+  page = 1,
+  ...
 )
 
 get_photo_search(
@@ -23,12 +25,14 @@ get_photo_search(
   user_id = NULL,
   tags = NULL,
   license_id = NULL,
-  licence_id,
-  sort = "date-posted-asc",
+  sort = "date-posted",
+  desc = FALSE,
   bbox = NULL,
+  img_size = "s",
   extras = NULL,
   per_page = 100,
-  page = 1
+  page = 1,
+  ...
 )
 }
 \arguments{
@@ -41,23 +45,26 @@ isn't passed then everybody's public photos will be searched.}
 
 \item{tags}{A vector of tags you wish to search for.}
 
-\item{license_id, licence_id}{The license id for photos (for possible values see the
-Flickr API method flickr.photos.licenses.getInfo). license_id can be an
-integer from 0 to 10 or a corresponding license code including "c" (All
-Rights Reserved), "by-bc-sa" (Attribution-NonCommercial-ShareAlike),
-"by-nc" (Attribution-NonCommercial), "by-nc-nd"
-(Attribution-NonCommercial-NoDerivs), "by" (Attribution), "by-sa"
-(Attribution-ShareAlike), "by-nd" (Attribution-NoDerivs), "nkc" (No known
-copyright restrictions), "pd-us" (United States Government Work), "cc0"
-(Public Domain Dedication), or "pd" (Public Domain Mark).}
+\item{license_id}{The license id for photos (for possible values see the
+Flickr API method flickr.photos.licenses.getInfo). See details for more information.}
 
 \item{sort}{Order to sort returned photos. The possible values are:
 "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
-"interestingness-desc", "interestingness-asc", and "relevance"}
+"interestingness-desc", "interestingness-asc", and "relevance" The trailing
+"-asc" or "-desc" indicator for sort direction is optional when using the
+desc parameter.}
+
+\item{desc}{If TRUE, sort in descending order by the selected sort variable;
+defaults to `FALSE`.}
 
 \item{bbox}{A object of class `bbox` or a numeric vector with values for
 xmin, ymin, xmax and ymax representing the bottom-left corner of the box
 and the top-right corner.}
+
+\item{img_size}{A character string with the abbreviation for one or more
+image sizes ("sq", "t", "s", "q", "m", "n", "z", "c", "l", or "o"). If a
+single img_size is provided the url, width, and height columns are renamed
+(e.g. img_url instead of url_sq) and an img_asp column is added to the results.}
 
 \item{extras}{A vector of extra information to fetch for each returned
 record. Currently supported fields are: c("description", "license",
@@ -72,6 +79,8 @@ otherwise.}
 
 \item{page}{Number specifying which search results page to return. Default is
 page 1 of results returned.}
+
+\item{...}{Additional parameters that can include licence_id (legacy spelling),}
 }
 \value{
 This function returns data of specific photos matching search
@@ -81,6 +90,24 @@ This function returns data of specific photos matching search
 Use the Flickr Search API to return pages of photos sorted by date posted,
 date taken, interestingness, and relevance. Optional search parameters
 including spatial bounding box, user id, tags, and image license.
+}
+\details{
+License id options:
+
+license_id can be an integer from 0 to 10 or a corresponding license code
+including:
+
+- "c" (All Rights Reserved),
+- "by-bc-sa" (Attribution-NonCommercial-ShareAlike),
+- "by-nc" (Attribution-NonCommercial),
+- "by-nc-nd" (Attribution-NonCommercial-NoDerivs),
+- "by" (Attribution),
+- "by-sa" (Attribution-ShareAlike),
+- "by-nd" (Attribution-NoDerivs),
+- "nkc" (No known copyright restrictions),
+- "pd-us" (United States Government Work),
+- "cc0" (Public Domain Dedication),
+- or "pd" (Public Domain Mark).
 }
 \examples{
 \dontrun{
