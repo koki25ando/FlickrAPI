@@ -16,7 +16,7 @@ getPhotoSearch(
   img_size = NULL,
   extras = NULL,
   per_page = 100,
-  page = 1,
+  page = NULL,
   ...
 )
 
@@ -31,7 +31,7 @@ get_photo_search(
   img_size = NULL,
   extras = NULL,
   per_page = 100,
-  page = 1,
+  page = NULL,
   ...
 )
 }
@@ -40,13 +40,13 @@ get_photo_search(
 [getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
-\item{user_id}{The NSID of the user who's photo to search. If this parameter
-isn't passed then everybody's public photos will be searched.}
+\item{user_id}{The NSID of the user with photos to search. If this parameter
+is NULL passed then all public photos will be searched.}
 
-\item{tags}{A vector of tags you wish to search for.}
+\item{tags}{A vector of tags to search for.}
 
-\item{license_id}{The license id for photos (for possible values see the
-Flickr API method flickr.photos.licenses.getInfo). See details for more information.}
+\item{license_id}{The license id for photos. For possible values see the
+Flickr API method flickr.photos.licenses.getInfo or see details for more information.}
 
 \item{sort}{Order to sort returned photos. The possible values are:
 "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
@@ -54,7 +54,7 @@ Flickr API method flickr.photos.licenses.getInfo). See details for more informat
 "-asc" or "-desc" indicator for sort direction is optional when using the
 desc parameter.}
 
-\item{desc}{If TRUE, sort in descending order by the selected sort variable;
+\item{desc}{If `TRUE`, sort in descending order by the selected sort variable;
 defaults to `FALSE`.}
 
 \item{bbox}{A object of class `bbox` or a numeric vector with values for

@@ -4,7 +4,7 @@
 #' date taken, interestingness, and relevance. Optional search parameters
 #' including spatial bounding box, user id, tags, and image license.
 #'
-#' @inheritParams FlickAPIRequest
+#' @inheritParams FlickrAPIRequest
 #' @param user_id The NSID of the user with photos to search. If this parameter
 #'   is NULL passed then all public photos will be searched.
 #' @param tags A vector of tags to search for.
@@ -165,7 +165,7 @@ getPhotoSearch <- function(api_key = NULL,
   }
 
   data <-
-    FlickAPIRequest(
+    FlickrAPIRequest(
       method = "flickr.photos.search",
       api_key = api_key,
       user_id = user_id,

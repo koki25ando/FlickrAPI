@@ -3,15 +3,47 @@
 \name{getPhotos}
 \alias{getPhotos}
 \alias{get_photos}
-\title{Get photos from a Flickr user photo stream.}
+\alias{getFavePhotos}
+\alias{get_fave_photos}
+\title{Get Flickr user photos or a user's favorite photos}
 \usage{
-getPhotos(user_id = NULL, extras = NULL, api_key = NULL, ...)
+getPhotos(user_id = NULL, img_size = "s", extras = NULL, api_key = NULL, ...)
 
-get_photos(user_id = NULL, extras = NULL, api_key = NULL, ...)
+get_photos(user_id = NULL, img_size = "s", extras = NULL, api_key = NULL, ...)
+
+getFavePhotos(
+  user_id = NULL,
+  img_size = "s",
+  extras = NULL,
+  fave_date = NULL,
+  public = TRUE,
+  api_key = NULL,
+  page = NULL,
+  per_page = 100,
+  ...
+)
+
+get_fave_photos(
+  user_id = NULL,
+  img_size = "s",
+  extras = NULL,
+  fave_date = NULL,
+  public = TRUE,
+  api_key = NULL,
+  page = NULL,
+  per_page = 100,
+  ...
+)
 }
 \arguments{
-\item{user_id}{The NSID of the user who's photos to return. A value of "me"
+\item{user_id}{The NSID of the user whose photos to return. A value of "me"
 return the calling user's photos.}
+
+\item{img_size}{A character string with the abbreviation for one or more
+image sizes ("sq", "t", "s", "q", "m", "n", "z", "c", "l", or "o"). If a
+single img_size is provided the url, width, and height columns are renamed
+(e.g. img_url instead of url_sq) and an img_asp column is added to the
+results; defaults to `NULL`.}
 
 \item{extras}{A vector of extra information to fetch for each returned
 record. Currently supported fields are: c("description", "license",
@@ -25,6 +57,18 @@ record. Currently supported fields are: c("description", "license",
 key.}
 
 \item{...}{Additional parameters passed to [getPhotoSearch]}
+
+\item{fave_date}{Length 1 or 2 vector with UNIX formatted date (may include minimum and maximum favorite date).}
+
+\item{public}{If `TRUE`, get public favorites (no authentication needed). If
+`FALSE`, get all favorite (requires authentication for access).}
+
+\item{page}{Number specifying which search results page to return. Default is
+page 1 of results returned.}
+
+\item{per_page}{Number specifying how many results per page to return.
+Default 100 results per page. Maximum of 250 if `bbox` provided or 500
+otherwise.}
 }
 \value{
 This function returns a \code{data.frame} including columns:
@@ -43,6 +87,11 @@ This function returns a \code{data.frame} including columns:
 \description{
 Returns photos from the given user's photo stream. Only photos visible to the
 calling user will be returned.
+}
+\details{
+For `getFavePhotos` the provided user_id may need to be the NSID code or the
+user name rather than the typical user id due to some inconsistencies in the
+Flickr API.
 }
 \examples{
 \dontrun{

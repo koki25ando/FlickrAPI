@@ -5,7 +5,7 @@ utils::globalVariables(c("img_height", "img_width"))
 #' @noRd
 getUserNSID <- function(user_id,
                         api_key = NULL) {
-  FlickAPIRequest(
+  FlickrAPIRequest(
     method = "flickr.people.findByUsername",
     username = user_id,
     api_key = api_key

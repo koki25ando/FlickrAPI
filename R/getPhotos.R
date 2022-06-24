@@ -102,7 +102,7 @@ getFavePhotos <- function(user_id = NULL,
   }
 
   data <-
-    FlickAPIRequest(
+    FlickrAPIRequest(
       method = method,
       api_key = api_key,
       user_id = user_id,
