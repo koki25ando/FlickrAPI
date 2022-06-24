@@ -148,7 +148,7 @@ getPhotoSearch <- function(api_key = NULL,
   }
 
   if (!is.null(extras)) {
-  extras <- getPhotoExtras(extras, geo = params$geo, img_size = img_size)
+    extras <- getPhotoExtras(extras, geo = params$geo, img_size = img_size)
   }
 
   if (!is.null(bbox)) {

@@ -61,15 +61,14 @@ get_photos <- getPhotos
 #'   `FALSE`, get all favorite (requires authentication for access).
 #' @export
 getFavePhotos <- function(user_id = NULL,
-                         img_size = "s",
-                         extras = NULL,
-                         fave_date = NULL,
-                         public = TRUE,
-                         api_key = NULL,
-                         page = NULL,
-                         per_page = 100,
-                         ...) {
-
+                          img_size = "s",
+                          extras = NULL,
+                          fave_date = NULL,
+                          public = TRUE,
+                          api_key = NULL,
+                          page = NULL,
+                          per_page = 100,
+                          ...) {
   if (!is.null(user_id) && !grepl("@", user_id)) {
     user_id <- getUserNSID(user_id)
   }
