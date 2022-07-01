@@ -10,7 +10,6 @@ Description: Provides an interface to the Flickr API <https://www.flickr.com/ser
 Depends: R (>= 3.1)
 License: GPL (>= 3)
 Encoding: UTF-8
-LazyData: true
 Imports: 
     httr2,
     janitor,
