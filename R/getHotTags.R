@@ -1,6 +1,6 @@
 #' Get a data frame of hot tags for a given time period.
 #'
-#' @inheritParams FlickAPIRequest
+#' @inheritParams FlickrAPIRequest
 #' @param period The period for which to fetch hot tags. Valid values are day or
 #'   week. Defaults to day
 #' @param count The number of tags to return. Defaults to 20. Maximum allowed
@@ -25,7 +25,7 @@ getHotTags <- function(api_key = NULL,
   period <- match.arg(period)
 
   data <-
-    FlickAPIRequest(
+    FlickrAPIRequest(
       method = "flickr.tags.getHotList",
       api_key = api_key,
       period = period,

@@ -2,7 +2,7 @@
 #'
 #' R access to photo information of photos posted on Flickr via Flickr API.
 #'
-#' @inheritParams FlickAPIRequest
+#' @inheritParams FlickrAPIRequest
 #' @param photo_id The id of the photo to get information for.
 #' @param output Output data type. Supported options include "all", "location",
 #'   "date", "url" or "tags". If output = "all", the function returns a list
@@ -27,7 +27,7 @@ getPhotoInfo <- function(api_key = NULL,
                          photo_id,
                          output = c("location", "date", "url", "tags")) {
   data <-
-    FlickAPIRequest(
+    FlickrAPIRequest(
       method = "flickr.photos.getInfo",
       api_key = api_key,
       photo_id = photo_id

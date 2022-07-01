@@ -4,18 +4,18 @@
 #' date taken, interestingness, and relevance. Optional search parameters
 #' including spatial bounding box, user id, tags, and image license.
 #'
-#' @inheritParams FlickAPIRequest
-#' @param user_id The NSID of the user who's photo to search. If this parameter
-#'   isn't passed then everybody's public photos will be searched.
-#' @param tags A vector of tags you wish to search for.
-#' @param license_id The license id for photos (for possible values see the
-#'   Flickr API method flickr.photos.licenses.getInfo). See details for more information.
+#' @inheritParams FlickrAPIRequest
+#' @param user_id The NSID of the user with photos to search. If this parameter
+#'   is NULL passed then all public photos will be searched.
+#' @param tags A vector of tags to search for.
+#' @param license_id The license id for photos. For possible values see the
+#'   Flickr API method flickr.photos.licenses.getInfo or see details for more information.
 #' @param sort Order to sort returned photos. The possible values are:
 #'   "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
 #'   "interestingness-desc", "interestingness-asc", and "relevance" The trailing
 #'   "-asc" or "-desc" indicator for sort direction is optional when using the
 #'   desc parameter.
-#' @param desc If TRUE, sort in descending order by the selected sort variable;
+#' @param desc If `TRUE`, sort in descending order by the selected sort variable;
 #'   defaults to `FALSE`.
 #' @param bbox A object of class `bbox` or a numeric vector with values for
 #'   xmin, ymin, xmax and ymax representing the bottom-left corner of the box
@@ -98,15 +98,20 @@ getPhotoSearch <- function(api_key = NULL,
                            img_size = NULL,
                            extras = NULL,
                            per_page = 100,
-                           page = 1,
+                           page = NULL,
                            ...) {
   params <- rlang::list2(...)
 
   if (!is.null(params$licence_id)) {
-    license_id <- licence_id
+    license_id <- params$licence_id
   }
 
   if (!is.null(license_id)) {
+    stopifnot(
+      "The `license_id` argument must be a documented license id or an integer from 0 to 10." =
+        is.character(license_id) | (license_id %in% c(0:10))
+    )
+
     if (is.character(license_id)) {
       license_id <- switch(license_id,
         "c" = 0,
@@ -121,99 +126,64 @@ getPhotoSearch <- function(api_key = NULL,
         "cc0" = 9,
         "pd" = 10
       )
-    } else if (!(license_id %in% c(0:10))) {
-      stop("The license id provided is not valid. The license id must be an integer from 0 to 10.")
     }
   }
 
-  if (!is.null(sort)) {
+  if (!is.null(sort) && (sort != "relevance")) {
+    sort_opts <- c("date-posted", "date-taken", "interestingness")
+
+    dir <- c("-asc", "-desc")
+
     if (!grepl("-desc$|-asc$", sort)) {
       if (desc) {
-        dir <- "-desc"
+        dir <- dir[[2]]
       } else {
-        dir <- "-asc"
+        dir <- dir[[1]]
       }
 
-      sort <-
-        match.arg(sort, c(paste0(c("date-posted", "date-taken", "interestingness"), dir), "relevance"))
-    } else {
-      sort <- match.arg(sort, c("date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc", "interestingness-desc", "interestingness-asc", "relevance"))
+      sort <- paste0(sort, dir)
     }
+
+    sort <- match.arg(sort, paste0(sort_opts, rep(dir, 3)))
   }
 
   if (!is.null(extras)) {
-    extra_fields <- c("description", "license", "date_upload", "date_taken", "owner_name", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "url_sq", "url_t", "url_s", "url_q", "url_m", "url_n", "url_z", "url_c", "url_l", "url_o")
-
-    # Check if all elements of extras are valid extra fields
-    extras <- match.arg(extras, extra_fields, several.ok = TRUE)
-  }
-
-  if (!is.null(params$geo) && params$geo) {
-    # Always include geo in the extras if geo is TRUE
-    extras <- unique(c(extras, "geo"))
-  }
-
-  # Add url of select size to extras if img_size is provided
-  if (!is.null(img_size)) {
-    img_size <-
-      match.arg(
-        params$img_size,
-        c("sq", "t", "s", "q", "m", "n", "z", "c", "l", "o"),
-        several.ok = TRUE
-      )
-
-    extras <-
-      unique(c(extras, paste0("url_", img_size)))
+    extras <- getPhotoExtras(extras, geo = params$geo, img_size = img_size)
   }
 
   if (!is.null(bbox)) {
-    if (("bbox" %in% class(bbox)) || ((length(bbox) == 4) && is.numeric(bbox))) {
-      bbox <- paste0(bbox, collapse = ",")
-    } else {
-      stop("The bbox provided is not valid. The bbox must be an object of class 'bbox' or a numeric vector with xmin, ymin, xmax and ymax values.")
-    }
+    stopifnot(
+      "The `bbox` argument must be a 'bbox' class object or a numeric vector with xmin, ymin, xmax and ymax values." =
+        (("bbox" %in% class(bbox)) || ((length(bbox) == 4) && is.numeric(bbox)))
+    )
+
+    bbox <- paste0(bbox, collapse = ",")
+  }
+
+  if (!is.null(tags)) {
+    tags <- paste(unique(tags), collapse = ",")
   }
 
   data <-
-    FlickAPIRequest(
+    FlickrAPIRequest(
       method = "flickr.photos.search",
       api_key = api_key,
       user_id = user_id,
-      tags = paste(tags, collapse = ","),
+      tags = tags,
       per_page = per_page,
       page = page,
       bbox = bbox,
       license = license_id,
       sort = sort,
-      extras = paste0(extras, collapse = ",")
+      extras = extras
     )
 
-  data <- as.data.frame(data$photos$photo)
-
-  if (!is.null(img_size) && (length(img_size) == 1)) {
-    url_col <- paste0("url_", img_size)
-    width_col <- paste0("width_", img_size)
-    height_col <- paste0("height_", img_size)
-
-    names(data)[names(data) == url_col] <- "img_url"
-    names(data)[names(data) == width_col] <- "img_width"
-    names(data)[names(data) == height_col] <- "img_height"
-
-    data <-
-      within(data, {
-        img_asp <- img_width / img_height
-      })
-  }
-
-  return(data)
+  getPhotoData(
+    data = data[["photos"]][["photo"]],
+    img_size = img_size
+  )
 }
-
-
 
 #' @export
 #' @rdname getPhotoSearch
 get_photo_search <- getPhotoSearch
-
-
-utils::globalVariables(c("img_height", "img_width", "licence_id"))
-
