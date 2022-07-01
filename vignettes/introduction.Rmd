@@ -19,13 +19,13 @@ This vignette provides a quick tour of the R package "FlickrAPI". This package i
 # Installation
 
 ```{r setup}
-# devtools::install_github("koki25ando/FlickrAPI")
+# pak::pkg_install("koki25ando/FlickrAPI")
 library(FlickrAPI)
 ```
 
 # Setting up a Flickr API key
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 # Set the API key for a single session
 setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE")
 
@@ -45,11 +45,9 @@ There are two functions for searching Flickr photos:
 
 `getPhotos()` allows you to get public photos for any Flickr user or all photos from the account associated with the Flickr API key.
 
-```{r}
+```{r, eval = FALSE}
 # Search for photos uploaded by Koki Ando
-user_photos <- getPhotos(user_id = "141696738@N08") 
-
-knitr::kable(user_photos[1:4,])
+getPhotos(user_id = "141696738@N08")
 ```
 
 `getPhotoSearch()` supports a broader range of search options including:
@@ -59,36 +57,30 @@ knitr::kable(user_photos[1:4,])
 - License
 - Bounding box (for photos with locations)
 
-```{r}
-photo_search <- getPhotoSearch(tags = c("cats","dogs"))
-
-knitr::kable(photo_search[1:4,])
+```{r, eval = FALSE}
+getPhotoSearch(tags = c("cats","dogs"))
 ```
 
-```{r}
+```{r, eval = FALSE}
 # Search for photos of cats and dogs in North Carolina
 nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"))
 nc_bbox <- sf::st_bbox(nc)
 
-bbox_search <- getPhotoSearch(tags = c("cats","dogs"), bbox = nc_bbox) 
-
-knitr::kable(bbox_search[1:4,])
+getPhotoSearch(tags = c("cats","dogs"), bbox = nc_bbox)
 ```
 
 `getPhotoSearch()` returns 100 photos per page by default but this can be increased to 250 if using the bbox parameter searching by location or 500 otherwise. Additional pages can be accessed using the page parameter.
 
 The extras parameter can be used to return additional information about the photos including "description", "date_upload", "date_taken", "owner_name", and urls for all available image sizes.
 
-```{r}
+```{r, eval = FALSE}
 # Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan
-photo_search_extras <-
-  getPhotoSearch(
+getPhotoSearch(
   tags = "panda",
   bbox = c(139.7682226529, 35.712627977, 139.7724605432, 35.7181464141),
   sort = "interestingness-desc",
   extras = c("geo", "tags")
 )
-knitr::kable(photo_search_extras[1:4,])
 ```
 
 
@@ -101,18 +93,14 @@ There are two functions for getting data about a specific Flickr photo:
 
 ## Get Flickr data for a photo
 
-```{r}
-photo_info <- getPhotoInfo(photo_id="51899696261", 
+```{r, eval = FALSE}
+getPhotoInfo(photo_id="51899696261", 
              output = "url")
-
-knitr::kable(photo_info)
 ```
 
 ## Get EXIF metadata for a photo
 
-```{r }
-photo_exif <- getExif(photo_id="51872765082")
-
-knitr::kable(photo_exif[1:4,])
+```{r, eval = FALSE }
+getExif(photo_id="51872765082")
 ```
 
