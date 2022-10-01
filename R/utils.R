@@ -1,4 +1,7 @@
-utils::globalVariables(c("img_height", "img_width"))
+utils::globalVariables(c(
+  "img_height", "img_width", "img_asp",
+  "min_fave_date", "max_fave_date"
+))
 
 #' Get Flickr user NSID
 #'
@@ -15,7 +18,10 @@ getUserNSID <- function(user_id,
 #' Get Flickr extras to return
 #'
 #' @noRd
-getPhotoExtras <- function(extras, geo = NULL, img_size = NULL, fields = NULL) {
+getPhotoExtras <- function(extras,
+                           geo = NULL,
+                           img_size = NULL,
+                           fields = NULL) {
   if (!is.null(geo) && geo) {
     # Always include geo in the extras if geo is TRUE
     extras <- c(extras, "geo")
@@ -37,16 +43,19 @@ getPhotoExtras <- function(extras, geo = NULL, img_size = NULL, fields = NULL) {
     fields <-
       c(
         "description", "license", "date_upload", "date_taken", "owner_name",
-        "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags",
-        "o_dims", "views", "media", "path_alias", "url_sq", "url_t", "url_s", "url_q",
-        "url_m", "url_n", "url_z", "url_c", "url_l", "url_o"
+        "icon_server", "original_format", "last_update", "geo", "tags",
+        "machine_tags", "o_dims", "views", "media", "path_alias",
+        "url_sq", "url_t", "url_s", "url_q", "url_m",
+        "url_n", "url_z", "url_c", "url_l", "url_o"
       )
   }
+
+  extras <- unique(tolower(extras))
 
   # Check if all elements of extras are valid extra fields
   extras <- match.arg(extras, fields, several.ok = TRUE)
 
-  paste0(unique(extras), collapse = ",")
+  paste0(extras, collapse = ",")
 }
 
 
@@ -62,7 +71,7 @@ getPhotoData <- function(data,
     return(data)
   }
 
-  if (!is.null(img_size) && (length(img_size) > 1)) {
+  if (!is.null(img_size) && (length(img_size) == 1)) {
     names(data)[names(data) == paste0("url_", img_size)] <- "img_url"
     names(data)[names(data) == paste0("width_", img_size)] <- "img_width"
     names(data)[names(data) == paste0("height_", img_size)] <- "img_height"
