@@ -43,7 +43,7 @@ return the calling user's photos.}
 image sizes ("sq", "t", "s", "q", "m", "n", "z", "c", "l", or "o"). If a
 single img_size is provided the url, width, and height columns are renamed
 (e.g. img_url instead of url_sq) and an img_asp column is added to the
-results; defaults to `NULL`.}
+results; defaults to \code{NULL}.}
 
 \item{extras}{A vector of extra information to fetch for each returned
 record. Currently supported fields are: c("description", "license",
@@ -52,36 +52,37 @@ record. Currently supported fields are: c("description", "license",
 "views", "media", "path_alias", "url_sq", "url_t", "url_s", "url_q",
 "url_m", "url_n", "url_z", "url_c", "url_l", "url_o")}
 
-\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
-[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+\item{api_key}{Flickr API key. If api_key is \code{NULL}, the function uses
+\code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}} to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
-\item{...}{Additional parameters passed to [getPhotoSearch]}
+\item{...}{Additional parameters passed to \link{getPhotoSearch}}
 
-\item{fave_date}{Length 1 or 2 vector with UNIX formatted date (may include minimum and maximum favorite date).}
+\item{fave_date}{Length 1 or 2 vector with UNIX formatted date (may include
+minimum and maximum favorite date).}
 
-\item{public}{If `TRUE`, get public favorites (no authentication needed). If
-`FALSE`, get all favorite (requires authentication for access).}
+\item{public}{If \code{TRUE}, get public favorites (no authentication needed). If
+\code{FALSE}, get all favorite (requires authentication for access).}
 
 \item{page}{Number specifying which search results page to return. Default is
 page 1 of results returned.}
 
 \item{per_page}{Number specifying how many results per page to return.
-Default 100 results per page. Maximum of 250 if `bbox` provided or 500
+Default 100 results per page. Maximum of 250 if \code{bbox} provided or 500
 otherwise.}
 }
 \value{
 This function returns a \code{data.frame} including columns:
 \itemize{
- \item id
- \item owner
- \item secret
- \item server
- \item farm
- \item title
- \item ispublic
- \item isfriend
- \item isfamily
+\item id
+\item owner
+\item secret
+\item server
+\item farm
+\item title
+\item ispublic
+\item isfriend
+\item isfamily
 }
 }
 \description{
@@ -89,12 +90,15 @@ Returns photos from the given user's photo stream. Only photos visible to the
 calling user will be returned.
 }
 \details{
-For `getFavePhotos` the provided user_id may need to be the NSID code or the
+For \code{getFavePhotos} the provided user_id may need to be the NSID code or the
 user name rather than the typical user id due to some inconsistencies in the
 Flickr API.
 }
 \examples{
 \dontrun{
-getPhotos(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user_id = "141696738@N08")
+getPhotos(
+  api_key = get_flickr_api_key(),
+  user_id = "141696738@N08"
+)
 }
 }

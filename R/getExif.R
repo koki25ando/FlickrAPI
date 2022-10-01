@@ -11,7 +11,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' getExif(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id = "45961963324")
+#' getExif(
+#' api_key = get_flickr_api_key(),
+#' photo_id = "45961963324"
+#' )
 #' }
 #'
 #' @export
@@ -24,7 +27,7 @@ getExif <- function(api_key = NULL,
       photo_id = photo_id
     )
 
-  return(as.data.frame(data$photo$exif))
+  as.data.frame(data$photo$exif)
 }
 
 #' @export

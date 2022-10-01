@@ -6,17 +6,18 @@
 #'
 #' @inheritParams FlickrAPIRequest
 #' @param user_id The NSID of the user with photos to search. If this parameter
-#'   is NULL passed then all public photos will be searched.
+#'   is `NULL` passed then all public photos will be searched.
 #' @param tags A vector of tags to search for.
 #' @param license_id The license id for photos. For possible values see the
-#'   Flickr API method flickr.photos.licenses.getInfo or see details for more information.
+#'   Flickr API method flickr.photos.licenses.getInfo or see details for more
+#'   information.
 #' @param sort Order to sort returned photos. The possible values are:
 #'   "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
 #'   "interestingness-desc", "interestingness-asc", and "relevance" The trailing
 #'   "-asc" or "-desc" indicator for sort direction is optional when using the
 #'   desc parameter.
-#' @param desc If `TRUE`, sort in descending order by the selected sort variable;
-#'   defaults to `FALSE`.
+#' @param desc If `TRUE`, sort in descending order by the selected sort
+#'   variable; defaults to `FALSE`.
 #' @param bbox A object of class `bbox` or a numeric vector with values for
 #'   xmin, ymin, xmax and ymax representing the bottom-left corner of the box
 #'   and the top-right corner.
@@ -36,7 +37,8 @@
 #'   otherwise.
 #' @param page Number specifying which search results page to return. Default is
 #'   page 1 of results returned.
-#' @param ... Additional parameters that can include licence_id (legacy spelling),
+#' @param ... Additional parameters that can include licence_id (legacy
+#'   spelling),
 #' @return This function returns data of specific photos matching search
 #'   parameters.
 #'
@@ -62,7 +64,7 @@
 #' # Search for photos tagged "cats" and "dogs"
 #' # Return images in descending order of date taken
 #' getPhotoSearch(
-#'   api_key = "XXXXXXXXXX",
+#'   api_key = get_flickr_api_key(),
 #'   sort = "date-taken-desc",
 #'   tags = c("cats", "dogs")
 #' )
@@ -71,7 +73,7 @@
 #' # Search for photos uploaded to the NPS Grand Canyon user account.
 #' # Return extra fields including the date taken and square image URL.
 #' getPhotoSearch(
-#'   api_key = "XXXXXXXXXX",
+#'   api_key = get_flickr_api_key(),
 #'   user_id = "grand_canyon_nps",
 #'   extras = c("date_taken", "url_sq")
 #' )
@@ -79,7 +81,7 @@
 #' \dontrun{
 #' # Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan
 #' getPhotoSearch(
-#'   api_key = "XXXXXXXXXX",
+#'   api_key = get_flickr_api_key(),
 #'   tags = "panda",
 #'   bbox = c(139.7682226529, 35.712627977, 139.7724605432, 35.7181464141),
 #'   extras = c("geo", "owner_name", "tags")
@@ -107,26 +109,36 @@ getPhotoSearch <- function(api_key = NULL,
   }
 
   if (!is.null(license_id)) {
-    stopifnot(
-      "The `license_id` argument must be a documented license id or an integer from 0 to 10." =
-        is.character(license_id) | (license_id %in% c(0:10))
-    )
-
     if (is.character(license_id)) {
-      license_id <- switch(license_id,
-        "c" = 0,
-        "by-bc-sa" = 1,
-        "by-nc" = 2,
-        "by-nc-nd" = 3,
-        "by" = 4,
-        "by-sa" = 5,
-        "by-nd" = 6,
-        "nkc" = 7,
-        "pd-us" = 8,
-        "cc0" = 9,
-        "pd" = 10
-      )
+      license_id <-
+        match.arg(
+          tolower(license_id),
+          c(
+            "c", "by-bc-sa", "by-nc", "by-nc-nd", "by",
+            "by-sa", "by-nd", "nkc", "pd-us", "cc0", "pd"
+          )
+        )
+
+      license_id <-
+        switch(license_id,
+          "c" = 0,
+          "by-bc-sa" = 1,
+          "by-nc" = 2,
+          "by-nc-nd" = 3,
+          "by" = 4,
+          "by-sa" = 5,
+          "by-nd" = 6,
+          "nkc" = 7,
+          "pd-us" = 8,
+          "cc0" = 9,
+          "pd" = 10
+        )
     }
+
+    stopifnot(
+      "The `license_id` argument must be a documented license id or an integer
+      from 0 to 10." = license_id %in% c(0:10)
+    )
   }
 
   if (!is.null(sort) && (sort != "relevance")) {
@@ -153,7 +165,8 @@ getPhotoSearch <- function(api_key = NULL,
 
   if (!is.null(bbox)) {
     stopifnot(
-      "The `bbox` argument must be a 'bbox' class object or a numeric vector with xmin, ymin, xmax and ymax values." =
+      "The `bbox` argument must be a 'bbox' class object or a numeric vector
+      with xmin, ymin, xmax and ymax values." =
         (("bbox" %in% class(bbox)) || ((length(bbox) == 4) && is.numeric(bbox)))
     )
 

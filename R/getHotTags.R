@@ -6,15 +6,17 @@
 #' @param count The number of tags to return. Defaults to 20. Maximum allowed
 #'   value is 200.
 #'
-#' @seealso \url{https://www.flickr.com/services/api/flickr.tags.getHotList.html}
+#' @seealso
+#' \url{https://www.flickr.com/services/api/flickr.tags.getHotList.html}
 #'
 #' @return This function a data frame of hot tags for the given period
 #'
 #' @examples
 #' \dontrun{
 #' getHotTags(
-#'   api_key = "*********",
-#'   period = "day", count = 20
+#'   api_key = get_flickr_api_key(),
+#'   period = "day",
+#'   count = 20
 #' )
 #' }
 #'
@@ -34,7 +36,7 @@ getHotTags <- function(api_key = NULL,
 
   hot_tags_df <- data$hottags$tag
   names(hot_tags_df)[2] <- "tag"
-  return(hot_tags_df)
+  hot_tags_df
 }
 
 #' @export

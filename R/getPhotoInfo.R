@@ -5,7 +5,7 @@
 #' @inheritParams FlickrAPIRequest
 #' @param photo_id The id of the photo to get information for.
 #' @param output Output data type. Supported options include "all", "location",
-#'   "date", "url" or "tags". If output = "all", the function returns a list
+#'   "date", "url" or "tags". If `output = "all"`, the function returns a list
 #'   with all available data. Otherwise the function returns a data frame.
 #'
 #' @seealso \url{https://www.flickr.com/services/api/flickr.photos.getInfo.html}
@@ -15,7 +15,7 @@
 #' @examples
 #' \dontrun{
 #' getPhotoInfo(
-#'   api_key = "XXXXXXXXXX",
+#'   api_key = get_flickr_api_key(),
 #'   photo_id = "30484882493",
 #'   output = "location"
 #' )
@@ -33,17 +33,19 @@ getPhotoInfo <- function(api_key = NULL,
       photo_id = photo_id
     )
 
-  output <- match.arg(tolower(output), c("all", "location", "date", "url", "tags"))
+  output <-
+    match.arg(
+      tolower(output),
+      c("all", "location", "date", "url", "tags")
+    )
 
-  output_data <- switch(output,
+  switch(output,
     "all" = data$photo,
     "location" = janitor::clean_names(as.data.frame(data$photo$location)),
     "data" = janitor::clean_names(as.data.frame(data$photo$dates)),
     "url" = janitor::clean_names(as.data.frame(data$photo$urls$url)),
     "tags" = janitor::clean_names(as.data.frame(data$photo$tags$tag))
   )
-
-  return(output_data)
 }
 
 #' @export

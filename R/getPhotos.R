@@ -27,7 +27,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' getPhotos(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user_id = "141696738@N08")
+#' getPhotos(
+#'   api_key = get_flickr_api_key(),
+#'   user_id = "141696738@N08"
+#' )
 #' }
 #' @name getPhotos
 #' @export
@@ -36,16 +39,13 @@ getPhotos <- function(user_id = NULL,
                       extras = NULL,
                       api_key = NULL,
                       ...) {
-  data <-
-    getPhotoSearch(
-      user_id = user_id,
-      img_size = img_size,
-      extras = extras,
-      api_key = api_key,
-      ...
-    )
-
-  return(data)
+  getPhotoSearch(
+    user_id = user_id,
+    img_size = img_size,
+    extras = extras,
+    api_key = api_key,
+    ...
+  )
 }
 
 #' @name get_photos
@@ -56,7 +56,8 @@ get_photos <- getPhotos
 
 #' @name getFavePhotos
 #' @rdname getPhotos
-#' @param fave_date Length 1 or 2 vector with UNIX formatted date (may include minimum and maximum favorite date).
+#' @param fave_date Length 1 or 2 vector with UNIX formatted date (may include
+#'   minimum and maximum favorite date).
 #' @param public If `TRUE`, get public favorites (no authentication needed). If
 #'   `FALSE`, get all favorite (requires authentication for access).
 #' @export

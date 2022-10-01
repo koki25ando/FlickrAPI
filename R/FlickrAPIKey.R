@@ -13,7 +13,8 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE) {
   if (is.character(api_key)) {
     type <- "FLICKR_API_KEY"
   } else {
-    stop("Your supplied Flickr API key appears to be invalid. Check your Flickr account for details.")
+    stop("Your supplied Flickr API key appears to be invalid.
+         Check your Flickr account for details.")
   }
 
   if (install) {
@@ -27,7 +28,8 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE) {
       file.create(renv)
     } else {
       if (isTRUE(overwrite)) {
-        message("Your original .Renviron will be backed up and stored in your R HOME directory if needed.")
+        message("Your original .Renviron will be backed up and
+                stored in your R HOME directory if needed.")
         oldenv <- read.table(renv, stringsAsFactors = FALSE)
         newenv <- oldenv[-grep(type, oldenv), ]
         write.table(newenv, renv,
@@ -37,7 +39,8 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE) {
       } else {
         tv <- readLines(renv)
         if (any(grepl(type, tv))) {
-          stop(sprintf("A %s already exists. You can overwrite it with the argument overwrite=TRUE", type), call. = FALSE)
+          stop(sprintf("A %s already exists. You can overwrite it with the
+                       argument `overwrite = TRUE`", type), call. = FALSE)
         }
       }
     }
@@ -45,10 +48,13 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE) {
     api_keyconcat <- paste0(sprintf("%s='", type), api_key, "'")
     # Append access token to .Renviron file
     write(api_keyconcat, renv, sep = "\n", append = TRUE)
-    message(sprintf('Your API key has been stored in your .Renviron and can be accessed by Sys.getenv("%s"). \nTo use now, restart R or run `readRenviron("~/.Renviron")`', type))
+    message(sprintf('Your API key has been stored in your .Renviron and can be
+                    accessed by Sys.getenv("%s").\nTo use now, restart R or
+                    run `readRenviron("~/.Renviron")`', type))
     return(api_key)
   } else {
-    message("To install your API key for use in future sessions, run this function with `install = TRUE`.")
+    message("To install your API key for use in future sessions, run this
+            function with `install = TRUE`.")
     Sys.setenv(type = api_key)
   }
 }
@@ -70,11 +76,15 @@ getFlickrAPIKey <- function(api_key = NULL) {
     if (Sys.getenv("FLICKR_API_KEY") != "") {
       api_key <- Sys.getenv("FLICKR_API_KEY")
     } else {
-      stop("A Flickr API key is required. Please create a key at your Flickr account: <https://www.flickr.com/services/api/misc.api_keys.html>", call. = FALSE)
+      stop(
+        "A Flickr API key is required. Please create a key at your Flickr account:
+      <https://www.flickr.com/services/api/misc.api_keys.html>",
+        call. = FALSE
+      )
     }
   }
 
-  return(api_key)
+  api_key
 }
 
 #' @export

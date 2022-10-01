@@ -18,14 +18,14 @@ get_photo_info(
 )
 }
 \arguments{
-\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
-[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+\item{api_key}{Flickr API key. If api_key is \code{NULL}, the function uses
+\code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}} to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
 \item{photo_id}{The id of the photo to get information for.}
 
 \item{output}{Output data type. Supported options include "all", "location",
-"date", "url" or "tags". If output = "all", the function returns a list
+"date", "url" or "tags". If \code{output = "all"}, the function returns a list
 with all available data. Otherwise the function returns a data frame.}
 }
 \value{
@@ -37,7 +37,7 @@ R access to photo information of photos posted on Flickr via Flickr API.
 \examples{
 \dontrun{
 getPhotoInfo(
-  api_key = "XXXXXXXXXX",
+  api_key = get_flickr_api_key(),
   photo_id = "30484882493",
   output = "location"
 )

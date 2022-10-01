@@ -42,19 +42,19 @@ You can get photos from any individual user using the `getPhotos()` function.
 library(FlickrAPI)
 
 photos <- getPhotos(user_id = "grand_canyon_nps")
-knitr::kable(photos[1,])
+knitr::kable(photos[1, ])
 ```
 
 For more information about any individual image, you can use `getPhotoInfo()` or the `getExif()` function.
 
 ```{r}
 photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")
-knitr::kable(photo_info[c(1:2),])
+knitr::kable(photo_info[c(1:2), ])
 ```
 
 ```{r}
 photo_exif <- getExif(photo_id = photos$id[10])
-knitr::kable(photo_exif[1,])
+knitr::kable(photo_exif[1, ])
 ```
 
 You can also search photos by tag and license.
@@ -63,9 +63,10 @@ You can also search photos by tag and license.
 photo_search <- getPhotoSearch(
   sort = "date-taken-desc",
   tags = c("cats", "dogs"),
-  per_page = 50)
+  per_page = 50
+)
 
-knitr::kable(photo_search[1,])
+knitr::kable(photo_search[1, ])
 ```
 
 

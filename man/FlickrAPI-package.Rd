@@ -6,9 +6,10 @@
 \alias{FlickrAPI-package}
 \title{FlickrAPI: Access to Flickr API via R}
 \description{
-An R package that provides an interface to the Flickr API <https://www.flickr.com/services/api/>,
-which allows R users to download publicly available data on Flickr feed such as location, exif,
-list of photos posted by specific user.
+An R package that provides an interface to the Flickr API
+\url{https://www.flickr.com/services/api/}, which allows R users to download
+publicly available data on Flickr feed such as location, EXIF, list of photos
+posted by specific user.
 }
 \seealso{
 \url{https://www.flickr.com/services/api/}
