@@ -83,7 +83,7 @@ otherwise.}
 page 1 of results returned.}
 
 \item{...}{Additional parameters that can include licence_id (legacy
-spelling),}
+spelling) or geo (set \code{geo = TRUE} to include "geo" in extras).}
 }
 \value{
 This function returns data of specific photos matching search

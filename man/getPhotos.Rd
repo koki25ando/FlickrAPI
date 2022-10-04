@@ -56,7 +56,24 @@ record. Currently supported fields are: c("description", "license",
 \code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}} to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
-\item{...}{Additional parameters passed to \link{getPhotoSearch}}
+\item{...}{
+  Arguments passed on to \code{\link[=getPhotoSearch]{getPhotoSearch}}
+  \describe{
+    \item{\code{tags}}{A vector of tags to search for.}
+    \item{\code{license_id}}{The license id for photos. For possible values see the
+Flickr API method flickr.photos.licenses.getInfo or see details for more
+information.}
+    \item{\code{sort}}{Order to sort returned photos. The possible values are:
+"date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
+"interestingness-desc", "interestingness-asc", and "relevance" The trailing
+"-asc" or "-desc" indicator for sort direction is optional when using the
+desc parameter.}
+    \item{\code{desc}}{If \code{TRUE}, sort in descending order by the selected sort
+variable; defaults to \code{FALSE}.}
+    \item{\code{bbox}}{A object of class \code{bbox} or a numeric vector with values for
+xmin, ymin, xmax and ymax representing the bottom-left corner of the box
+and the top-right corner.}
+  }}
 
 \item{fave_date}{Length 1 or 2 vector with UNIX formatted date (may include
 minimum and maximum favorite date).}

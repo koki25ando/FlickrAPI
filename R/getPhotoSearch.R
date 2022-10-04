@@ -38,7 +38,7 @@
 #' @param page Number specifying which search results page to return. Default is
 #'   page 1 of results returned.
 #' @param ... Additional parameters that can include licence_id (legacy
-#'   spelling),
+#'   spelling) or geo (set `geo = TRUE` to include "geo" in extras).
 #' @return This function returns data of specific photos matching search
 #'   parameters.
 #'
@@ -88,7 +88,7 @@
 #' )
 #' }
 #' @export
-#' @importFrom rlang list2
+#' @importFrom rlang list2 abort
 
 getPhotoSearch <- function(api_key = NULL,
                            user_id = NULL,
@@ -135,10 +135,11 @@ getPhotoSearch <- function(api_key = NULL,
         )
     }
 
-    stopifnot(
-      "The `license_id` argument must be a documented license id or an integer
-      from 0 to 10." = license_id %in% c(0:10)
-    )
+    if (!(license_id %in% c(0:10))) {
+      rlang::abort(
+        "The `license_id` argument must be a documented license id or an integer from 0 to 10."
+      )
+    }
   }
 
   if (!is.null(sort) && (sort != "relevance")) {
@@ -159,16 +160,19 @@ getPhotoSearch <- function(api_key = NULL,
     sort <- match.arg(sort, paste0(sort_opts, rep(dir, 3)))
   }
 
-  if (!is.null(extras)) {
+  if (!is.null(extras) | !is.null(params$geo) | !is.null(img_size)) {
     extras <- getPhotoExtras(extras, geo = params$geo, img_size = img_size)
   }
 
   if (!is.null(bbox)) {
-    stopifnot(
-      "The `bbox` argument must be a 'bbox' class object or a numeric vector
-      with xmin, ymin, xmax and ymax values." =
-        (("bbox" %in% class(bbox)) || ((length(bbox) == 4) && is.numeric(bbox)))
-    )
+    bbox_check <-
+      ("bbox" %in% class(bbox)) | ((length(bbox) == 4) && is.numeric(bbox))
+
+    if (!bbox_check) {
+      rlang::abort(
+        "The `bbox` argument must be a 'bbox' class object or a numeric vector with xmin, ymin, xmax and ymax values."
+      )
+    }
 
     bbox <- paste0(bbox, collapse = ",")
   }

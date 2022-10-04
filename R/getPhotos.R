@@ -10,7 +10,7 @@
 #' @param user_id The NSID of the user whose photos to return. A value of "me"
 #'   return the calling user's photos.
 #' @inheritParams getPhotoSearch
-#' @param ... Additional parameters passed to [getPhotoSearch]
+#' @inheritDotParams getPhotoSearch
 #'
 #' @return This function returns a \code{data.frame} including columns:
 #' \itemize{
@@ -61,6 +61,7 @@ get_photos <- getPhotos
 #' @param public If `TRUE`, get public favorites (no authentication needed). If
 #'   `FALSE`, get all favorite (requires authentication for access).
 #' @export
+#' @importFrom rlang abort
 getFavePhotos <- function(user_id = NULL,
                           img_size = "s",
                           extras = NULL,
@@ -78,9 +79,11 @@ getFavePhotos <- function(user_id = NULL,
   max_fave_date <- NULL
 
   if (!is.null(fave_date)) {
-    stopifnot(
-      "`fave_date` must be a UNIX format date." = is.numeric.Date(fave_date)
-    )
+    if (!is.numeric.Date(fave_date)) {
+      rlang::abort(
+        "`fave_date` must be a UNIX format date."
+      )
+    }
 
     min_fave_date <- min(fave_date)
     max_fave_date <- max(fave_date)
