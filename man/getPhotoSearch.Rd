@@ -36,17 +36,18 @@ get_photo_search(
 )
 }
 \arguments{
-\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
-[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+\item{api_key}{Flickr API key. If api_key is \code{NULL}, the function uses
+\code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}} to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
 \item{user_id}{The NSID of the user with photos to search. If this parameter
-is NULL passed then all public photos will be searched.}
+is \code{NULL} passed then all public photos will be searched.}
 
 \item{tags}{A vector of tags to search for.}
 
 \item{license_id}{The license id for photos. For possible values see the
-Flickr API method flickr.photos.licenses.getInfo or see details for more information.}
+Flickr API method flickr.photos.licenses.getInfo or see details for more
+information.}
 
 \item{sort}{Order to sort returned photos. The possible values are:
 "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
@@ -54,10 +55,10 @@ Flickr API method flickr.photos.licenses.getInfo or see details for more informa
 "-asc" or "-desc" indicator for sort direction is optional when using the
 desc parameter.}
 
-\item{desc}{If `TRUE`, sort in descending order by the selected sort variable;
-defaults to `FALSE`.}
+\item{desc}{If \code{TRUE}, sort in descending order by the selected sort
+variable; defaults to \code{FALSE}.}
 
-\item{bbox}{A object of class `bbox` or a numeric vector with values for
+\item{bbox}{A object of class \code{bbox} or a numeric vector with values for
 xmin, ymin, xmax and ymax representing the bottom-left corner of the box
 and the top-right corner.}
 
@@ -65,7 +66,7 @@ and the top-right corner.}
 image sizes ("sq", "t", "s", "q", "m", "n", "z", "c", "l", or "o"). If a
 single img_size is provided the url, width, and height columns are renamed
 (e.g. img_url instead of url_sq) and an img_asp column is added to the
-results; defaults to `NULL`.}
+results; defaults to \code{NULL}.}
 
 \item{extras}{A vector of extra information to fetch for each returned
 record. Currently supported fields are: c("description", "license",
@@ -75,17 +76,18 @@ record. Currently supported fields are: c("description", "license",
 "url_m", "url_n", "url_z", "url_c", "url_l", "url_o")}
 
 \item{per_page}{Number specifying how many results per page to return.
-Default 100 results per page. Maximum of 250 if `bbox` provided or 500
+Default 100 results per page. Maximum of 250 if \code{bbox} provided or 500
 otherwise.}
 
 \item{page}{Number specifying which search results page to return. Default is
 page 1 of results returned.}
 
-\item{...}{Additional parameters that can include licence_id (legacy spelling),}
+\item{...}{Additional parameters that can include licence_id (legacy
+spelling) or geo (set \code{geo = TRUE} to include "geo" in extras).}
 }
 \value{
 This function returns data of specific photos matching search
-  parameters.
+parameters.
 }
 \description{
 Use the Flickr Search API to return pages of photos sorted by date posted,
@@ -97,25 +99,26 @@ License id options:
 
 license_id can be an integer from 0 to 10 or a corresponding license code
 including:
-
-- "c" (All Rights Reserved),
-- "by-bc-sa" (Attribution-NonCommercial-ShareAlike),
-- "by-nc" (Attribution-NonCommercial),
-- "by-nc-nd" (Attribution-NonCommercial-NoDerivs),
-- "by" (Attribution),
-- "by-sa" (Attribution-ShareAlike),
-- "by-nd" (Attribution-NoDerivs),
-- "nkc" (No known copyright restrictions),
-- "pd-us" (United States Government Work),
-- "cc0" (Public Domain Dedication),
-- or "pd" (Public Domain Mark).
+\itemize{
+\item "c" (All Rights Reserved),
+\item "by-bc-sa" (Attribution-NonCommercial-ShareAlike),
+\item "by-nc" (Attribution-NonCommercial),
+\item "by-nc-nd" (Attribution-NonCommercial-NoDerivs),
+\item "by" (Attribution),
+\item "by-sa" (Attribution-ShareAlike),
+\item "by-nd" (Attribution-NoDerivs),
+\item "nkc" (No known copyright restrictions),
+\item "pd-us" (United States Government Work),
+\item "cc0" (Public Domain Dedication),
+\item or "pd" (Public Domain Mark).
+}
 }
 \examples{
 \dontrun{
 # Search for photos tagged "cats" and "dogs"
 # Return images in descending order of date taken
 getPhotoSearch(
-  api_key = "XXXXXXXXXX",
+  api_key = get_flickr_api_key(),
   sort = "date-taken-desc",
   tags = c("cats", "dogs")
 )
@@ -124,7 +127,7 @@ getPhotoSearch(
 # Search for photos uploaded to the NPS Grand Canyon user account.
 # Return extra fields including the date taken and square image URL.
 getPhotoSearch(
-  api_key = "XXXXXXXXXX",
+  api_key = get_flickr_api_key(),
   user_id = "grand_canyon_nps",
   extras = c("date_taken", "url_sq")
 )
@@ -132,7 +135,7 @@ getPhotoSearch(
 \dontrun{
 # Search for photos tagged "panda" in the area of Ueno Zoo, Tokyo, Japan
 getPhotoSearch(
-  api_key = "XXXXXXXXXX",
+  api_key = get_flickr_api_key(),
   tags = "panda",
   bbox = c(139.7682226529, 35.712627977, 139.7724605432, 35.7181464141),
   extras = c("geo", "owner_name", "tags")

@@ -50,7 +50,10 @@ FlickrAPIRequest <-
     format <- match.arg(format, c("json", "xml", "string", "raw"))
 
     switch(format,
-      "json" = httr2::resp_body_json(resp, check_type = check_type, simplifyVector = simplifyVector),
+      "json" = httr2::resp_body_json(resp,
+        check_type = check_type,
+        simplifyVector = simplifyVector
+      ),
       "xml" = httr2::resp_body_json(resp, check_type = check_type),
       "string" = httr2::resp_body_string(resp),
       "raw" = httr2::resp_body_raw(resp)

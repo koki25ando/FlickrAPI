@@ -10,15 +10,15 @@ getExif(api_key = NULL, photo_id = NULL)
 get_exif(api_key = NULL, photo_id = NULL)
 }
 \arguments{
-\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
-[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+\item{api_key}{Flickr API key. If api_key is \code{NULL}, the function uses
+\code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}} to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
 \item{photo_id}{The id of the photo to fetch information for}
 }
 \value{
 This function returns a data frame of EXIF information of given
-  photograph
+photograph
 }
 \description{
 Return a data of EXIF data for a given photo. The calling user must have
@@ -26,7 +26,10 @@ permission to view the photo.
 }
 \examples{
 \dontrun{
-getExif(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", photo_id = "45961963324")
+getExif(
+api_key = get_flickr_api_key(),
+photo_id = "45961963324"
+)
 }
 
 }

@@ -10,7 +10,7 @@
 #' @param user_id The NSID of the user whose photos to return. A value of "me"
 #'   return the calling user's photos.
 #' @inheritParams getPhotoSearch
-#' @param ... Additional parameters passed to [getPhotoSearch]
+#' @inheritDotParams getPhotoSearch
 #'
 #' @return This function returns a \code{data.frame} including columns:
 #' \itemize{
@@ -27,7 +27,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' getPhotos(api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user_id = "141696738@N08")
+#' getPhotos(
+#'   api_key = get_flickr_api_key(),
+#'   user_id = "141696738@N08"
+#' )
 #' }
 #' @name getPhotos
 #' @export
@@ -36,16 +39,13 @@ getPhotos <- function(user_id = NULL,
                       extras = NULL,
                       api_key = NULL,
                       ...) {
-  data <-
-    getPhotoSearch(
-      user_id = user_id,
-      img_size = img_size,
-      extras = extras,
-      api_key = api_key,
-      ...
-    )
-
-  return(data)
+  getPhotoSearch(
+    user_id = user_id,
+    img_size = img_size,
+    extras = extras,
+    api_key = api_key,
+    ...
+  )
 }
 
 #' @name get_photos
@@ -56,10 +56,12 @@ get_photos <- getPhotos
 
 #' @name getFavePhotos
 #' @rdname getPhotos
-#' @param fave_date Length 1 or 2 vector with UNIX formatted date (may include minimum and maximum favorite date).
+#' @param fave_date Length 1 or 2 vector with UNIX formatted date (may include
+#'   minimum and maximum favorite date).
 #' @param public If `TRUE`, get public favorites (no authentication needed). If
 #'   `FALSE`, get all favorite (requires authentication for access).
 #' @export
+#' @importFrom rlang abort
 getFavePhotos <- function(user_id = NULL,
                           img_size = "s",
                           extras = NULL,
@@ -77,9 +79,11 @@ getFavePhotos <- function(user_id = NULL,
   max_fave_date <- NULL
 
   if (!is.null(fave_date)) {
-    stopifnot(
-      "`fave_date` must be a UNIX format date." = is.numeric.Date(fave_date)
-    )
+    if (!is.numeric.Date(fave_date)) {
+      rlang::abort(
+        "`fave_date` must be a UNIX format date."
+      )
+    }
 
     min_fave_date <- min(fave_date)
     max_fave_date <- max(fave_date)

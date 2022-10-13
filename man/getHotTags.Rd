@@ -10,8 +10,8 @@ getHotTags(api_key = NULL, period = c("day", "week"), count = 20)
 get_hot_tags(api_key = NULL, period = c("day", "week"), count = 20)
 }
 \arguments{
-\item{api_key}{Flickr API key. If api_key is `NULL`, the function uses
-[getFlickrAPIKey()] to use the environment variable "FLICKR_API_KEY" as the
+\item{api_key}{Flickr API key. If api_key is \code{NULL}, the function uses
+\code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}} to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
 \item{period}{The period for which to fetch hot tags. Valid values are day or
@@ -29,8 +29,9 @@ Get a data frame of hot tags for a given time period.
 \examples{
 \dontrun{
 getHotTags(
-  api_key = "*********",
-  period = "day", count = 20
+  api_key = get_flickr_api_key(),
+  period = "day",
+  count = 20
 )
 }
 

@@ -4,12 +4,13 @@ Version: 0.1.0.1
 Authors@R: c(
     person("Koki", "Ando", email = "koki.25.ando@gmail.com", role = c("aut", "cre")),
     person("Eli", "Pousson", role = c("aut", "ctb"))
-    )
-Description: Provides an interface to the Flickr API <https://www.flickr.com/services/api/>
-      and allows R users to download data on Flickr.
-Depends: R (>= 3.1)
+  )
+Description: Provides an interface to the Flickr API
+    <https://www.flickr.com/services/api/> and allows R users to download
+    data on Flickr.
 License: GPL (>= 3)
-Encoding: UTF-8
+Depends: 
+    R (>= 3.1)
 Imports: 
     httr2,
     janitor,
@@ -17,8 +18,11 @@ Imports:
     rlang,
     utils
 Suggests: 
-    sf,
     knitr,
-    rmarkdown
-VignetteBuilder: knitr
+    rmarkdown,
+    sf
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0.9000

@@ -18,10 +18,10 @@ get_flickr_api_key(api_key = NULL)
 \arguments{
 \item{api_key}{Flickr API key}
 
-\item{overwrite}{If `TRUE`, overwrite existing token; Default: `FALSE`}
+\item{overwrite}{If \code{TRUE}, overwrite existing token; Default: \code{FALSE}}
 
-\item{install}{If `TRUE`, install token for use in future sessions; Default:
-`FALSE`}
+\item{install}{If \code{TRUE}, install token for use in future sessions; Default:
+\code{FALSE}}
 }
 \description{
 Set and get a Flickr API key to/from environment variables.

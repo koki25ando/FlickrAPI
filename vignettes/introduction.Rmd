@@ -58,7 +58,7 @@ getPhotos(user_id = "141696738@N08")
 - Bounding box (for photos with locations)
 
 ```{r, eval = FALSE}
-getPhotoSearch(tags = c("cats","dogs"))
+getPhotoSearch(tags = c("cats", "dogs"))
 ```
 
 ```{r, eval = FALSE}
@@ -66,7 +66,7 @@ getPhotoSearch(tags = c("cats","dogs"))
 nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"))
 nc_bbox <- sf::st_bbox(nc)
 
-getPhotoSearch(tags = c("cats","dogs"), bbox = nc_bbox)
+getPhotoSearch(tags = c("cats", "dogs"), bbox = nc_bbox)
 ```
 
 `getPhotoSearch()` returns 100 photos per page by default but this can be increased to 250 if using the bbox parameter searching by location or 500 otherwise. Additional pages can be accessed using the page parameter.
@@ -94,13 +94,12 @@ There are two functions for getting data about a specific Flickr photo:
 ## Get Flickr data for a photo
 
 ```{r, eval = FALSE}
-getPhotoInfo(photo_id="51899696261", 
-             output = "url")
+getPhotoInfo(photo_id = "51899696261", output = "url")
 ```
 
 ## Get EXIF metadata for a photo
 
 ```{r, eval = FALSE }
-getExif(photo_id="51872765082")
+getExif(photo_id = "51872765082")
 ```
 
