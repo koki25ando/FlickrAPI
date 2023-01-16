@@ -63,8 +63,7 @@ getPhotoSearch(tags = c("cats", "dogs"))
 
 ```{r, eval = FALSE}
 # Search for photos of cats and dogs in North Carolina
-nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"))
-nc_bbox <- sf::st_bbox(nc)
+nc_bbox <- c(-84.32385, 33.88199, -75.45698, 36.58965)
 
 getPhotoSearch(tags = c("cats", "dogs"), bbox = nc_bbox)
 ```
