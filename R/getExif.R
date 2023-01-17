@@ -4,12 +4,12 @@
 #' permission to view the photo.
 #'
 #' @inheritParams FlickrAPIRequest
-#' @param photo_id The id of the photo to fetch information for
+#' @param photo_id The id of the photo to fetch EXIF information for.
 #' @param secret The secret for the photo. If the correct secret is passed then
 #'   permissions checking is skipped. This enables the 'sharing' of individual
 #'   photos by passing around the id and secret.
-#' @return This function returns a data frame of EXIF information of given
-#'   photograph
+#' @return A data.frame with EXIF information for an image with the provided
+#'   photo_id.
 #'
 #' @examples
 #' \dontrun{

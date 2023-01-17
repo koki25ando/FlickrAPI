@@ -20,15 +20,15 @@ FlickrAPIRequest(
 \code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}} to use the environment variable "FLICKR_API_KEY" as the
 key.}
 
-\item{format}{Format parameter passed to \link[httr2:req_url]{httr2::req_url_query}}
+\item{format}{Format parameter passed to \code{\link[httr2:req_url]{httr2::req_url_query()}}}
 
-\item{simplifyVector}{Default to \code{TRUE}, passed to \link[httr2:resp_body_raw]{httr2::resp_body_json}}
+\item{simplifyVector}{Default to \code{TRUE}, passed to \code{\link[httr2:resp_body_raw]{httr2::resp_body_json()}}}
 
-\item{check_type}{Default to \code{FALSE}, passed to \link[httr2:resp_body_raw]{httr2::resp_body_json}}
+\item{check_type}{Default to \code{FALSE}, passed to \code{\link[httr2:resp_body_raw]{httr2::resp_body_json()}}}
 
-\item{...}{Additional parameters passed to \link[httr2:req_url]{httr2::req_url_query}}
+\item{...}{Additional parameters passed to \code{\link[httr2:req_url]{httr2::req_url_query()}}}
 }
 \description{
 Request data from the Flickr API using the provided method, API key, and any
-additional values passed to \link[httr2:req_url]{httr2::req_url_query}.
+additional values passed to \code{\link[httr2:req_url]{httr2::req_url_query()}}.
 }

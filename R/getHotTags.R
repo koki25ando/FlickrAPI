@@ -7,7 +7,7 @@
 #'   value is 200.
 #'
 #' @seealso
-#' \url{https://www.flickr.com/services/api/flickr.tags.getHotList.html}
+#' - Flickr API Documentation: [flickr.tags.getHotList](https://www.flickr.com/services/api/flickr.tags.getHotList.html)
 #'
 #' @return This function a data frame of hot tags for the given period
 #'

@@ -8,7 +8,8 @@
 #'   "date", "url" or "tags". If `output = "all"`, the function returns a list
 #'   with all available data. Otherwise the function returns a data frame.
 #'
-#' @seealso \url{https://www.flickr.com/services/api/flickr.photos.getInfo.html}
+#' @seealso
+#' - Flickr API Documentation: [flickr.photos.getInfo](https://www.flickr.com/services/api/flickr.photos.getInfo.html)
 #'
 #' @return This function returns data of specific photo's information.
 #'

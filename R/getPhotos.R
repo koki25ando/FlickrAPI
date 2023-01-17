@@ -10,6 +10,8 @@
 #' @param user_id The NSID of the user whose photos to return. A value of "me"
 #'   return the calling user's photos.
 #' @inheritParams getPhotoSearch
+#' @param ... Additional parameters passed to [getPhotoSearch()] for getPhotos
+#'   or to [FlickrAPIRequest()] by getFavePhotos.
 #' @inheritDotParams getPhotoSearch
 #'
 #' @returns A `data.frame` with basic information on photos.
