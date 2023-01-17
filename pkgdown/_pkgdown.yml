@@ -1,4 +1,4 @@
-url: "https://koki25ando.github.io/FlickrAPI/"
+url: https://koki25ando.github.io/FlickrAPI/
 template:
   bootstrap: 5
 trailingslash_redirect: true
