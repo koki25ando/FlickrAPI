@@ -5,9 +5,9 @@
 \alias{get_exif}
 \title{Get EXIF data for a Flickr photo.}
 \usage{
-getExif(api_key = NULL, photo_id = NULL)
+getExif(api_key = NULL, photo_id = NULL, secret = NULL)
 
-get_exif(api_key = NULL, photo_id = NULL)
+get_exif(api_key = NULL, photo_id = NULL, secret = NULL)
 }
 \arguments{
 \item{api_key}{Flickr API key. If api_key is \code{NULL}, the function uses
@@ -15,6 +15,10 @@ get_exif(api_key = NULL, photo_id = NULL)
 key.}
 
 \item{photo_id}{The id of the photo to fetch information for}
+
+\item{secret}{The secret for the photo. If the correct secret is passed then
+permissions checking is skipped. This enables the 'sharing' of individual
+photos by passing around the id and secret.}
 }
 \value{
 This function returns a data frame of EXIF information of given
@@ -27,9 +31,14 @@ permission to view the photo.
 \examples{
 \dontrun{
 getExif(
-api_key = get_flickr_api_key(),
-photo_id = "45961963324"
+  api_key = get_flickr_api_key(),
+  photo_id = "45961963324"
 )
 }
 
+}
+\seealso{
+\itemize{
+\item Flickr API Documentation: \href{https://www.flickr.com/services/api/flickr.photos.getExif.html}{flickr.photos.getExif}
+}
 }
