@@ -12,8 +12,8 @@
 #' @param check_type Default to `FALSE`, passed to [httr2::resp_body_json()]
 #' @param ... Additional parameters passed to [httr2::req_url_query()]
 #' @export
-#' @importFrom httr2 request req_url_query req_perform resp_body_json
-#'   resp_body_string resp_body_raw
+#' @importFrom httr2 request req_url_query req_throttle req_user_agent
+#'   req_perform resp_body_json resp_body_string resp_body_raw
 FlickrAPIRequest <- function(method = NULL,
                              api_key = NULL,
                              format = "json",
@@ -37,6 +37,15 @@ FlickrAPIRequest <- function(method = NULL,
   if (!is.null(format) && (format == "json")) {
     req <- httr2::req_url_query(req, nojsoncallback = "1")
   }
+
+  req <- httr2::req_throttle(req, rate = 3600 / 3600)
+
+  string <- getOption(
+    "FlickrAPI.useragent",
+    default = "FlickrAPI (https://github.com/koki25ando/FlickrAPI)"
+  )
+
+  req <- httr2::req_user_agent(req, string = string)
 
   resp <- httr2::req_perform(req)
 
