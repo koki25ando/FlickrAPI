@@ -1,6 +1,5 @@
 utils::globalVariables(c(
-  "img_height", "img_width", "img_asp",
-  "min_fave_date", "max_fave_date"
+  "img_height", "img_width", "img_asp"
 ))
 
 #' Get Flickr user NSID
@@ -22,7 +21,7 @@ getPhotoExtras <- function(extras,
                            geo = NULL,
                            img_size = NULL,
                            fields = NULL) {
-  if (!is.null(geo) && geo) {
+  if (isTRUE(geo)) {
     # Always include geo in the extras if geo is TRUE
     extras <- c(extras, "geo")
   }

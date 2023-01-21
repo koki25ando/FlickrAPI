@@ -8,9 +8,11 @@
 #' @param user_id The NSID of the user with photos to search. If this parameter
 #'   is `NULL` passed then all public photos will be searched.
 #' @param tags A vector of tags to search for.
-#' @param license_id The license id for photos. For possible values see the
-#'   Flickr API method flickr.photos.licenses.getInfo or see details for more
-#'   information.
+#' @param license_id The license id for photos. For possible values, see the
+#'   Flickr API method
+#'   [flickr.photos.licenses.getInfo](https://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html)
+#'   or see details for more information. If license_id is provided, "license"
+#'   is added to extras.
 #' @param sort Order to sort returned photos. The possible values are:
 #'   "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
 #'   "interestingness-desc", "interestingness-asc", and "relevance" The trailing
@@ -26,6 +28,16 @@
 #'   single img_size is provided the url, width, and height columns are renamed
 #'   (e.g. img_url instead of url_sq) and an img_asp column is added to the
 #'   results; defaults to `NULL`.
+#' @param date Date taken in any format supported by [as.POSIXlt()]. If date is
+#'   a length 1 vector, it is treated as a minimum date taken with the maximum
+#'   set one day later. If date has a length greater than 1, the minimum and
+#'   maximum date from the vector are used.  If date is provided,
+#'   "date_taken" is added to extras.
+#' @param upload_date Date uploaded in any format supported by [as.POSIXlt()].
+#'   If upload_date is a length 1 vector, it is treated as a minimum date
+#'   uploaded with the maximum set one day later. If date has a length greater
+#'   than 1, the minimum and maximum date from the vector are used.  If date is
+#'   provided, "date_upload" is added to extras.
 #' @param extras A vector of extra information to fetch for each returned
 #'   record. Currently supported fields are: c("description", "license",
 #'   "date_upload", "date_taken", "owner_name", "icon_server",
@@ -37,8 +49,13 @@
 #'   otherwise.
 #' @param page Number specifying which search results page to return. Default is
 #'   page 1 of results returned.
-#' @param ... Additional parameters that can include licence_id (legacy
-#'   spelling) or geo (set `geo = TRUE` to include "geo" in extras).
+#' @param ... Dots can be used to pass any additional arguments supported by the
+#'   [flickr.photos.search](https://www.flickr.com/services/api/flickr.photos.search.html)
+#'   API method excluding license, min_taken_date, max_taken_date,
+#'   min_upload_date, and max_upload_date which are supported by other named
+#'   parameters. Dots also support two legacy parameters: licence_id (variant
+#'   spelling for license_id) and geo (set `geo = TRUE` to include "geo" in
+#'   extras).
 #' @return This function returns data of specific photos matching search
 #'   parameters.
 #'
@@ -87,8 +104,10 @@
 #'   extras = c("geo", "owner_name", "tags")
 #' )
 #' }
+#' @seealso
+#' - Flickr API Documentation: [flickr.photos.search](https://www.flickr.com/services/api/flickr.photos.search.html)
 #' @export
-#' @importFrom rlang list2 abort
+#' @importFrom rlang list2 abort `!!!`
 
 getPhotoSearch <- function(api_key = NULL,
                            user_id = NULL,
@@ -98,6 +117,8 @@ getPhotoSearch <- function(api_key = NULL,
                            desc = FALSE,
                            bbox = NULL,
                            img_size = NULL,
+                           date = NULL,
+                           upload_date = NULL,
                            extras = NULL,
                            per_page = 100,
                            page = NULL,
@@ -106,74 +127,49 @@ getPhotoSearch <- function(api_key = NULL,
 
   if (!is.null(params$licence_id)) {
     license_id <- params$licence_id
+    params$licence_id <- NULL
   }
 
   if (!is.null(license_id)) {
-    if (is.character(license_id)) {
-      license_id <-
-        match.arg(
-          tolower(license_id),
-          c(
-            "c", "by-bc-sa", "by-nc", "by-nc-nd", "by",
-            "by-sa", "by-nd", "nkc", "pd-us", "cc0", "pd"
-          )
-        )
-
-      license_id <-
-        switch(license_id,
-          "c" = 0,
-          "by-bc-sa" = 1,
-          "by-nc" = 2,
-          "by-nc-nd" = 3,
-          "by" = 4,
-          "by-sa" = 5,
-          "by-nd" = 6,
-          "nkc" = 7,
-          "pd-us" = 8,
-          "cc0" = 9,
-          "pd" = 10
-        )
-    }
-
-    if (!(license_id %in% c(0:10))) {
-      rlang::abort(
-        "The `license_id` argument must be a documented license id or an integer from 0 to 10."
-      )
-    }
+    extras <- c(extras, "license")
+    license_id <- set_license_id_arg(license_id)
   }
 
-  if (!is.null(sort) && (sort != "relevance")) {
-    sort_opts <- c("date-posted", "date-taken", "interestingness")
+  min_taken_date <- NULL
+  max_taken_date <- NULL
 
-    dir <- c("-asc", "-desc")
-
-    if (!grepl("-desc$|-asc$", sort)) {
-      if (desc) {
-        dir <- dir[[2]]
-      } else {
-        dir <- dir[[1]]
-      }
-
-      sort <- paste0(sort, dir)
-    }
-
-    sort <- match.arg(sort, paste0(sort_opts, rep(dir, 3)))
+  if (!is.null(date)) {
+    extras <- c(extras, "date_taken")
+    date <- set_date_range_arg(date)
+    min_taken_date <- date[1]
+    max_taken_date <- date[2]
   }
 
-  if (!is.null(extras) | !is.null(params$geo) | !is.null(img_size)) {
-    extras <- getPhotoExtras(extras, geo = params$geo, img_size = img_size)
+  min_upload_date <- NULL
+  max_upload_date <- NULL
+
+  if (!is.null(upload_date)) {
+    extras <- c(extras, "date_upload")
+    upload_date <- set_date_range_arg(upload_date)
+    min_upload_date <- upload_date[1]
+    max_upload_date <- upload_date[2]
+  }
+
+  sort <- set_sort_arg(sort, desc)
+
+  geo <- params$geo
+  params$geo <- NULL
+
+  if (!is.null(c(extras, geo, img_size))) {
+    extras <- getPhotoExtras(extras, geo = geo, img_size = img_size)
   }
 
   if (!is.null(bbox)) {
-    bbox_check <-
-      ("bbox" %in% class(bbox)) | ((length(bbox) == 4) && is.numeric(bbox))
-
+    bbox_check <- (length(bbox) == 4) && is.numeric(bbox)
     if (!bbox_check) {
-      rlang::abort(
-        "The `bbox` argument must be a 'bbox' class object or a numeric vector with xmin, ymin, xmax and ymax values."
-      )
+      rlang::abort("The `bbox` argument must be a 'bbox' class object or
+                   a numeric vector with xmin, ymin, xmax and ymax values.")
     }
-
     bbox <- paste0(bbox, collapse = ",")
   }
 
@@ -185,6 +181,9 @@ getPhotoSearch <- function(api_key = NULL,
     FlickrAPIRequest(
       method = "flickr.photos.search",
       api_key = api_key,
+      format = "json",
+      simplifyVector = TRUE,
+      check_type = FALSE,
       user_id = user_id,
       tags = tags,
       per_page = per_page,
@@ -192,7 +191,12 @@ getPhotoSearch <- function(api_key = NULL,
       bbox = bbox,
       license = license_id,
       sort = sort,
-      extras = extras
+      extras = extras,
+      min_taken_date = min_taken_date,
+      max_taken_date = max_taken_date,
+      min_upload_date = min_upload_date,
+      max_upload_date = max_upload_date,
+      !!!params
     )
 
   getPhotoData(
@@ -204,3 +208,101 @@ getPhotoSearch <- function(api_key = NULL,
 #' @export
 #' @rdname getPhotoSearch
 get_photo_search <- getPhotoSearch
+
+#' Set the sort API argument
+#'
+#' @noRd
+set_sort_arg <- function(sort = NULL, desc = FALSE) {
+  if (is.null(sort) || identical(sort, "relevance")) {
+    return(sort)
+  }
+
+  sort_opts <- c("date-posted", "date-taken", "interestingness")
+  dir <- c("-asc", "-desc")
+  dir_suffix <- ""
+
+  if (!grepl("-desc$|-asc$", sort)) {
+    dir_suffix <- dir[[1]]
+    if (desc) {
+      dir_suffix <- dir[[2]]
+    }
+  }
+
+  sort <- paste0(tolower(sort), dir_suffix)
+  match.arg(sort, paste0(sort_opts, rep(dir, 3)))
+}
+
+#' Set the min/max date taken or date uploaded API arguments
+#'
+#' @noRd
+#' @importFrom rlang try_fetch abort caller_arg
+set_date_range_arg <- function(x,
+                               arg = rlang::caller_arg(x),
+                               n = 2,
+                               numeric = FALSE,
+                               call = parent.frame()) {
+  if (!is.numeric.POSIXt(x)) {
+    x <- rlang::try_fetch(
+      as.POSIXlt(x),
+      error = function(cnd) {
+        rlang::abort(
+          paste0("`", arg, "` can't be coerced into a date with `as.POSIXlt`."),
+          parent = cnd,
+          call = call
+        )
+      }
+    )
+  }
+
+  if (length(x) == 1) {
+    x <- seq.POSIXt(x, by = "day", length.out = n)
+  }
+
+  if (isTRUE(numeric)) {
+    return(as.double(c(min(x), max(x))))
+  }
+
+  strftime(c(min(x), max(x)), format = "%F %X")
+}
+
+
+#' Set the license_id API argument
+#'
+#' @noRd
+#' @importFrom rlang abort
+set_license_id_arg <- function(license_id, call = parent.frame()) {
+  if (as.integer(license_id) %in% c(0:10)) {
+    return(license_id)
+  }
+
+  if (!is.character(license_id)) {
+    rlang::abort(
+      "The `license_id` argument must be a documented license id or an integer
+      from 0 to 10.",
+      call = call
+    )
+  }
+
+  license_id <-
+    match.arg(
+      tolower(license_id),
+      c(
+        "c", "by-bc-sa", "by-nc", "by-nc-nd", "by",
+        "by-sa", "by-nd", "nkc", "pd-us", "cc0", "pd"
+      )
+    )
+
+  switch(license_id,
+    "c" = 0,
+    "by-bc-sa" = 1,
+    "by-nc" = 2,
+    "by-nc-nd" = 3,
+    "by" = 4,
+    "by-sa" = 5,
+    "by-nd" = 6,
+    "nkc" = 7,
+    "pd-us" = 8,
+    "cc0" = 9,
+    "pd" = 10
+  )
+}

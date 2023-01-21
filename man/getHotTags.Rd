@@ -37,5 +37,7 @@ getHotTags(
 
 }
 \seealso{
-\url{https://www.flickr.com/services/api/flickr.tags.getHotList.html}
+\itemize{
+\item Flickr API Documentation: \href{https://www.flickr.com/services/api/flickr.tags.getHotList.html}{flickr.tags.getHotList}
+}
 }

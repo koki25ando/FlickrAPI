@@ -3,27 +3,18 @@
 #' Returns photos from the given user's photo stream. Only photos visible to the
 #' calling user will be returned.
 #'
-#' For `getFavePhotos` the provided user_id may need to be the NSID code or the
-#' user name rather than the typical user id due to some inconsistencies in the
-#' Flickr API.
+#' For [getFavePhotos()] the provided user_id may need to be the NSID code or
+#' the user name rather than the typical user id due to some inconsistencies in
+#' the Flickr API.
 #'
 #' @param user_id The NSID of the user whose photos to return. A value of "me"
 #'   return the calling user's photos.
 #' @inheritParams getPhotoSearch
+#' @param ... Additional parameters passed to [getPhotoSearch()] for getPhotos
+#'   or to [FlickrAPIRequest()] by getFavePhotos.
 #' @inheritDotParams getPhotoSearch
 #'
-#' @return This function returns a \code{data.frame} including columns:
-#' \itemize{
-#'  \item id
-#'  \item owner
-#'  \item secret
-#'  \item server
-#'  \item farm
-#'  \item title
-#'  \item ispublic
-#'  \item isfriend
-#'  \item isfamily
-#' }
+#' @returns A `data.frame` with basic information on photos.
 #'
 #' @examples
 #' \dontrun{
@@ -33,6 +24,11 @@
 #' )
 #' }
 #' @name getPhotos
+#' @seealso
+#' - Flickr API documentation: [flickr.favorites.getPublicList](https://www.flickr.com/services/api/flickr.favorites.getPublicList.html)
+#' or
+#' [flickr.favorites.getList](https://www.flickr.com/services/api/flickr.favorites.getList.html)
+#'
 #' @export
 getPhotos <- function(user_id = NULL,
                       img_size = "s",
@@ -56,10 +52,13 @@ get_photos <- getPhotos
 
 #' @name getFavePhotos
 #' @rdname getPhotos
-#' @param fave_date Length 1 or 2 vector with UNIX formatted date (may include
-#'   minimum and maximum favorite date).
+#' @param fave_date Date favorited in any format supported by [as.POSIXlt()].
+#'   If fave_date is a length 1 vector, it is treated as a minimum date
+#'   uploaded with the maximum set one day later. If fave_date has a length
+#'   greater than 1, the minimum and maximum date from the vector are used. If
+#'   date is provided, "date_upload" is added to extras.
 #' @param public If `TRUE`, get public favorites (no authentication needed). If
-#'   `FALSE`, get all favorite (requires authentication for access).
+#'   `FALSE`, get all favorites (requires authentication for access).
 #' @export
 #' @importFrom rlang abort
 getFavePhotos <- function(user_id = NULL,
@@ -79,16 +78,10 @@ getFavePhotos <- function(user_id = NULL,
   max_fave_date <- NULL
 
   if (!is.null(fave_date)) {
-    if (!is.numeric.Date(fave_date)) {
-      rlang::abort(
-        "`fave_date` must be a UNIX format date."
-      )
-    }
-
-    min_fave_date <- min(fave_date)
-    max_fave_date <- max(fave_date)
+    fave_date <- set_date_range_arg(fave_date, numeric = TRUE)
+    min_fave_date <- fave_date[1]
+    max_fave_date <- fave_date[2]
   }
-
 
   if (!is.null(extras)) {
     extras <-
@@ -112,6 +105,8 @@ getFavePhotos <- function(user_id = NULL,
       extras = extras,
       page = page,
       per_page = per_page,
+      min_fave_date = min_fave_date,
+      max_fave_date = max_fave_date,
       ...
     )
 

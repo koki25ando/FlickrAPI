@@ -14,6 +14,8 @@ getPhotoSearch(
   desc = FALSE,
   bbox = NULL,
   img_size = NULL,
+  date = NULL,
+  upload_date = NULL,
   extras = NULL,
   per_page = 100,
   page = NULL,
@@ -29,6 +31,8 @@ get_photo_search(
   desc = FALSE,
   bbox = NULL,
   img_size = NULL,
+  date = NULL,
+  upload_date = NULL,
   extras = NULL,
   per_page = 100,
   page = NULL,
@@ -45,9 +49,11 @@ is \code{NULL} passed then all public photos will be searched.}
 
 \item{tags}{A vector of tags to search for.}
 
-\item{license_id}{The license id for photos. For possible values see the
-Flickr API method flickr.photos.licenses.getInfo or see details for more
-information.}
+\item{license_id}{The license id for photos. For possible values, see the
+Flickr API method
+\href{https://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html}{flickr.photos.licenses.getInfo}
+or see details for more information. If license_id is provided, "license"
+is added to extras.}
 
 \item{sort}{Order to sort returned photos. The possible values are:
 "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
@@ -68,6 +74,18 @@ single img_size is provided the url, width, and height columns are renamed
 (e.g. img_url instead of url_sq) and an img_asp column is added to the
 results; defaults to \code{NULL}.}
 
+\item{date}{Date taken in any format supported by \code{\link[=as.POSIXlt]{as.POSIXlt()}}. If date is
+a length 1 vector, it is treated as a minimum date taken with the maximum
+set one day later. If date has a length greater than 1, the minimum and
+maximum date from the vector are used.  If date is provided,
+"date_taken" is added to extras.}
+
+\item{upload_date}{Date uploaded in any format supported by \code{\link[=as.POSIXlt]{as.POSIXlt()}}.
+If upload_date is a length 1 vector, it is treated as a minimum date
+uploaded with the maximum set one day later. If date has a length greater
+than 1, the minimum and maximum date from the vector are used.  If date is
+provided, "date_upload" is added to extras.}
+
 \item{extras}{A vector of extra information to fetch for each returned
 record. Currently supported fields are: c("description", "license",
 "date_upload", "date_taken", "owner_name", "icon_server",
@@ -82,8 +100,13 @@ otherwise.}
 \item{page}{Number specifying which search results page to return. Default is
 page 1 of results returned.}
 
-\item{...}{Additional parameters that can include licence_id (legacy
-spelling) or geo (set \code{geo = TRUE} to include "geo" in extras).}
+\item{...}{Dots can be used to pass any additional arguments supported by the
+\href{https://www.flickr.com/services/api/flickr.photos.search.html}{flickr.photos.search}
+API method excluding license, min_taken_date, max_taken_date,
+min_upload_date, and max_upload_date which are supported by other named
+parameters. Dots also support two legacy parameters: licence_id (variant
+spelling for license_id) and geo (set \code{geo = TRUE} to include "geo" in
+extras).}
 }
 \value{
 This function returns data of specific photos matching search
@@ -140,5 +163,10 @@ getPhotoSearch(
   bbox = c(139.7682226529, 35.712627977, 139.7724605432, 35.7181464141),
   extras = c("geo", "owner_name", "tags")
 )
+}
+}
+\seealso{
+\itemize{
+\item Flickr API Documentation: \href{https://www.flickr.com/services/api/flickr.photos.search.html}{flickr.photos.search}
 }
 }

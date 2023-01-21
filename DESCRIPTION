@@ -14,15 +14,13 @@ Depends:
 Imports: 
     httr2,
     janitor,
-    magrittr,
     rlang,
     utils
 Suggests: 
     knitr,
-    rmarkdown,
-    sf
+    rmarkdown
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0.9000
+RoxygenNote: 7.2.3

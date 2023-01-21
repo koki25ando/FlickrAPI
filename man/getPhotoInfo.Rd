@@ -44,5 +44,7 @@ getPhotoInfo(
 }
 }
 \seealso{
-\url{https://www.flickr.com/services/api/flickr.photos.getInfo.html}
+\itemize{
+\item Flickr API Documentation: \href{https://www.flickr.com/services/api/flickr.photos.getInfo.html}{flickr.photos.getInfo}
+}
 }

@@ -13,6 +13,7 @@
 !*.py
 !*.ipynb
 .Rproj.user
+.DS_Store
 
 # other files
 !*.md

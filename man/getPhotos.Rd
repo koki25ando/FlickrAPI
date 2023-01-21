@@ -60,9 +60,11 @@ key.}
   Arguments passed on to \code{\link[=getPhotoSearch]{getPhotoSearch}}
   \describe{
     \item{\code{tags}}{A vector of tags to search for.}
-    \item{\code{license_id}}{The license id for photos. For possible values see the
-Flickr API method flickr.photos.licenses.getInfo or see details for more
-information.}
+    \item{\code{license_id}}{The license id for photos. For possible values, see the
+Flickr API method
+\href{https://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html}{flickr.photos.licenses.getInfo}
+or see details for more information. If license_id is provided, "license"
+is added to extras.}
     \item{\code{sort}}{Order to sort returned photos. The possible values are:
 "date-posted-asc", "date-posted-desc", "date-taken-asc", "date-taken-desc",
 "interestingness-desc", "interestingness-asc", and "relevance" The trailing
@@ -73,13 +75,26 @@ variable; defaults to \code{FALSE}.}
     \item{\code{bbox}}{A object of class \code{bbox} or a numeric vector with values for
 xmin, ymin, xmax and ymax representing the bottom-left corner of the box
 and the top-right corner.}
+    \item{\code{date}}{Date taken in any format supported by \code{\link[=as.POSIXlt]{as.POSIXlt()}}. If date is
+a length 1 vector, it is treated as a minimum date taken with the maximum
+set one day later. If date has a length greater than 1, the minimum and
+maximum date from the vector are used.  If date is provided,
+"date_taken" is added to extras.}
+    \item{\code{upload_date}}{Date uploaded in any format supported by \code{\link[=as.POSIXlt]{as.POSIXlt()}}.
+If upload_date is a length 1 vector, it is treated as a minimum date
+uploaded with the maximum set one day later. If date has a length greater
+than 1, the minimum and maximum date from the vector are used.  If date is
+provided, "date_upload" is added to extras.}
   }}
 
-\item{fave_date}{Length 1 or 2 vector with UNIX formatted date (may include
-minimum and maximum favorite date).}
+\item{fave_date}{Date favorited in any format supported by \code{\link[=as.POSIXlt]{as.POSIXlt()}}.
+If fave_date is a length 1 vector, it is treated as a minimum date
+uploaded with the maximum set one day later. If fave_date has a length
+greater than 1, the minimum and maximum date from the vector are used. If
+date is provided, "date_upload" is added to extras.}
 
 \item{public}{If \code{TRUE}, get public favorites (no authentication needed). If
-\code{FALSE}, get all favorite (requires authentication for access).}
+\code{FALSE}, get all favorites (requires authentication for access).}
 
 \item{page}{Number specifying which search results page to return. Default is
 page 1 of results returned.}
@@ -89,27 +104,16 @@ Default 100 results per page. Maximum of 250 if \code{bbox} provided or 500
 otherwise.}
 }
 \value{
-This function returns a \code{data.frame} including columns:
-\itemize{
-\item id
-\item owner
-\item secret
-\item server
-\item farm
-\item title
-\item ispublic
-\item isfriend
-\item isfamily
-}
+A \code{data.frame} with basic information on photos.
 }
 \description{
 Returns photos from the given user's photo stream. Only photos visible to the
 calling user will be returned.
 }
 \details{
-For \code{getFavePhotos} the provided user_id may need to be the NSID code or the
-user name rather than the typical user id due to some inconsistencies in the
-Flickr API.
+For \code{\link[=getFavePhotos]{getFavePhotos()}} the provided user_id may need to be the NSID code or
+the user name rather than the typical user id due to some inconsistencies in
+the Flickr API.
 }
 \examples{
 \dontrun{
@@ -117,5 +121,12 @@ getPhotos(
   api_key = get_flickr_api_key(),
   user_id = "141696738@N08"
 )
+}
+}
+\seealso{
+\itemize{
+\item Flickr API documentation: \href{https://www.flickr.com/services/api/flickr.favorites.getPublicList.html}{flickr.favorites.getPublicList}
+or
+\href{https://www.flickr.com/services/api/flickr.favorites.getList.html}{flickr.favorites.getList}
 }
 }
