@@ -213,7 +213,7 @@ get_photo_search <- getPhotoSearch
 #'
 #' @noRd
 set_sort_arg <- function(sort = NULL, desc = FALSE) {
-  if (is.null(sort) || identical(sort, "relevance")) {
+  if (any(c(is.null(sort), identical(sort, "relevance")))) {
     return(sort)
   }
 
@@ -271,7 +271,7 @@ set_date_range_arg <- function(x,
 #' @noRd
 #' @importFrom rlang abort
 set_license_id_arg <- function(license_id, call = parent.frame()) {
-  if (as.integer(license_id) %in% c(0:10)) {
+  if (suppressWarnings(as.integer(license_id) %in% c(0:10))) {
     return(license_id)
   }
 
