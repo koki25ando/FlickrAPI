@@ -1,17 +1,21 @@
 Package: FlickrAPI
 Title: Access to Flickr API
-Version: 0.1.0.1
+Version: 0.1.1
 Authors@R: c(
-    person("Koki", "Ando", email = "koki.25.ando@gmail.com", role = c("aut", "cre")),
+    person("Koki", "Ando", , "koki.25.ando@gmail.com", role = c("aut", "cre")),
     person("Eli", "Pousson", role = c("aut", "ctb"))
   )
 Description: Provides an interface to the Flickr API
     <https://www.flickr.com/services/api/> and allows R users to download
     data on Flickr.
 License: GPL (>= 3)
+URL: https://github.com/koki25ando/FlickrAPI,
+    https://koki25ando.github.io/FlickrAPI/
+BugReports: https://github.com/koki25ando/FlickrAPI/issues
 Depends: 
     R (>= 3.1)
 Imports: 
+    cli,
     httr2,
     janitor,
     rlang,
