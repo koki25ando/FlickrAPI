@@ -26,15 +26,27 @@ The goal of FlickrAPI is to provide an interface to the [Flickr API](https://www
 
 ## Installation
 
-```{r, eval=FALSE}
-install.packages("FlickrAPI")
-# remotes::install_github("koki25ando/FlickrAPI")
+Install [FlickrAPI from CRAN](https://cran.r-project.org/package=FlickrAPI):
+
+``` r
+install.packages("cli")
 ```
 
+Or install the development version from GitHub:
 
-After installing, set up a Flickr API key and save it as a local environment variable using `setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE", install = TRUE)`. The Flickr API is available for non-commercial use by outside developers and is only available for commercial use under prior arrangements. Review [the Flickr API documentation](https://www.flickr.com/services/developer/), [API Overview](https://www.flickr.com/services/api/misc.overview.html), or [Flickr Developer Guide](https://www.flickr.com/services/developer/) for more information.
+``` r
+pak::pkg_install("koki25ando/FlickrAPI")
+```
 
-## Example
+## Usage
+
+### Setting up an API key
+
+After installing, set up a Flickr API key and save it as a local environment variable using `setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE", install = TRUE)`. The Flickr API is available for non-commercial use by outside developers and is only available for commercial use under prior arrangements.
+
+Review [the Flickr API documentation](https://www.flickr.com/services/developer/), [API Overview](https://www.flickr.com/services/api/misc.overview.html), or [Flickr Developer Guide](https://www.flickr.com/services/developer/) for more information.
+
+### Searching photos
 
 You can get photos from any individual user using the `getPhotos()` function.
 
@@ -69,8 +81,7 @@ photo_search <- getPhotoSearch(
 knitr::kable(photo_search[1, ])
 ```
 
+## Related projects
 
-### See also
-
-- [FlickrAPI on CRAN](https://cran.r-project.org/web/packages/FlickrAPI/index.html) ([PDF](https://cran.r-project.org/web/packages/FlickrAPI/FlickrAPI.pdf))
-- [Flickr API](https://www.flickr.com/services/api/)
+- [photosearcher](https://github.com/ropensci/photosearcher): A R package for accessing the Flickr API.
+- [python-flickr-api](https://github.com/alexis-mignon/python-flickr-api): A python implementation of the Flickr API.

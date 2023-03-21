@@ -4,6 +4,9 @@
   "identifier": "FlickrAPI",
   "description": "Provides an interface to the Flickr API <https://www.flickr.com/services/api/> and allows R users to download data on Flickr.",
   "name": "FlickrAPI: Access to Flickr API",
+  "relatedLink": ["https://koki25ando.github.io/FlickrAPI/", "https://CRAN.R-project.org/package=FlickrAPI"],
+  "codeRepository": "https://github.com/koki25ando/FlickrAPI",
+  "issueTracker": "https://github.com/koki25ando/FlickrAPI/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.1.0.1",
   "programmingLanguage": {
@@ -81,6 +84,18 @@
     },
     "2": {
       "@type": "SoftwareApplication",
+      "identifier": "cli",
+      "name": "cli",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=cli"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
       "identifier": "httr2",
       "name": "httr2",
       "provider": {
@@ -91,7 +106,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr2"
     },
-    "3": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "janitor",
       "name": "janitor",
@@ -103,7 +118,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=janitor"
     },
-    "4": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -115,12 +130,15 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "5": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
     "SystemRequirements": null
   },
-  "fileSize": "78.591KB"
+  "fileSize": "75.506KB",
+  "releaseNotes": "https://github.com/koki25ando/FlickrAPI/blob/master/NEWS.md",
+  "readme": "https://github.com/koki25ando/FlickrAPI/blob/master/README.md",
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#stable"
 }

@@ -7,6 +7,6 @@
 #'
 #' @author Koki Ando \email{koki.25.ando@gmail.com}
 #' @docType package
-#' @seealso \url{https://www.flickr.com/services/api/}
+#' @seealso <https://www.flickr.com/services/api/>
 #' @keywords internal
 "_PACKAGE"

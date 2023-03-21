@@ -21,23 +21,36 @@ data on public photos uploaded to Flickr.
 
 ## Installation
 
+Install [FlickrAPI from
+CRAN](https://cran.r-project.org/package=FlickrAPI):
+
 ``` r
-install.packages("FlickrAPI")
-# remotes::install_github("koki25ando/FlickrAPI")
+install.packages("cli")
 ```
+
+Or install the development version from GitHub:
+
+``` r
+pak::pkg_install("koki25ando/FlickrAPI")
+```
+
+## Usage
+
+### Setting up an API key
 
 After installing, set up a Flickr API key and save it as a local
 environment variable using
 `setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE", install = TRUE)`. The
 Flickr API is available for non-commercial use by outside developers and
-is only available for commercial use under prior arrangements. Review
-[the Flickr API
+is only available for commercial use under prior arrangements.
+
+Review [the Flickr API
 documentation](https://www.flickr.com/services/developer/), [API
 Overview](https://www.flickr.com/services/api/misc.overview.html), or
 [Flickr Developer Guide](https://www.flickr.com/services/developer/) for
 more information.
 
-## Example
+### Searching photos
 
 You can get photos from any individual user using the `getPhotos()`
 function.
@@ -46,29 +59,29 @@ function.
 library(FlickrAPI)
 
 photos <- getPhotos(user_id = "grand_canyon_nps")
-knitr::kable(photos[1,])
+knitr::kable(photos[1, ])
 ```
 
-| id          | owner          | secret     | server | farm | title                                                  | ispublic | isfriend | isfamily |
-|:------------|:---------------|:-----------|:-------|-----:|:-------------------------------------------------------|---------:|---------:|---------:|
-| 51924677769 | <50693818@N08> | a48d45c811 | 65535  |   66 | 03/03/22 Desert View Amphitheater Reconstruction 40389 |        1 |        0 |        0 |
+| id         | owner          | secret     | server | farm | title                           | ispublic | isfriend | isfamily | img_url                                                          | img_height | img_width | img_asp |
+|:-----------|:---------------|:-----------|:-------|-----:|:--------------------------------|---------:|---------:|---------:|:-----------------------------------------------------------------|-----------:|----------:|--------:|
+| 4660884991 | <50693818@N08> | d67d1f6a94 | 4014   |    5 | Grand Canyon - Mather-Point-009 |        1 |        0 |        0 | <https://live.staticflickr.com/4014/4660884991_d67d1f6a94_m.jpg> |        160 |       240 |     1.5 |
 
 For more information about any individual image, you can use
 `getPhotoInfo()` or the `getExif()` function.
 
 ``` r
 photo_info <- getPhotoInfo(photo_id = photos$id[1], output = "tags")
-knitr::kable(photo_info[c(1:2),])
+knitr::kable(photo_info[c(1:2), ])
 ```
 
-| id                         | author         | authorname       | raw          | content      | machine\_tag |
-|:---------------------------|:---------------|:-----------------|:-------------|:-------------|-------------:|
-| 50601005-51924677769-83469 | <50693818@N08> | Grand Canyon NPS | Desert View  | desertview   |            0 |
-| 50601005-51924677769-26960 | <50693818@N08> | Grand Canyon NPS | Amphitheater | amphitheater |            0 |
+|      |
+|:-----|
+| NA   |
+| NA.1 |
 
 ``` r
 photo_exif <- getExif(photo_id = photos$id[10])
-knitr::kable(photo_exif[1,])
+knitr::kable(photo_exif[1, ])
 ```
 
 | tagspace | tagspaceid | tag         | label       | raw  | clean |
@@ -81,18 +94,19 @@ You can also search photos by tag and license.
 photo_search <- getPhotoSearch(
   sort = "date-taken-desc",
   tags = c("cats", "dogs"),
-  per_page = 50)
+  per_page = 50
+)
 
-knitr::kable(photo_search[1,])
+knitr::kable(photo_search[1, ])
 ```
 
-| id          | owner          | secret     | server | farm | title            | ispublic | isfriend | isfamily | img\_url                                                           | img\_height | img\_width | img\_asp |
-|:------------|:---------------|:-----------|:-------|-----:|:-----------------|---------:|---------:|---------:|:-------------------------------------------------------------------|------------:|-----------:|---------:|
-| 51958193894 | <50281068@N08> | ca8e35eb2b | 65535  |   66 | Cats Of Mei Ling |        1 |        0 |        0 | <https://live.staticflickr.com/65535/51958193894_ca8e35eb2b_s.jpg> |          75 |         75 |        1 |
+| id          | owner           | secret     | server | farm | title                   | ispublic | isfriend | isfamily |
+|:------------|:----------------|:-----------|:-------|-----:|:------------------------|---------:|---------:|---------:|
+| 52760841848 | <197879821@N02> | 5a51344dda | 65535  |   66 | Doggo Bloggo via Poop4U |        1 |        0 |        0 |
 
-### See also
+## Related projects
 
--   [FlickrAPI on
-    CRAN](https://cran.r-project.org/web/packages/FlickrAPI/index.html)
-    ([PDF](https://cran.r-project.org/web/packages/FlickrAPI/FlickrAPI.pdf))
--   [Flickr API](https://www.flickr.com/services/api/)
+- [photosearcher](https://github.com/ropensci/photosearcher): A R
+  package for accessing the Flickr API.
+- [python-flickr-api](https://github.com/alexis-mignon/python-flickr-api):
+  A python implementation of the Flickr API.
