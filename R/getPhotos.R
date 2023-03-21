@@ -60,7 +60,6 @@ get_photos <- getPhotos
 #' @param public If `TRUE`, get public favorites (no authentication needed). If
 #'   `FALSE`, get all favorites (requires authentication for access).
 #' @export
-#' @importFrom rlang abort
 getFavePhotos <- function(user_id = NULL,
                           img_size = "s",
                           extras = NULL,
