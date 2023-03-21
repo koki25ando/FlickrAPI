@@ -1,9 +1,10 @@
 Package: FlickrAPI
 Title: Access to Flickr API
-Version: 0.1.1
+Version: 0.1.0.2
 Authors@R: c(
     person("Koki", "Ando", , "koki.25.ando@gmail.com", role = c("aut", "cre")),
-    person("Eli", "Pousson", role = c("aut", "ctb"))
+    person("Eli", "Pousson", , "eli.pousson@gmail.com", role = c("aut", "ctb"),
+           comment = c(ORCID = "0000-0001-8280-1706"))
   )
 Description: Provides an interface to the Flickr API
     <https://www.flickr.com/services/api/> and allows R users to download
