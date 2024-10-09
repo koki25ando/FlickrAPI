@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/koki25ando/FlickrAPI",
   "issueTracker": "https://github.com/koki25ando/FlickrAPI/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.0.1",
+  "version": "0.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.0 Patched (2022-05-23 r82396)",
+  "runtimePlatform": "R version 4.4.1 (2024-06-14)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -31,14 +31,18 @@
     {
       "@type": "Person",
       "givenName": "Eli",
-      "familyName": "Pousson"
+      "familyName": "Pousson",
+      "email": "eli.pousson@gmail.com",
+      "@id": "https://orcid.org/0000-0001-8280-1706"
     }
   ],
   "contributor": [
     {
       "@type": "Person",
       "givenName": "Eli",
-      "familyName": "Pousson"
+      "familyName": "Pousson",
+      "email": "eli.pousson@gmail.com",
+      "@id": "https://orcid.org/0000-0001-8280-1706"
     }
   ],
   "maintainer": [
@@ -98,6 +102,7 @@
       "@type": "SoftwareApplication",
       "identifier": "httr2",
       "name": "httr2",
+      "version": ">= 0.2.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -137,7 +142,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "75.506KB",
+  "fileSize": "78.945KB",
   "releaseNotes": "https://github.com/koki25ando/FlickrAPI/blob/master/NEWS.md",
   "readme": "https://github.com/koki25ando/FlickrAPI/blob/master/README.md",
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#stable"
