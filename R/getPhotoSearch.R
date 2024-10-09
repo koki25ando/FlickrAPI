@@ -230,7 +230,7 @@ set_sort_arg <- function(sort = NULL, desc = FALSE) {
   }
 
   sort <- paste0(tolower(sort), dir_suffix)
-  match.arg(sort, paste0(sort_opts, rep(dir, 3)))
+  arg_match(sort, paste0(sort_opts, rep(dir, 3)))
 }
 
 #' Set the min/max date taken or date uploaded API arguments
@@ -285,14 +285,15 @@ set_license_id_arg <- function(license_id, call = parent.frame()) {
     )
   }
 
-  license_id <-
-    match.arg(
-      tolower(license_id),
-      c(
-        "c", "by-bc-sa", "by-nc", "by-nc-nd", "by",
-        "by-sa", "by-nd", "nkc", "pd-us", "cc0", "pd"
-      )
+  license_id <- tolower(license_id)
+
+  license_id <- arg_match(
+    license_id,
+    c(
+      "c", "by-bc-sa", "by-nc", "by-nc-nd", "by",
+      "by-sa", "by-nd", "nkc", "pd-us", "cc0", "pd"
     )
+  )
 
   switch(license_id,
     "c" = 0,

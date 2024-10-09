@@ -24,7 +24,7 @@
 getHotTags <- function(api_key = NULL,
                        period = c("day", "week"),
                        count = 20) {
-  period <- match.arg(period)
+  period <- arg_match(period)
 
   data <-
     FlickrAPIRequest(
