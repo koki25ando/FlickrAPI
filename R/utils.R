@@ -29,10 +29,10 @@ getPhotoExtras <- function(extras,
   # Add url of select size to extras if img_size is provided
   if (!is.null(img_size)) {
     img_size <- arg_match(
-        img_size,
-        c("sq", "t", "s", "q", "m", "n", "z", "c", "l", "o"),
-        multiple = TRUE
-      )
+      img_size,
+      c("sq", "t", "s", "q", "m", "n", "z", "c", "l", "o"),
+      multiple = TRUE
+    )
 
     extras <- c(extras, paste0("url_", img_size))
   }
