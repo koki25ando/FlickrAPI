@@ -7,24 +7,40 @@
 \alias{get_flickr_api_key}
 \title{Set and get a Flickr API key to/from environment variables.}
 \usage{
-setFlickrAPIKey(api_key, overwrite = FALSE, install = FALSE)
+setFlickrAPIKey(
+  api_key,
+  overwrite = FALSE,
+  install = FALSE,
+  call = caller_env()
+)
 
-set_flickr_api_key(api_key, overwrite = FALSE, install = FALSE)
+set_flickr_api_key(
+  api_key,
+  overwrite = FALSE,
+  install = FALSE,
+  call = caller_env()
+)
 
-getFlickrAPIKey(api_key = NULL)
+getFlickrAPIKey(api_key = NULL, strict = TRUE, error_call = caller_env())
 
-get_flickr_api_key(api_key = NULL)
+get_flickr_api_key(api_key = NULL, strict = TRUE, error_call = caller_env())
 }
 \arguments{
-\item{api_key}{Flickr API key}
+\item{api_key}{Flickr API key. Optional for \code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}}.}
 
-\item{overwrite}{If \code{TRUE}, overwrite existing token; Default: \code{FALSE}}
+\item{overwrite}{If \code{TRUE}, overwrite any existing token in \code{.Renviron} using
+the name "FLICKR_API_KEY". Defaults to \code{FALSE}.}
 
-\item{install}{If \code{TRUE}, install token for use in future sessions; Default:
-\code{FALSE}}
+\item{install}{If \code{TRUE}, this function adds your token to your \code{.Renviron}
+using the name "FLICKR_API_KEY" for use in future sessions. Defaults to
+\code{FALSE}.}
+
+\item{strict}{If \code{TRUE} (default), error if api_key is \code{NULL} and no valid
+key is available using the "FLICKR_API_KEY" environment variable name. If
+\code{FALSE}, warn instead of error and invisibly return \code{NULL}.}
 }
 \description{
-Set and get a Flickr API key to/from environment variables.
-
-Get Flickr API key from environment variables
+\code{\link[=setFlickrAPIKey]{setFlickrAPIKey()}} sets a Flickr API key for the current session or for
+future use as a \code{.Renviron} environment variable. \code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}} gets a
+saved Flickr API key from \code{.Renviron}.
 }

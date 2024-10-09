@@ -8,5 +8,6 @@
 
 ## usethis namespace: start
 #' @importFrom rlang caller_env arg_match
+#' @importFrom cli cli_abort cli_warn
 ## usethis namespace: end
 NULL
