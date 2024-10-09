@@ -212,7 +212,7 @@ get_photo_search <- getPhotoSearch
 #' Set the sort API argument
 #'
 #' @noRd
-set_sort_arg <- function(sort = NULL, desc = FALSE) {
+set_sort_arg <- function(sort = NULL, desc = FALSE, call = caller_env()) {
   if (any(c(is.null(sort), identical(sort, "relevance")))) {
     return(sort)
   }
@@ -229,7 +229,8 @@ set_sort_arg <- function(sort = NULL, desc = FALSE) {
   }
 
   sort <- paste0(tolower(sort), dir_suffix)
-  arg_match(sort, paste0(sort_opts, rep(dir, 3)))
+  sort_values <- paste0(sort_opts, rep(dir, 3))
+  arg_match(sort, sort_values, error_call = call)
 }
 
 #' Set the min/max date taken or date uploaded API arguments
@@ -240,7 +241,7 @@ set_date_range_arg <- function(x,
                                arg = rlang::caller_arg(x),
                                n = 2,
                                numeric = FALSE,
-                               call = parent.frame()) {
+                               call = caller_env()) {
   if (!is.numeric.POSIXt(x)) {
     x <- rlang::try_fetch(
       as.POSIXlt(x),
@@ -269,15 +270,16 @@ set_date_range_arg <- function(x,
 #' Set the license_id API argument
 #'
 #' @noRd
-set_license_id_arg <- function(license_id, call = parent.frame()) {
-  if (suppressWarnings(as.integer(license_id) %in% c(0:10))) {
+set_license_id_arg <- function(license_id, call = caller_env()) {
+  is_valid_id_num <- suppressWarnings(as.integer(license_id) %in% c(0:10))
+  if (!is.logical(license_id) && is_valid_id_num) {
     return(license_id)
   }
 
   if (!is.character(license_id)) {
     cli_abort(
-      "The {.arg license_id} must be a documented license id or an integer
-      from 0 to 10.",
+      "{.arg license_id} must be a documented license id or an integer
+      from 0 to 10, not {.obj_type_friendly {license_id}}.",
       call = call
     )
   }
@@ -289,7 +291,8 @@ set_license_id_arg <- function(license_id, call = parent.frame()) {
     c(
       "c", "by-bc-sa", "by-nc", "by-nc-nd", "by",
       "by-sa", "by-nd", "nkc", "pd-us", "cc0", "pd"
-    )
+    ),
+    error_call = call
   )
 
   switch(license_id,
