@@ -107,7 +107,7 @@
 #' @seealso
 #' - Flickr API Documentation: [flickr.photos.search](https://www.flickr.com/services/api/flickr.photos.search.html)
 #' @export
-#' @importFrom rlang list2 abort `!!!`
+#' @importFrom rlang list2 `!!!`
 
 getPhotoSearch <- function(api_key = NULL,
                            user_id = NULL,
@@ -167,7 +167,7 @@ getPhotoSearch <- function(api_key = NULL,
   if (!is.null(bbox)) {
     bbox_check <- (length(bbox) == 4) && is.numeric(bbox)
     if (!bbox_check) {
-      rlang::abort("The `bbox` argument must be a 'bbox' class object or
+      cli_abort(".arg bbox} must be a {.cls bbox} object or
                    a numeric vector with xmin, ymin, xmax and ymax values.")
     }
     bbox <- paste0(bbox, collapse = ",")
@@ -212,7 +212,7 @@ get_photo_search <- getPhotoSearch
 #' Set the sort API argument
 #'
 #' @noRd
-set_sort_arg <- function(sort = NULL, desc = FALSE) {
+set_sort_arg <- function(sort = NULL, desc = FALSE, call = caller_env()) {
   if (any(c(is.null(sort), identical(sort, "relevance")))) {
     return(sort)
   }
@@ -229,24 +229,25 @@ set_sort_arg <- function(sort = NULL, desc = FALSE) {
   }
 
   sort <- paste0(tolower(sort), dir_suffix)
-  match.arg(sort, paste0(sort_opts, rep(dir, 3)))
+  sort_values <- paste0(sort_opts, rep(dir, 3))
+  arg_match(sort, sort_values, error_call = call)
 }
 
 #' Set the min/max date taken or date uploaded API arguments
 #'
 #' @noRd
-#' @importFrom rlang try_fetch abort caller_arg
+#' @importFrom rlang try_fetch caller_arg
 set_date_range_arg <- function(x,
                                arg = rlang::caller_arg(x),
                                n = 2,
                                numeric = FALSE,
-                               call = parent.frame()) {
+                               call = caller_env()) {
   if (!is.numeric.POSIXt(x)) {
     x <- rlang::try_fetch(
       as.POSIXlt(x),
       error = function(cnd) {
-        rlang::abort(
-          paste0("`", arg, "` can't be coerced into a date with `as.POSIXlt`."),
+        cli_abort(
+          "{.arg {arg}} can't be coerced into a date with {.fn as.POSIXlt}.",
           parent = cnd,
           call = call
         )
@@ -269,28 +270,30 @@ set_date_range_arg <- function(x,
 #' Set the license_id API argument
 #'
 #' @noRd
-#' @importFrom rlang abort
-set_license_id_arg <- function(license_id, call = parent.frame()) {
-  if (suppressWarnings(as.integer(license_id) %in% c(0:10))) {
+set_license_id_arg <- function(license_id, call = caller_env()) {
+  is_valid_id_num <- suppressWarnings(as.integer(license_id) %in% c(0:10))
+  if (!is.logical(license_id) && is_valid_id_num) {
     return(license_id)
   }
 
   if (!is.character(license_id)) {
-    rlang::abort(
-      "The `license_id` argument must be a documented license id or an integer
-      from 0 to 10.",
+    cli_abort(
+      "{.arg license_id} must be a documented license id or an integer
+      from 0 to 10, not {.obj_type_friendly {license_id}}.",
       call = call
     )
   }
 
-  license_id <-
-    match.arg(
-      tolower(license_id),
-      c(
-        "c", "by-bc-sa", "by-nc", "by-nc-nd", "by",
-        "by-sa", "by-nd", "nkc", "pd-us", "cc0", "pd"
-      )
-    )
+  license_id <- tolower(license_id)
+
+  license_id <- arg_match(
+    license_id,
+    c(
+      "c", "by-bc-sa", "by-nc", "by-nc-nd", "by",
+      "by-sa", "by-nd", "nkc", "pd-us", "cc0", "pd"
+    ),
+    error_call = call
+  )
 
   switch(license_id,
     "c" = 0,

@@ -1,12 +1,13 @@
-#' FlickrAPI: Access to Flickr API via R
-#'
-#' An R package that provides an interface to the Flickr API
-#' <https://www.flickr.com/services/api/>, which allows R users to download
-#' publicly available data on Flickr feed such as location, EXIF, list of photos
-#' posted by specific user.
-#'
-#' @author Koki Ando \email{koki.25.ando@gmail.com}
-#' @docType package
-#' @seealso \url{https://www.flickr.com/services/api/}
 #' @keywords internal
+#' @details
+#' The Flickr API <https://www.flickr.com/services/api/>, which allows R users
+#' to download publicly available data on Flickr feed such as location, EXIF,
+#' list of photos posted by specific user.
+#'
 "_PACKAGE"
+
+## usethis namespace: start
+#' @importFrom rlang caller_env arg_match
+#' @importFrom cli cli_abort cli_warn
+## usethis namespace: end
+NULL

@@ -1,57 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/404.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/articles/introduction.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/index.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/FlickAPIRequest.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/FlickrAPI-package.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/FlickrAPIRequest.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/getExif.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/getHotTags.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotoInfo.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotoSearch.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotos.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://koki25ando.github.io/FlickrAPI/reference/setFlickrAPIKey.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://koki25ando.github.io/FlickrAPI/404.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/LICENSE.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/articles/index.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/articles/introduction.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/authors.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/index.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/news/index.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/FlickAPIRequest.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/FlickrAPI-package.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/FlickrAPIRequest.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/getExif.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/getHotTags.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotoInfo.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotoSearch.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/getPhotos.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/index.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/pipe.html</loc></url>
+<url><loc>https://koki25ando.github.io/FlickrAPI/reference/setFlickrAPIKey.html</loc></url>
 </urlset>
+

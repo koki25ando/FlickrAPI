@@ -11,6 +11,7 @@
 #' @param simplifyVector Default to `TRUE`, passed to [httr2::resp_body_json()]
 #' @param check_type Default to `FALSE`, passed to [httr2::resp_body_json()]
 #' @param ... Additional parameters passed to [httr2::req_url_query()]
+#' @inheritParams httr2::req_perform
 #' @export
 #' @importFrom httr2 request req_url_query req_throttle req_user_agent
 #'   req_perform resp_body_json resp_body_string resp_body_raw
@@ -19,8 +20,9 @@ FlickrAPIRequest <- function(method = NULL,
                              format = "json",
                              simplifyVector = TRUE,
                              check_type = FALSE,
-                             ...) {
-  api_key <- getFlickrAPIKey(api_key)
+                             ...,
+                             error_call = caller_env()) {
+  api_key <- getFlickrAPIKey(api_key, call = error_call)
 
   req <- httr2::request("https://api.flickr.com/services/rest")
 
@@ -47,9 +49,13 @@ FlickrAPIRequest <- function(method = NULL,
 
   req <- httr2::req_user_agent(req, string = string)
 
-  resp <- httr2::req_perform(req)
+  resp <- httr2::req_perform(req, error_call = error_call)
 
-  format <- match.arg(format, c("json", "xml", "string", "raw"))
+  format <- arg_match(
+    format,
+    c("json", "xml", "string", "raw"),
+    error_call = error_call
+  )
 
   switch(format,
     "json" = httr2::resp_body_json(resp,

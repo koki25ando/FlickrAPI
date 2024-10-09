@@ -4,17 +4,33 @@
 \name{FlickrAPI-package}
 \alias{FlickrAPI}
 \alias{FlickrAPI-package}
-\title{FlickrAPI: Access to Flickr API via R}
+\title{FlickrAPI: Access to Flickr API}
 \description{
-An R package that provides an interface to the Flickr API
-\url{https://www.flickr.com/services/api/}, which allows R users to download
-publicly available data on Flickr feed such as location, EXIF, list of photos
-posted by specific user.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Provides an interface to the Flickr API \url{https://www.flickr.com/services/api/} and allows R users to download data on Flickr.
+}
+\details{
+The Flickr API \url{https://www.flickr.com/services/api/}, which allows R users
+to download publicly available data on Flickr feed such as location, EXIF,
+list of photos posted by specific user.
 }
 \seealso{
-\url{https://www.flickr.com/services/api/}
+Useful links:
+\itemize{
+  \item \url{https://github.com/koki25ando/FlickrAPI}
+  \item \url{https://koki25ando.github.io/FlickrAPI/}
+  \item Report bugs at \url{https://github.com/koki25ando/FlickrAPI/issues}
+}
+
 }
 \author{
-Koki Ando \email{koki.25.ando@gmail.com}
+\strong{Maintainer}: Koki Ando \email{koki.25.ando@gmail.com}
+
+Authors:
+\itemize{
+  \item Eli Pousson \email{eli.pousson@gmail.com} (\href{https://orcid.org/0000-0001-8280-1706}{ORCID}) [contributor]
+}
+
 }
 \keyword{internal}

@@ -34,11 +34,12 @@ getPhotoInfo <- function(api_key = NULL,
       photo_id = photo_id
     )
 
-  output <-
-    match.arg(
-      tolower(output),
-      c("all", "location", "date", "url", "tags")
-    )
+  output <- tolower(output)
+
+  output <- arg_match(
+    output,
+    c("all", "location", "date", "url", "tags")
+  )
 
   switch(output,
     "all" = data$photo,

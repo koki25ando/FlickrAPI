@@ -10,7 +10,8 @@ FlickrAPIRequest(
   format = "json",
   simplifyVector = TRUE,
   check_type = FALSE,
-  ...
+  ...,
+  error_call = caller_env()
 )
 }
 \arguments{
@@ -27,6 +28,11 @@ key.}
 \item{check_type}{Default to \code{FALSE}, passed to \code{\link[httr2:resp_body_raw]{httr2::resp_body_json()}}}
 
 \item{...}{Additional parameters passed to \code{\link[httr2:req_url]{httr2::req_url_query()}}}
+
+\item{error_call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \description{
 Request data from the Flickr API using the provided method, API key, and any
