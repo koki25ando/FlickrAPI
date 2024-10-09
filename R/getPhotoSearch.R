@@ -108,7 +108,6 @@
 #' - Flickr API Documentation: [flickr.photos.search](https://www.flickr.com/services/api/flickr.photos.search.html)
 #' @export
 #' @importFrom rlang list2 `!!!`
-#' @importFrom cli cli_abort
 
 getPhotoSearch <- function(api_key = NULL,
                            user_id = NULL,
@@ -168,7 +167,7 @@ getPhotoSearch <- function(api_key = NULL,
   if (!is.null(bbox)) {
     bbox_check <- (length(bbox) == 4) && is.numeric(bbox)
     if (!bbox_check) {
-      cli::cli_abort(".arg bbox} must be a {.cls bbox} object or
+      cli_abort(".arg bbox} must be a {.cls bbox} object or
                    a numeric vector with xmin, ymin, xmax and ymax values.")
     }
     bbox <- paste0(bbox, collapse = ",")
@@ -237,7 +236,6 @@ set_sort_arg <- function(sort = NULL, desc = FALSE) {
 #'
 #' @noRd
 #' @importFrom rlang try_fetch caller_arg
-#' @importFrom cli cli_abort
 set_date_range_arg <- function(x,
                                arg = rlang::caller_arg(x),
                                n = 2,
@@ -247,7 +245,7 @@ set_date_range_arg <- function(x,
     x <- rlang::try_fetch(
       as.POSIXlt(x),
       error = function(cnd) {
-        cli::cli_abort(
+        cli_abort(
           "{.arg {arg}} can't be coerced into a date with {.fn as.POSIXlt}.",
           parent = cnd,
           call = call
@@ -271,14 +269,13 @@ set_date_range_arg <- function(x,
 #' Set the license_id API argument
 #'
 #' @noRd
-#' @importFrom cli cli_abort
 set_license_id_arg <- function(license_id, call = parent.frame()) {
   if (suppressWarnings(as.integer(license_id) %in% c(0:10))) {
     return(license_id)
   }
 
   if (!is.character(license_id)) {
-    cli::cli_abort(
+    cli_abort(
       "The {.arg license_id} must be a documented license id or an integer
       from 0 to 10.",
       call = call
