@@ -21,7 +21,7 @@ FlickrAPIRequest <- function(method = NULL,
                              simplifyVector = TRUE,
                              check_type = FALSE,
                              ...,
-                             error_call = rlang::caller_env()) {
+                             error_call = caller_env()) {
   api_key <- getFlickrAPIKey(api_key, call = error_call)
 
   req <- httr2::request("https://api.flickr.com/services/rest")

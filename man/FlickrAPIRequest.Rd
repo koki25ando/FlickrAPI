@@ -11,7 +11,7 @@ FlickrAPIRequest(
   simplifyVector = TRUE,
   check_type = FALSE,
   ...,
-  error_call = rlang::caller_env()
+  error_call = caller_env()
 )
 }
 \arguments{
