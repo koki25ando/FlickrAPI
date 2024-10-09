@@ -21,19 +21,24 @@ set_flickr_api_key(
   call = caller_env()
 )
 
-getFlickrAPIKey(api_key = NULL, strict = TRUE, error_call = caller_env())
+getFlickrAPIKey(api_key = NULL, strict = TRUE, call = caller_env())
 
-get_flickr_api_key(api_key = NULL, strict = TRUE, error_call = caller_env())
+get_flickr_api_key(api_key = NULL, strict = TRUE, call = caller_env())
 }
 \arguments{
 \item{api_key}{Flickr API key. Optional for \code{\link[=getFlickrAPIKey]{getFlickrAPIKey()}}.}
 
-\item{overwrite}{If \code{TRUE}, overwrite any existing token in \code{.Renviron} using
+\item{overwrite}{If \code{TRUE}, overwrite any existing API key in \code{.Renviron} using
 the name "FLICKR_API_KEY". Defaults to \code{FALSE}.}
 
-\item{install}{If \code{TRUE}, this function adds your token to your \code{.Renviron}
+\item{install}{If \code{TRUE}, this function adds your API key to your \code{.Renviron}
 using the name "FLICKR_API_KEY" for use in future sessions. Defaults to
 \code{FALSE}.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 
 \item{strict}{If \code{TRUE} (default), error if api_key is \code{NULL} and no valid
 key is available using the "FLICKR_API_KEY" environment variable name. If

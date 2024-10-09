@@ -5,11 +5,12 @@
 #' saved Flickr API key from `.Renviron`.
 #'
 #' @param api_key Flickr API key. Optional for [getFlickrAPIKey()].
-#' @param install If `TRUE`, this function adds your token to your `.Renviron`
+#' @param install If `TRUE`, this function adds your API key to your `.Renviron`
 #'   using the name "FLICKR_API_KEY" for use in future sessions. Defaults to
 #'   `FALSE`.
-#' @param overwrite If `TRUE`, overwrite any existing token in `.Renviron` using
+#' @param overwrite If `TRUE`, overwrite any existing API key in `.Renviron` using
 #'   the name "FLICKR_API_KEY". Defaults to `FALSE`.
+#' @inheritParams rlang::args_error_context
 #' @rdname setFlickrAPIKey
 #' @export
 #'
@@ -53,7 +54,7 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE, call = 
     if (has_default && !overwrite) {
       cli_abort(
         c("{.envvar {default}} already exists in your {.file .Renviron}.",
-          "*" = "Set {.arg overwrite = TRUE} to replace this token."
+          "*" = "Set {.arg overwrite = TRUE} to replace this key."
         ),
         call = call
       )
@@ -75,17 +76,17 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE, call = 
     file.create(renv)
   }
 
-  write(paste0(default, '="', token, '"'), renv, sep = "\n", append = TRUE)
+  write(paste0(default, '="', api_key, '"'), renv, sep = "\n", append = TRUE)
 
   cli_bullets(
     c(
       "v" = "{.val {api_key}} saved to {.file .Renviron} variable {.envvar {default}}.",
       "*" = "Restart R or run {.code readRenviron(\"~/.Renviron\")} then use
-      {.code Sys.getenv(\"{default}\")} to access the token."
+      {.code Sys.getenv(\"{default}\")} to access the key."
     )
   )
 
-  invisible(token)
+  invisible(api_key)
 }
 
 #' @export
@@ -103,7 +104,7 @@ set_flickr_api_key <- setFlickrAPIKey
 #' @importFrom rlang %||% is_empty is_string
 #' @export
 
-getFlickrAPIKey <- function(api_key = NULL, strict = TRUE, error_call = caller_env()) {
+getFlickrAPIKey <- function(api_key = NULL, strict = TRUE, call = caller_env()) {
   api_key <- api_key %||% Sys.getenv("FLICKR_API_KEY")
 
   if (!is_empty(api_key) && !identical(api_key, "") && is_string(api_key)) {
@@ -115,10 +116,10 @@ getFlickrAPIKey <- function(api_key = NULL, strict = TRUE, error_call = caller_e
     "*" = "Please create a key at your Flickr account:
           {.url https://www.flickr.com/services/api/misc.api_keys.html}"
   )
+
   if (!strict) {
     cli_warn(
-      message = message,
-      ...
+      message = message
     )
 
     return(invisible(NULL))
