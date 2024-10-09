@@ -15,7 +15,7 @@
 #'
 #' @importFrom utils read.table write.table
 #' @importFrom rlang is_false
-#' @importFrom cli cli_bullets
+#' @importFrom cli cli_bullets cli_alert_success
 setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE, call = caller_env()) {
   rlang::check_required(api_key, call = call)
   if (!rlang::is_string(api_key)) {
@@ -44,8 +44,8 @@ setFlickrAPIKey <- function(api_key, overwrite = FALSE, install = FALSE, call = 
 
   if (file.exists(renv)) {
     default_match <- grepl(paste0("^", default, "(?=\\=)"),
-                           readLines(renv),
-                           perl = TRUE
+      readLines(renv),
+      perl = TRUE
     )
 
     has_default <- any(default_match)
