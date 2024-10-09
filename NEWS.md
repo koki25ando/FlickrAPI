@@ -1,7 +1,11 @@
-## FlickrAPI 0.1.1 (2023-03-20)
+## FlickrAPI 0.1.1 (2024-10-08)
+
 * Update `getPhotoSearch()` to allow searching by date taken and upload date.
 * Add secret parameter to `getExif()` function to allow sharing of individual photos without API key access.
 * Import [{cli}](https://github.com/r-lib/cli) package for error messages.
+* Add `error_call` parameter to `FlickrAPIRequest()`.
+* Add `strict` parameter to `getFlickrAPIKey()` to allow function to warn instead of error if API key can't be found.
+* Replace `match.arg()` with `rlang::arg_match()` internally to improve error messages.
 
 ## FlickrAPI 0.1.0.2 (2020-10-12)
 
