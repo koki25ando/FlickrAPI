@@ -29,7 +29,7 @@ The goal of FlickrAPI is to provide an interface to the [Flickr API](https://www
 Install [FlickrAPI from CRAN](https://cran.r-project.org/package=FlickrAPI):
 
 ``` r
-install.packages("cli")
+install.packages("FlickrAPI")
 ```
 
 Or install the development version from GitHub:

@@ -25,7 +25,7 @@ Install [FlickrAPI from
 CRAN](https://cran.r-project.org/package=FlickrAPI):
 
 ``` r
-install.packages("cli")
+install.packages("FlickrAPI")
 ```
 
 Or install the development version from GitHub:
@@ -62,9 +62,9 @@ photos <- getPhotos(user_id = "grand_canyon_nps")
 knitr::kable(photos[1, ])
 ```
 
-| id         | owner          | secret     | server | farm | title                           | ispublic | isfriend | isfamily | img_url                                                          | img_height | img_width | img_asp |
-|:-----------|:---------------|:-----------|:-------|-----:|:--------------------------------|---------:|---------:|---------:|:-----------------------------------------------------------------|-----------:|----------:|--------:|
-| 4660884991 | <50693818@N08> | d67d1f6a94 | 4014   |    5 | Grand Canyon - Mather-Point-009 |        1 |        0 |        0 | <https://live.staticflickr.com/4014/4660884991_d67d1f6a94_m.jpg> |        160 |       240 |     1.5 |
+| id | owner | secret | server | farm | title | ispublic | isfriend | isfamily | img_url | img_height | img_width | img_asp |
+|:---|:---|:---|:---|---:|:---|---:|---:|---:|:---|---:|---:|---:|
+| 4660884991 | <50693818@N08> | d67d1f6a94 | 4014 | 5 | Grand Canyon - Mather-Point-009 | 1 | 0 | 0 | <https://live.staticflickr.com/4014/4660884991_d67d1f6a94_m.jpg> | 160 | 240 | 1.5 |
 
 For more information about any individual image, you can use
 `getPhotoInfo()` or the `getExif()` function.
@@ -100,9 +100,9 @@ photo_search <- getPhotoSearch(
 knitr::kable(photo_search[1, ])
 ```
 
-| id          | owner           | secret     | server | farm | title                   | ispublic | isfriend | isfamily |
-|:------------|:----------------|:-----------|:-------|-----:|:------------------------|---------:|---------:|---------:|
-| 52760841848 | <197879821@N02> | 5a51344dda | 65535  |   66 | Doggo Bloggo via Poop4U |        1 |        0 |        0 |
+| id | owner | secret | server | farm | title | ispublic | isfriend | isfamily |
+|:---|:---|:---|:---|---:|:---|---:|---:|---:|
+| 54053712190 | <126592381@N02> | c24b1ff041 | 65535 | 66 | Idaho | 1 | 0 | 0 |
 
 ## Related projects
 
