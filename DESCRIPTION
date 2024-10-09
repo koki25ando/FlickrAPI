@@ -17,7 +17,7 @@ Depends:
     R (>= 3.1)
 Imports: 
     cli,
-    httr2,
+    httr2 (>= 0.2.3),
     janitor,
     rlang,
     utils
